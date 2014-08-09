@@ -22,7 +22,69 @@ TemplateUtils = (function() {
 
     var _demoLayer = null,
         _DEMO_DEPTH = 99999;
-    
+
+    var _parser = {
+        "IMAGE": function(def) {
+            return new cc.Sprite(def.texUrl);
+        },
+
+        "ANIMATION": function(def) {
+            var result = null, node, animation, frames = [], animationFrames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def.interval || 0.2;
+            if (def.texs && def.texs.length > 0) {
+                for (var i = 0, l = def.texs.length; i < l; ++i) {
+                    tex = cc.textureCache.addImage(def.texs[i]);
+                    rect.width = tex.width;
+                    rect.height = tex.height;
+                    frame = new cc.SpriteFrame(tex, rect);
+                    frames.push(frame);
+                }
+            }
+            else if (def.texUrl) {
+                var row = def.row, col = def.col, unitW, unitH;
+                tex = cc.textureCache.addImage(def.texUrl);
+                rect.width = unitW = Math.floor(tex.width/col);
+                rect.height = unitH = Math.floor(tex.height/row);
+                for (var r = 0; r < row; ++r){
+                    for (var c = 0; c < col; ++c) {
+                        rect.x = c * unitW;
+                        rect.y = r * unitH;
+                        frame = new cc.SpriteFrame(tex, rect);
+                        frames.push(frame);
+                    }
+                }
+            }
+            else
+                return result;
+
+            if (def.sequence) {
+                for (var i = 0, l = def.sequence.length; i < l; ++i) {
+                    var index = def.sequence[i];
+                    index < frames.length && index >= 0 && animationFrames.push(frames[index]);
+                }
+            }
+            else animationFrames = frames;
+            node = new cc.Sprite(frame);
+            animation = new cc.Animation(animationFrames, interval);
+            result = {"node": node, "animation": animation};
+            return result;
+        },
+
+        "LABEL": function(def, config) {
+            var args = [def.string], key, string;
+            for (var i = 0, l = def.variables ? def.variables.length : 0; i < l; ++i) {
+                key = def.variables[i];
+                if (config && config[key])
+                    args.push(config[key]);
+                else args.push(null);
+            }
+            string = cc.formatStr.apply(null, args);
+            return new cc.LabelTTF(string, def.fontName || "Arial", def.fontSize || "12");
+        },
+
+        "SOUND": function(def) {
+            return null;
+        }
+    };
 
     var _parseValue = function (key, value) {
         var result;
@@ -113,63 +175,16 @@ TemplateUtils = (function() {
         getVariable: function(name, config) {
             if (!_inited) return null;
             var def = _templateVars[name];
-            var result = null, node;
+            var parser, result = null, node = null;
             var attrs = {}, key, value, sceneDef;
 
-            switch (def.type) {
-            case "IMAGE":
-                result = node = new cc.Sprite(def.texUrl);
-            break;
-            case "ANIMATION":
-                var animation, frames = [], animationFrames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def.interval || 0.2;
-                if (def.texs && def.texs.length > 0) {
-                    for (var i = 0, l = def.texs.length; i < l; ++i) {
-                        tex = cc.textureCache.addImage(def.texs[i]);
-                        rect.width = tex.width;
-                        rect.height = tex.height;
-                        frame = new cc.SpriteFrame(tex, rect);
-                        frames.push(frame);
-                    }
-                }
-                else if (def.texUrl) {
-                    var row = def.row, col = def.col, unitW, unitH;
-                    tex = cc.textureCache.addImage(def.texUrl);
-                    rect.width = unitW = Math.floor(tex.width/col);
-                    rect.height = unitH = Math.floor(tex.height/row);
-                    for (var r = 0; r < row; ++r){
-                        for (var c = 0; c < col; ++c) {
-                            rect.x = c * unitW;
-                            rect.y = r * unitH;
-                            frame = new cc.SpriteFrame(tex, rect);
-                            frames.push(frame);
-                        }
-                    }
-                }
-                if (def.sequence) {
-                    for (var i = 0, l = def.sequence.length; i < l; ++i) {
-                        var index = def.sequence[i];
-                        index < frames.length && index >= 0 && animationFrames.push(frames[index]);
-                    }
-                }
-                else animationFrames = frames;
-                node = new cc.Sprite(frame);
-                animation = new cc.Animation(animationFrames, interval);
-                result = {"node": node, "animation": animation};
-            break;
-                case "LABEL":
-                var args = [def.string];
-                for (var i = 0, l = def.variables ? def.variables.length : 0; i < l; ++i) {
-                    key = def.variables[i];
-                    if (config && config[key])
-                        args.push(config[key]);
-                    else args.push(null);
-                }
-                var string = cc.formatStr.apply(null, args);
-                result = node = new cc.LabelTTF(string, def.fontName || "Arial", def.fontSize || "12");
-            break;
-            case "SOUND":
-                isNode = false;
-            break;
+            parser = _parser[def.type];
+            if (parser) {
+                result = parser(def, config);
+                if (result && result instanceof cc.Node)
+                    node = result;
+                else if (result && result.node instanceof cc.Node)
+                    node = result.node;
             }
 
             if (node) {
