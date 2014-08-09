@@ -15,9 +15,9 @@
 		},
         "head": {
             "type":     "IMAGE",
-            "texUrl":   "skin/panda.png",
-            "originW":  66,
-            "originH":  118,
+            "texUrl":   "skin/shanzhi.jpg",
+            "originW":  80,
+            "originH":  80,
             "scale":    0.42,
             "anchorX":	0.5,
             "anchorY":	0.5
