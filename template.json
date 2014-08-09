@@ -15,7 +15,7 @@
 		},
         "head": {
             "type":     "IMAGE",
-            "texUrl":   "skin/sijie.jpg",
+            "texUrl":   "skin/panda.png",
             "originW":  66,
             "originH":  118,
             "scale":    0.42,

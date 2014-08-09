@@ -20,6 +20,10 @@ TemplateUtils = (function() {
         "textAlign", "verticalAlign", "fontSize", "fontName", "fillStyle"
     ];
 
+    var _demoLayer = null,
+        _DEMO_DEPTH = 99999;
+    
+
     var _parseValue = function (key, value) {
         var result;
         switch(key) {
@@ -44,6 +48,7 @@ TemplateUtils = (function() {
             _templateVars = jsonObj.templateVars;
             _scenes = jsonObj.scenes;
             _share = jsonObj.share;
+            _demoLayer = new cc.LayerColor(cc.color(0, 0, 0));
             _inited = true;
         },
 
@@ -116,10 +121,10 @@ TemplateUtils = (function() {
                 result = node = new cc.Sprite(def.texUrl);
             break;
             case "ANIMATION":
-                var animation, frames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def.interval || 0.2;
+                var animation, frames = [], animationFrames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def.interval || 0.2;
                 if (def.texs && def.texs.length > 0) {
                     for (var i = 0, l = def.texs.length; i < l; ++i) {
-                        tex = cc.TextureCache.addImage(def.texs[i]);
+                        tex = cc.textureCache.addImage(def.texs[i]);
                         rect.width = tex.width;
                         rect.height = tex.height;
                         frame = new cc.SpriteFrame(tex, rect);
@@ -128,7 +133,7 @@ TemplateUtils = (function() {
                 }
                 else if (def.texUrl) {
                     var row = def.row, col = def.col, unitW, unitH;
-                    tex = cc.TextureCache.addImage(def.texUrl);
+                    tex = cc.textureCache.addImage(def.texUrl);
                     rect.width = unitW = Math.floor(tex.width/col);
                     rect.height = unitH = Math.floor(tex.height/row);
                     for (var r = 0; r < row; ++r){
@@ -136,11 +141,19 @@ TemplateUtils = (function() {
                             rect.x = c * unitW;
                             rect.y = r * unitH;
                             frame = new cc.SpriteFrame(tex, rect);
+                            frames.push(frame);
                         }
                     }
                 }
+                if (def.sequence) {
+                    for (var i = 0, l = def.sequence.length; i < l; ++i) {
+                        var index = def.sequence[i];
+                        index < frames.length && index >= 0 && animationFrames.push(frames[index]);
+                    }
+                }
+                else animationFrames = frames;
                 node = new cc.Sprite(frame);
-                animation = new cc.Animation(frames, interval);
+                animation = new cc.Animation(animationFrames, interval);
                 result = {"node": node, "animation": animation};
             break;
                 case "LABEL":
@@ -182,8 +195,38 @@ TemplateUtils = (function() {
             return result;
         },
 
-        showVariable: function() {
+        showVariable: function(name, config) {
+            if (!_inited) return;
+            var result = this.getVariable(name, config), node;
+            if (result) {
+                if (result instanceof cc.Node) {
+                    node = result;
+                }
+                else if (result.node && result.node instanceof cc.Node) {
+                    node = result.node;
+                    if (result.animation && result.animation instanceof cc.Animation)
+                        node.runAction(cc.animate(result.animation).repeatForever())
+                }
 
+                var scene = cc.director.getRunningScene();
+                _demoLayer.removeAllChildren(true);
+                scene.removeChild(_demoLayer);
+
+                _demoLayer.width = cc.winSize.width;
+                _demoLayer.height = cc.winSize.height;
+                node.anchorX = 0.5;
+                node.anchorY = 0.5;
+                node.x = cc.winSize.width/2;
+                node.y = cc.winSize.height/2;
+                _demoLayer.addChild(node);
+                scene.addChild(_demoLayer, _DEMO_DEPTH);
+            }
+        },
+
+        hideVariableDemo: function() {
+            if (!_inited) return;
+            var scene = cc.director.getRunningScene();
+            scene.removeChild(_demoLayer);
         }
     };
 })();
