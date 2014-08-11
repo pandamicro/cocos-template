@@ -24,6 +24,22 @@ TemplateUtils = (function() {
         _DEMO_DEPTH = 99999;
 
     var _parser = {
+        "DIRECTDATA": function(def) {
+            return def.value;
+        },
+
+        "STRING": function(def, config) {
+            var args = [def.value], key, string;
+            for (var i = 0, l = def.variables ? def.variables.length : 0; i < l; ++i) {
+                key = def.variables[i];
+                if (config && config[key])
+                    args.push(config[key]);
+                else args.push(null);
+            }
+            string = cc.formatStr.apply(null, args);
+            return string;
+        },
+
         "IMAGE": function(def) {
             return new cc.Sprite(def.texUrl);
         },

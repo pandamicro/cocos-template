@@ -154,37 +154,37 @@ var GameLayer = cc.Layer.extend({
             cc.delayTime(0.2)
         ).repeatForever();
         this.trapped_head = cc.sequence(
-            cc.spawn(
+//            cc.spawn(
                 cc.place(PLAYER_W / 3, 0.76 * PLAYER_H),
-                cc.callFunc(function() {
-                    this.scaleY = 0.42;
-                }, this.head)
-            ),
+//                cc.callFunc(function() {
+//                    this.scaleY = 0.42;
+//                }, this.head)
+//            ),
             cc.delayTime(0.2),
             cc.place(PLAYER_W * 0.39, 0.76 * PLAYER_H),
             cc.delayTime(0.2),
-            cc.spawn(
+//            cc.spawn(
                 cc.place(PLAYER_W * 0.43, 0.53 * PLAYER_H),
-                cc.callFunc(function() {
-                    this.scaleY = 0.3;
-                }, this.head)
-            ),
+//                cc.callFunc(function() {
+//                    this.scaleY = 0.3;
+//                }, this.head)
+//            ),
             cc.delayTime(0.2),
-            cc.spawn(
+//            cc.spawn(
                 cc.place(PLAYER_W * 0.73, 0.76 * PLAYER_H),
-                cc.callFunc(function() {
-                    this.scaleY = 0.42;
-                }, this.head)
-            ),
+//                cc.callFunc(function() {
+//                    this.scaleY = 0.42;
+//                }, this.head)
+//            ),
             cc.delayTime(0.2),
             cc.place(PLAYER_W * 0.68, 0.76 * PLAYER_H),
             cc.delayTime(0.2),
-            cc.spawn(
+//            cc.spawn(
                 cc.place(PLAYER_W * 0.53, 0.53 * PLAYER_H),
-                cc.callFunc(function() {
-                    this.scaleY = 0.3;
-                }, this.head)
-            ),
+//                cc.callFunc(function() {
+//                    this.scaleY = 0.3;
+//                }, this.head)
+//            ),
             cc.delayTime(0.2)
         ).repeatForever();
         this.player.visible = false;

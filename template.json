@@ -2,6 +2,22 @@
 	"templateId": 1,
 
 	"templateVars": {
+        "default_title" : {
+            "type":     "DIRECTDATA",
+            "desc":     "默认标题",
+            "value":    "跑啊，跑神马？你是我的小羊驼～～～"
+        },
+        "lost_title" : {
+            "type":     "DIRECTDATA",
+            "desc":     "失败标题",
+            "value":    "我滴小羊驼呀它又跑掉了，T_T 快帮我抓回来！"
+        },
+        "win_title" : {
+            "type":     "STRING",
+            "desc":     "胜利标题",
+            "variables":["step", "percent"],
+            "value":    "刷屏！%d步推倒小羊驼，击败%d%朋友圈的人！敢来赢我吗？"
+        },
 		"background": {
 			"type":		"IMAGE",
 			"texUrl":	"res/backgroundx2.jpg",
@@ -40,7 +56,7 @@
 		"win_label": {
 			"type": 		"LABEL",
 			"variables":	["step", "percent"],
-			"string": 		"继续刷屏！\n%d步推倒我的小羊驼\n打败%d%朋友圈的人！\n你能超过我吗？",
+			"string": 		"继续刷屏！\n%d步推倒小羊驼\n击败%d%朋友圈的人！\n敢来赢我吗？",
 			"fontName": 	"宋体",
 			"textAlign": 	"TEXT_ALIGNMENT_CENTER"
 		},
@@ -49,11 +65,6 @@
 			"string": 		"我滴小羊驼呀它又跑掉了\nT_T 快帮我抓回来！",
 			"fontName": 	"宋体",
 			"textAlign": 	"TEXT_ALIGNMENT_CENTER"
-		},
-		"music": {
-			"type": 	"SOUND",
-			"mp3Url": 	"res/music.mp3",
-			"oggUrl": 	"res/music.ogg"
 		}
 	},
 
