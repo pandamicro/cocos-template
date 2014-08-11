@@ -69,7 +69,11 @@
 	},
 
 	"scenes": {
-		"StartUI": {},
+		"StartUI": {
+            "head": {
+                "scale":    1
+            }
+        },
 		"Game": {
 			"head": {},
 			"moving_animation": {

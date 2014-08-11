@@ -33,7 +33,11 @@ var OFFSET_X = 4,
     TRAPPED_OY = 0,
     START_UI_SIZE = cc.size(256, 454),
     FAIL_UI_SIZE = cc.size(292, 277),
-    WIN_UI_SIZE = cc.size(308, 276);
+    WIN_UI_SIZE = cc.size(308, 276),
+    TITLE_HEADX = 84,
+    TITLE_HEADY = 230,
+    TITLE_HEADW = 80,
+    TITLE_HEADH = 80;
 
 var layers = {};
 
@@ -363,16 +367,21 @@ var GameLayer = cc.Layer.extend({
 });
 
 var StartUI = cc.Layer.extend({
+    start: null,
     ctor : function () {
         this._super();
 
-        var start = new cc.Sprite(res.start);
-        start.x = cc.winSize.width/2;
-        start.y = cc.winSize.height/2 + 20;
-        this.addChild(start);
+        this.start = new cc.Sprite(res.start);
+        this.start.x = cc.winSize.width/2;
+        this.start.y = cc.winSize.height/2 + 20;
+        this.addChild(this.start);
     },
     onEnter : function () {
         this._super();
+        var head = TemplateUtils.getVariable("head");
+        head.x = TITLE_HEADX;
+        head.y = TITLE_HEADY;
+        this.start.addChild(head);
 
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ALL_AT_ONCE,
@@ -384,6 +393,10 @@ var StartUI = cc.Layer.extend({
                 }
             }
         }, this);
+    },
+    onExit: function() {
+        this.start.removeAllChildren(true);
+        this._super();
     }
 });
 
