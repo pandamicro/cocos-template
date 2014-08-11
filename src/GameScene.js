@@ -379,9 +379,11 @@ var StartUI = cc.Layer.extend({
     onEnter : function () {
         this._super();
         var head = TemplateUtils.getVariable("head");
-        head.x = TITLE_HEADX;
-        head.y = TITLE_HEADY;
-        this.start.addChild(head);
+        if (head) {
+            head.x = TITLE_HEADX;
+            head.y = TITLE_HEADY;
+            this.start.addChild(head);
+        }
 
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ALL_AT_ONCE,
@@ -547,8 +549,11 @@ var GameScene = cc.Scene.extend({
         this._super();
 
         var bg = TemplateUtils.getVariable("background");
-        if (bg)
+        if (bg) {
+            var rx = cc.winSize.width / bg.width, ry = cc.winSize.height / bg.height;
+            bg.scale = rx > ry ? rx : ry;
             this.addChild(bg, BG_DEPTH);
+        }
 
         layers.game = new GameLayer();
         this.addChild(layers.game, GAME_DEPTH);
