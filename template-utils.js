@@ -23,6 +23,49 @@ TemplateUtils = (function() {
     var _demoLayer = null,
         _DEMO_DEPTH = 99999;
 
+    /**
+     * Format string util function
+     */
+    var _formatStr = function(){
+        var args = arguments;
+        var l = args.length;
+        if(l < 1){
+            return "";
+        }
+        var str = args[0];
+        var needToFormat = true;
+        if(typeof str == "object"){
+            str = JSON.stringify(str);
+            needToFormat = false;
+        }
+        for(var i = 1; i < l; ++i){
+            var arg = args[i];
+            arg = typeof arg == "object" ? JSON.stringify(arg) : arg;
+            if(needToFormat){
+                while(true){
+                    var result = null;
+                    if(typeof arg == "number"){
+                        result = str.match(/(%d)|(%s)/);
+                        if(result){
+                            str = str.replace(/(%d)|(%s)/, arg);
+                            break;
+                        }
+                    }
+                    result = str.match(/%s/);
+                    if(result){
+                        str = str.replace(/%s/, arg);
+                    }else{
+                        str += "    " + arg;
+                    }
+                    break;
+                }
+            }else{
+                str += "    " + arg;
+            }
+        }
+        return str;
+    };
+
     var _parser = {
         "DIRECTDATA": function(def) {
             return def.value;
@@ -36,7 +79,7 @@ TemplateUtils = (function() {
                     args.push(config[key]);
                 else args.push(null);
             }
-            string = cc.formatStr.apply(null, args);
+            string = _formatStr.apply(null, args);
             return string;
         },
 
@@ -93,7 +136,7 @@ TemplateUtils = (function() {
                     args.push(config[key]);
                 else args.push(null);
             }
-            string = cc.formatStr.apply(null, args);
+            string = _formatStr.apply(null, args);
             return new cc.LabelTTF(string, def.fontName || "Arial", def.fontSize || "12");
         },
 
