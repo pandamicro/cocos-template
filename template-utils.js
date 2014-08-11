@@ -83,12 +83,21 @@ TemplateUtils = (function() {
             return string;
         },
 
-        "IMAGE": function(def) {
-            return new cc.Sprite(def.texUrl);
+        "IMAGE": function(def, config) {
+            var tex = cc.textureCache.textureForKey(def.texUrl);
+            if (!tex) {
+                tex = cc.textureCache.addImage(def.texUrl);
+            }
+            // Init node
+            if (tex && config && config.node instanceof cc.Sprite) {
+                config.node.setTexture(tex);
+                config.node.setTextureRect(cc.rect(0, 0, tex.width, tex.height));
+            }
+            return tex;
         },
 
-        "ANIMATION": function(def) {
-            var result = null, node, animation, frames = [], animationFrames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def.interval || 0.2;
+        "ANIMATION": function(def, config) {
+            var result = null, frames = [], animationFrames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def.interval || 0.2;
             if (def.texs && def.texs.length > 0) {
                 for (var i = 0, l = def.texs.length; i < l; ++i) {
                     tex = cc.textureCache.addImage(def.texs[i]);
@@ -122,9 +131,12 @@ TemplateUtils = (function() {
                 }
             }
             else animationFrames = frames;
-            node = new cc.Sprite(frame);
-            animation = new cc.Animation(animationFrames, interval);
-            result = {"node": node, "animation": animation};
+
+            // Init node
+            if (config && config.node instanceof cc.Sprite && animationFrames.length > 0) {
+                config.node.setSpriteFrame(animationFrames[0]);
+            }
+            result = new cc.Animation(animationFrames, interval);
             return result;
         },
 
@@ -142,6 +154,25 @@ TemplateUtils = (function() {
 
         "SOUND": function(def) {
             return null;
+        }
+    };
+
+    var _getDisplayNode = {
+        "IMAGE": function(name) {
+            var node = new cc.Sprite();
+            TemplateUtils.getVariable(name, {node: node});
+            return node;
+        },
+
+        "ANIMATION": function(name) {
+            var node = new cc.Sprite();
+            var animation = TemplateUtils.getVariable(name, {node: node});
+            node.runAction(cc.animate(animation).repeatForever());
+            return node;
+        },
+
+        "LABEL": function(name) {
+            return TemplateUtils.getVariable(name);
         }
     };
 
@@ -234,7 +265,8 @@ TemplateUtils = (function() {
         getVariable: function(name, config) {
             if (!_inited) return null;
             var def = _templateVars[name];
-            var parser, result = null, node = null;
+            var parser, result = null;
+            var node = config && config.node instanceof cc.Node ? config.node : null;
             var attrs = {}, key, value, sceneDef;
 
             parser = _parser[def.type];
@@ -242,8 +274,6 @@ TemplateUtils = (function() {
                 result = parser(def, config);
                 if (result && result instanceof cc.Node)
                     node = result;
-                else if (result && result.node instanceof cc.Node)
-                    node = result.node;
             }
 
             if (node) {
@@ -271,17 +301,12 @@ TemplateUtils = (function() {
 
         showVariable: function(name, config) {
             if (!_inited) return;
-            var result = this.getVariable(name, config), node;
-            if (result) {
-                if (result instanceof cc.Node) {
-                    node = result;
-                }
-                else if (result.node && result.node instanceof cc.Node) {
-                    node = result.node;
-                    if (result.animation && result.animation instanceof cc.Animation)
-                        node.runAction(cc.animate(result.animation).repeatForever())
-                }
-
+            var def = _templateVars[name], node;
+            // Retrieve temporary node
+            if (def && _getDisplayNode[def.type])
+                node = _getDisplayNode[def.type](name, config);
+            // Add node to current scene
+            if (node instanceof cc.Node) {
                 var scene = cc.director.getRunningScene();
                 _demoLayer.removeAllChildren(true);
                 scene.removeChild(_demoLayer);
@@ -300,6 +325,7 @@ TemplateUtils = (function() {
         hideVariableDemo: function() {
             if (!_inited) return;
             var scene = cc.director.getRunningScene();
+            _demoLayer.removeAllChildren(true);
             scene.removeChild(_demoLayer);
         }
     };

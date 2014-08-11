@@ -193,6 +193,9 @@ var GameLayer = cc.Layer.extend({
         ).repeatForever();
         this.player.visible = false;
         this.addChild(this.player, 10);
+        this.head = new cc.Sprite();
+        this.head.visible = false;
+        this.player.addChild(this.head);
 
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -245,13 +248,15 @@ var GameLayer = cc.Layer.extend({
             y : OFFSET_Y + BLOCK_YREGION * this.player_r - 5,
             visible : true
         });
-        this.head = TemplateUtils.getVariable("head");
-        this.player.removeAllChildren(true);
-        this.player.addChild(this.head);
         this.player.stopAllActions();
         this.player.runAction(this.moving_action);
-        this.head.stopAllActions();
-        this.head.runAction(this.moving_head);
+        this.head.visible = false;
+        var headTex = TemplateUtils.getVariable("head", {node: this.head});
+        if (headTex) {
+            this.head.stopAllActions();
+            this.head.runAction(this.moving_head);
+            this.head.visible = true;
+        }
 
         this.inited = true;
     },
@@ -378,8 +383,9 @@ var StartUI = cc.Layer.extend({
     },
     onEnter : function () {
         this._super();
-        var head = TemplateUtils.getVariable("head");
-        if (head) {
+        var head = new cc.Sprite();
+        var headTex = TemplateUtils.getVariable("head", {node: head});
+        if (headTex) {
             head.x = TITLE_HEADX;
             head.y = TITLE_HEADY;
             this.start.addChild(head);
@@ -548,9 +554,10 @@ var GameScene = cc.Scene.extend({
     onEnter : function () {
         this._super();
 
-        var bg = TemplateUtils.getVariable("background");
-        if (bg) {
-            var rx = cc.winSize.width / bg.width, ry = cc.winSize.height / bg.height;
+        var bg = new cc.Sprite();
+        var bgTex = TemplateUtils.getVariable("background", {node: bg});
+        if (bgTex) {
+            var rx = cc.winSize.width / bgTex.width, ry = cc.winSize.height / bgTex.height;
             bg.scale = rx > ry ? rx : ry;
             this.addChild(bg, BG_DEPTH);
         }
