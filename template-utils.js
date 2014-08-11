@@ -233,6 +233,10 @@ TemplateUtils = (function() {
             }
         },
 
+        reloadCurrentScene: function() {
+            this.runScene(_currentScene);
+        },
+
         pushScene: function(scene) {
             if (_sceneStartFuncs[scene] && _currentScene != scene) {
                 _currentScene = scene;

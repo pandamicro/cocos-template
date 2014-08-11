@@ -587,6 +587,7 @@ var GameScene = cc.Scene.extend({
 var gameScene = null;
 
 TemplateUtils.registerScene("StartUI", function() {
+    gameScene.removeChild(layers.startUI);
     gameScene.removeChild(layers.winUI);
     gameScene.removeChild(layers.loseUI);
     gameScene.removeChild(layers.shareUI);
@@ -603,6 +604,7 @@ TemplateUtils.registerScene("Game", function () {
 });
 TemplateUtils.registerScene("WinUI", function() {
     gameScene.removeChild(layers.startUI);
+    gameScene.removeChild(layers.winUI);
     gameScene.removeChild(layers.loseUI);
     gameScene.removeChild(layers.shareUI);
     layers.game.inited = false;
@@ -611,6 +613,7 @@ TemplateUtils.registerScene("WinUI", function() {
 TemplateUtils.registerScene("LostUI", function() {
     gameScene.removeChild(layers.startUI);
     gameScene.removeChild(layers.winUI);
+    gameScene.removeChild(layers.loseUI);
     gameScene.removeChild(layers.shareUI);
     layers.game.inited = false;
     gameScene.addChild(layers.loseUI, UI_DEPTH);
