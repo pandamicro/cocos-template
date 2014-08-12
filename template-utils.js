@@ -75,7 +75,7 @@ TemplateUtils = (function() {
             var args = [def.value], key, string;
             for (var i = 0, l = def.variables ? def.variables.length : 0; i < l; ++i) {
                 key = def.variables[i];
-                if (config && config[key])
+                if (config && config[key] !== undefined)
                     args.push(config[key]);
                 else args.push(null);
             }
@@ -144,7 +144,7 @@ TemplateUtils = (function() {
             var args = [def.string], key, string;
             for (var i = 0, l = def.variables ? def.variables.length : 0; i < l; ++i) {
                 key = def.variables[i];
-                if (config && config[key])
+                if (config && config[key] !== undefined)
                     args.push(config[key]);
                 else args.push(null);
             }
@@ -179,17 +179,17 @@ TemplateUtils = (function() {
     var _parseValue = function (key, value) {
         var result;
         switch(key) {
-        case "color":
-        case "fillStyle":
-            result = cc.color(value);
-            break;
-        case "textAlign":
-        case "verticalAlign":
-            result = cc[value];
-            break;
-        default :
-            result = value;
-            break;
+            case "color":
+            case "fillStyle":
+                result = cc.color(value);
+                break;
+            case "textAlign":
+            case "verticalAlign":
+                result = cc[value];
+                break;
+            default :
+                result = value;
+                break;
         }
         return result;
     };
