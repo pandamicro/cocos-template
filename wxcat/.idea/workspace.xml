@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d452facc-68c7-469d-a1eb-c57d3b3f8076" name="Default" comment="" />
-    <ignored path="Cat.iws" />
+    <list default="true" id="1126c112-5def-49d1-b30f-c69371e31285" name="Default" comment="" />
+    <ignored path="wxcat.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,50 +19,41 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="Cat" />
+    <favorites_list name="wxcat" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file leaf-file-name="cocos2d-html5.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="6" selection-start="3080" selection-end="3080" vertical-scroll-proportion="0.0" vertical-offset="1194" max-vertical-offset="2715">
+            <state line="8696" column="17" selection-start="396582" selection-end="396582" vertical-scroll-proportion="0.0" vertical-offset="134347" max-vertical-offset="135210">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.js">
+      <file leaf-file-name="catnorris.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/catnorris.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="13" selection-start="771" selection-end="771" vertical-scroll-proportion="0.38686988" vertical-offset="0" max-vertical-offset="853">
+            <state line="790" column="35" selection-start="25182" selection-end="25182" vertical-scroll-proportion="0.5058824" vertical-offset="11420" max-vertical-offset="12270">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CCBoot.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/CCBoot.js">
+      <file leaf-file-name="WeixinApi.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/WeixinApi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="12" selection-start="3633" selection-end="3633" vertical-scroll-proportion="0.0" vertical-offset="1755" max-vertical-offset="25215">
+            <state line="10" column="17" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3435">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Resources.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Resources.js">
+      <file leaf-file-name="project.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="26" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="510">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCActionInterval.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/actions/CCActionInterval.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1130" column="9" selection-start="34014" selection-end="34014" vertical-scroll-proportion="0.0" vertical-offset="16720" max-vertical-offset="44940">
+            <state line="6" column="1" selection-start="115" selection-end="115" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="180">
               <folding />
             </state>
           </provider>
@@ -71,41 +62,25 @@
       <file leaf-file-name="template.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="51" selection-start="1186" selection-end="1186" vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1725">
+            <state line="100" column="10" selection-start="2663" selection-end="2663" vertical-scroll-proportion="-19.23077" vertical-offset="0" max-vertical-offset="2550">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameScene.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameScene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="582" column="2" selection-start="18695" selection-end="18695" vertical-scroll-proportion="0.0" vertical-offset="8730" max-vertical-offset="9450">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jsb_boot.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="644" column="2" selection-start="24043" selection-end="24043" vertical-scroll-proportion="0.0" vertical-offset="9660" max-vertical-offset="18840">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="start.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/start.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="template-utils.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template-utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="349" column="5" selection-start="11476" selection-end="11476" vertical-scroll-proportion="0.0" vertical-offset="5235" max-vertical-offset="5325">
+            <state line="200" column="17" selection-start="6635" selection-end="6635" vertical-scroll-proportion="-8.076923" vertical-offset="2790" max-vertical-offset="5325">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wxcat.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wxcat.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="32" selection-start="3550" selection-end="3550" vertical-scroll-proportion="-2.42" vertical-offset="1529" max-vertical-offset="2580">
               <folding />
             </state>
           </provider>
@@ -121,29 +96,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/platform/CCEGLView.js" />
-        <option value="$PROJECT_DIR$/share.js" />
-        <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/scenes/CCLoaderScene.js" />
-        <option value="$PROJECT_DIR$/src/AI.js" />
-        <option value="$PROJECT_DIR$/publish/html5/index.html" />
-        <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/CCDebugger.js" />
-        <option value="$PROJECT_DIR$/template-parser.js" />
-        <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/moduleConfig.json" />
+        <option value="$PROJECT_DIR$/wxcat/WeixinApi.js" />
         <option value="$PROJECT_DIR$/project.json" />
-        <option value="$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_cocos2d.js" />
-        <option value="$PROJECT_DIR$/template.json" />
-        <option value="$PROJECT_DIR$/src/GameScene.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/template-utils.js" />
-        <option value="$PROJECT_DIR$/src/Resources.js" />
-        <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/template.json" />
+        <option value="$PROJECT_DIR$/wxcat/catnorris.js" />
+        <option value="$PROJECT_DIR$/wxcat.html" />
+        <option value="$PROJECT_DIR$/src/catnorris.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1709" />
+    <option name="x" value="2331" />
     <option name="y" value="22" />
-    <option name="width" value="1198" />
+    <option name="width" value="1330" />
     <option name="height" value="1024" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -176,27 +142,27 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Cat" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Cat" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xyt" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Cat" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xyt" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -206,29 +172,69 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Cat" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xyt" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="skin" />
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Cat" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xyt" />
+              <option name="myItemId" value="wxcat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="frameworks" />
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="husky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wxcat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wxcat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="doge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wxcat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wxcat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cat" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -238,18 +244,26 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cocos-template/xyt" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/skin" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/res" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -260,23 +274,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -291,21 +297,21 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d452facc-68c7-469d-a1eb-c57d3b3f8076" name="Default" comment="" />
-      <created>1406205170110</created>
-      <updated>1406205170110</updated>
+      <changelist id="1126c112-5def-49d1-b30f-c69371e31285" name="Default" comment="" />
+      <created>1407568548866</created>
+      <updated>1407568548866</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1709" y="22" width="1198" height="1024" extended-state="0" />
+    <frame x="2331" y="22" width="1330" height="1024" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20170213" sideWeight="0.40265486" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17827085" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -314,7 +320,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5973451" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -329,105 +335,82 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="2" />
-    </breakpoint-manager>
+    <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/project.json">
+    <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="24" selection-start="92" selection-end="92" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="315" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/title.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/textures/TexturesWebGL.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="392" column="32" selection-start="14343" selection-end="14345" vertical-scroll-proportion="0.33252722" vertical-offset="5710" max-vertical-offset="13590" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/textures/CCTextureCache.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="17" selection-start="3885" selection-end="3898" vertical-scroll-proportion="0.0" vertical-offset="1246" max-vertical-offset="5685" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/sprites/CCSprite.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1447" column="21" selection-start="50786" selection-end="50800" vertical-scroll-proportion="20.576923" vertical-offset="21880" max-vertical-offset="25035" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/start.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/original_res/3(1).png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="582" column="2" selection-start="18695" selection-end="18695" vertical-scroll-proportion="0.0" vertical-offset="8730" max-vertical-offset="9450">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135210">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js">
+    <entry file="file://$PROJECT_DIR$/src/catnorris.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="644" column="2" selection-start="24043" selection-end="24043" vertical-scroll-proportion="0.0" vertical-offset="9660" max-vertical-offset="18840">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="6" selection-start="3080" selection-end="3080" vertical-scroll-proportion="0.0" vertical-offset="1194" max-vertical-offset="2715">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/actions/CCActionInterval.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1130" column="9" selection-start="34014" selection-end="34014" vertical-scroll-proportion="0.0" vertical-offset="16720" max-vertical-offset="44940">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="51" selection-start="1186" selection-end="1186" vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1725">
+        <state line="46" column="32" selection-start="1791" selection-end="1791" vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="11040">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template-utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="349" column="5" selection-start="11476" selection-end="11476" vertical-scroll-proportion="0.0" vertical-offset="5235" max-vertical-offset="5325">
+        <state line="34" column="57" selection-start="1131" selection-end="1131" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="3780">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Resources.js">
+    <entry file="file://$PROJECT_DIR$/wxcat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+        <state line="124" column="36" selection-start="3999" selection-end="3999" vertical-scroll-proportion="0.0" vertical-offset="1396" max-vertical-offset="2265">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/CCBoot.js">
+    <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="12" selection-start="3633" selection-end="3633" vertical-scroll-proportion="0.0" vertical-offset="1471" max-vertical-offset="25710">
+        <state line="8696" column="17" selection-start="396582" selection-end="396582" vertical-scroll-proportion="0.0" vertical-offset="136013" max-vertical-offset="141090">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/project.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="771" selection-end="771" vertical-scroll-proportion="0.38686988" vertical-offset="0" max-vertical-offset="853">
+        <state line="6" column="1" selection-start="115" selection-end="115" vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="10" selection-start="2663" selection-end="2663" vertical-scroll-proportion="-19.23077" vertical-offset="0" max-vertical-offset="2550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template-utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="17" selection-start="6635" selection-end="6635" vertical-scroll-proportion="-8.076923" vertical-offset="2790" max-vertical-offset="5325">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wxcat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="32" selection-start="3550" selection-end="3550" vertical-scroll-proportion="-2.42" vertical-offset="1529" max-vertical-offset="2580">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WeixinApi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/catnorris.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="790" column="35" selection-start="25182" selection-end="25182" vertical-scroll-proportion="0.5058824" vertical-offset="11420" max-vertical-offset="12270">
           <folding />
         </state>
       </provider>
