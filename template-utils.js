@@ -212,6 +212,20 @@ TemplateUtils = (function() {
             return _scenes[scene];
         },
 
+        getResourcesList: function() {
+            var def, i, res = [];
+            for (i in _templateVars) {
+                def = _templateVars[i];
+                if (def.texUrl) {
+                    res.push(def.texUrl);
+                }
+                else if (def.texs) {
+                    res = res.concat(def.texs);
+                }
+            }
+            return res;
+        },
+
         registerScene: function(scene, startFunc, exitFunc) {
             if (typeof startFunc == "function") {
                 _sceneStartFuncs[scene] = startFunc;
