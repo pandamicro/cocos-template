@@ -8,11 +8,12 @@ var PipeLine = cc.Sprite.extend({
         this.init(direction);
     },
     init:function(direction){
-        var frame= cc.spriteFrameCache;
-        var spriteName = "holdback1.png";
-        var pipe = frame.getSpriteFrame(spriteName);
-        this.initWithSpriteFrame(pipe);
+        this.initWithTexture(TemplateUtils.getVariable("pineLine"));
         if(direction == 2) this.setFlippedY(true);
+//        var frame= cc.spriteFrameCache;
+//        var spriteName = "holdback1.png";
+//        var pipe = frame.getSpriteFrame(spriteName);
+//        this.initWithSpriteFrame(pipe);
         this.setAnchorPoint(cc.p(0,0));
     },
     setScored:function(){

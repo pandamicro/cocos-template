@@ -4,8 +4,8 @@
 var PipeLineController = cc.Class.extend({
     createDistance: 390,
     nowDistance: 0,
-    spaceHeight: 260,//管道中间空间大小
-    minHeight: 430,//底部管道最小高度
+    spaceHeight: 230,//管道中间空间大小
+    minHeight: 400,//底部管道最小高度
     ctor: function (gameLayer) {
         this.gameLayer = gameLayer;
         this.init();
