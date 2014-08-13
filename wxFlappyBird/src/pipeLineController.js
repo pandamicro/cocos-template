@@ -63,7 +63,7 @@ var PipeLineController = cc.Class.extend({
     checkCrash: function (dt) {
         for (var i = 0; i < this.pipeArray.length; i++) {
             var pipe = this.pipeArray[i];
-            if (cc.rectOverlapsRect(this.gameLayer.bird.getCollideBox(), pipe.getBoundingBox())) {
+            if (cc.rectOverlapsRect(this.gameLayer.bird.getCollideBox(), pipe.getCollideBox())) {
                 CrazyBird.GAMESTATUS.NOWSTATUS = CrazyBird.GAMESTATUS.WAITFORLOST;
                 audioMng.getInstance().playEffect(res.s_sfx_hit_ogg);
                 audioMng.getInstance().playEffect(res.s_sfx_die_ogg);
