@@ -8,7 +8,7 @@ var gameLayer = cc.Layer.extend({
         this._super();
         this.size =cc.winSize;
         this.preFrames();
-        var bgSprite = cc.Sprite.create(res.s_mainBg);
+        var bgSprite = cc.Sprite.create(TemplateUtils.getVariable("background"));
         this.addChild(bgSprite);
         bgSprite.setPosition(cc.p(0,0));
         bgSprite.setAnchorPoint(cc.p(0,0));

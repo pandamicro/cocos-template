@@ -7,7 +7,7 @@ var Ground = cc.Sprite.extend({
         this.star();
     },
     star:function(){
-        this.init(res.s_ground);
+        this.initWithTexture(TemplateUtils.getVariable("ground"));
         this.setAnchorPoint(cc.p(0,0));
     },
     destory:function(){

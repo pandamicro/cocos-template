@@ -7,6 +7,8 @@ var Bird = cc.Sprite.extend({
     gravity: 1200,
     velocity: 0,
     nowTime: 0,
+    maxWidth: 60,
+    maxHeight: 60,
     ctor: function (gameLayer) {
         this._super();
         this.gameLayer = gameLayer;
@@ -15,28 +17,36 @@ var Bird = cc.Sprite.extend({
     },
     init: function () {
         this.size = cc.winSize;
+        var texture = TemplateUtils.getVariable("bridPhoto");
+        this.initWithTexture(texture);
+        if (this.width > this.maxWidth) {
+            this.scaleX = this.maxWidth / this.width;
+        }
+        if (this.height > this.maxHeight) {
+            this.scaleY = this.maxHeight / this.height;
+        }
         this.initAnim();
 //        this.startGravity();
     },
     initAnim: function () {
-        var animFrames = [];
-        var frameCache = cc.spriteFrameCache;
-        for (var i = 1; i < 4; i++) {
-            var frame = frameCache.getSpriteFrame("bird" + i + ".png");
-            if (i == 1) this.initWithSpriteFrame(frame);
-            animFrames.push(frame);
-        }
-        var anim = cc.RepeatForever.create(cc.Animate.create(cc.Animation.create(animFrames, 0.15)));
+//        var animFrames = [];
+//        var frameCache = cc.spriteFrameCache;
+//        for (var i = 1; i < 4; i++) {
+//            var frame = frameCache.getSpriteFrame("bird" + i + ".png");
+//            if (i == 1) this.initWithSpriteFrame(frame);
+//            animFrames.push(frame);
+//        }
+//        var anim = cc.RepeatForever.create(cc.Animate.create(cc.Animation.create(animFrames, 0.15)));
         var vanim1 = cc.MoveBy.create(0.25, cc.p(0, 15));
         var vanim2 = cc.MoveBy.create(0.25, cc.p(0, 0));
         var vanim3 = cc.MoveBy.create(0.25, cc.p(0, -15));
         var vanim4 = cc.MoveBy.create(0.25, cc.p(0, 0));
         var vanim = cc.Sequence.create(vanim1, vanim2, vanim3, vanim4);
         var action = cc.RepeatForever.create(vanim);
-        anim.setTag(Bird_Fly_Tag);
+//        anim.setTag(Bird_Fly_Tag);
         action.setTag(Bird_Move_Tag);
         this.runAction(action);
-        this.runAction(anim);
+//        this.runAction(anim);
     },
     fly: function () {
         var audio = audioMng.getInstance();
@@ -50,7 +60,7 @@ var Bird = cc.Sprite.extend({
         this.stopActionByTag(Bird_Move_Tag);
     },
     getCollideBox: function () {
-        return cc.rect(this.x - this.width / 3, this.y - this.height / 3, this.width / 3 * 2, this.height / 3 * 2);
+        return cc.rect(this.x - this.width * this.scaleX / 3, this.y - this.height * this.scaleY / 3, this.width / 3 * 2 * this.scaleX, this.height / 3 * 2 * this.scale);
     },
     update: function (dt) {
         var position = this.getPosition();

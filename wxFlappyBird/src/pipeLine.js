@@ -9,9 +9,10 @@ var PipeLine = cc.Sprite.extend({
     },
     init:function(direction){
         var frame= cc.spriteFrameCache;
-        var spriteName = "holdback"+direction+".png";
+        var spriteName = "holdback1.png";
         var pipe = frame.getSpriteFrame(spriteName);
         this.initWithSpriteFrame(pipe);
+        if(direction == 2) this.setFlippedY(true);
         this.setAnchorPoint(cc.p(0,0));
     },
     setScored:function(){
