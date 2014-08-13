@@ -37,7 +37,7 @@
         "downSpeed":{
             "type":	"DIRECTDATA",
             "desc": "白块下滑的速度",
-            "value": 400
+            "value": 300
         },
         "numPerLine":{
             "type":	"DIRECTDATA",
