@@ -49,6 +49,9 @@ var Bird = cc.Sprite.extend({
     startGravity: function () {
         this.stopActionByTag(Bird_Move_Tag);
     },
+    getCollideBox: function () {
+        return cc.rect(this.x - this.width / 3, this.y - this.height / 3, this.width / 3 * 2, this.height / 3 * 2);
+    },
     update: function (dt) {
         var position = this.getPosition();
         if (position.y >= 325) {

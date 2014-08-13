@@ -21,10 +21,10 @@ var PipeLineController = cc.Class.extend({
         var random = CrazyBird.random(0, this.minHeight);
         pipeLine1.setPosition(cc.p(this.gameLayer.size.width + 10, -random));
         pipeLine2.setPosition(cc.p(this.gameLayer.size.width + 10, this.spaceHeight + pipeLine1.getContentSize().height + pipeLine1.getPosition().y));
-        this.addPipeToGame(pipeLine1,pipeLine2);
+        this.addPipeToGame(pipeLine1, pipeLine2);
     },
-    addPipeToGame: function (pipe1,pipe2) {
-        if (pipe1,pipe2) {
+    addPipeToGame: function (pipe1, pipe2) {
+        if (pipe1, pipe2) {
             this.gameLayer.addChild(pipe1, CrazyBird.LINEPIPE);
             this.gameLayer.addChild(pipe2, CrazyBird.LINEPIPE);
             this.pipeArray.push(pipe1);
@@ -44,7 +44,7 @@ var PipeLineController = cc.Class.extend({
             var cSize = pipeline.getContentSize();
             pipeline.setPosition(cc.p(position.x - CrazyBird.MOVESPEED * dt, position.y));
             var birdPos = this.gameLayer.bird.getPosition();
-            if( !pipeline.isScore() && birdPos.x>=position.x && birdPos.x<=position.x+cSize.width){
+            if (!pipeline.isScore() && birdPos.x >= position.x && birdPos.x <= position.x + cSize.width) {
                 this.gameLayer.addScore();
                 pipeline.setScored();
             }
@@ -52,23 +52,23 @@ var PipeLineController = cc.Class.extend({
                 pipeline.setVisible(false);
             }
         }
-        for(var i = 0;i<this.pipeArray.length;i++){
+        for (var i = 0; i < this.pipeArray.length; i++) {
             var pipeline = this.pipeArray[i];
-            if(!pipeline.isVisible()){
-                this.pipeArray.splice(i,1);
+            if (!pipeline.isVisible()) {
+                this.pipeArray.splice(i, 1);
             }
         }
         this.checkCrash(dt);
     },
     checkCrash: function (dt) {
-       for(var i = 0;i<this.pipeArray.length;i++){
-           var pipe = this.pipeArray[i];
-           if(cc.rectOverlapsRect(this.gameLayer.bird.getBoundingBox(),pipe.getBoundingBox())){
-               CrazyBird.GAMESTATUS.NOWSTATUS = CrazyBird.GAMESTATUS.WAITFORLOST;
-               audioMng.getInstance().playEffect(res.s_sfx_hit_ogg);
-               audioMng.getInstance().playEffect(res.s_sfx_die_ogg);
-           }
-       }
+        for (var i = 0; i < this.pipeArray.length; i++) {
+            var pipe = this.pipeArray[i];
+            if (cc.rectOverlapsRect(this.gameLayer.bird.getCollideBox(), pipe.getBoundingBox())) {
+                CrazyBird.GAMESTATUS.NOWSTATUS = CrazyBird.GAMESTATUS.WAITFORLOST;
+                audioMng.getInstance().playEffect(res.s_sfx_hit_ogg);
+                audioMng.getInstance().playEffect(res.s_sfx_die_ogg);
+            }
+        }
     }
 });
 PipeLineController.create = function (gameLayer) {

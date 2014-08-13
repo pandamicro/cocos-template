@@ -17,6 +17,8 @@ var gameLayer = cc.Layer.extend({
     blockList: null,
     resultLayer: null,
     gameStatus: null,
+    updateTime: false,
+    timeDt:0,
     ctor: function (status) {
         this._super();
         this.init(status);
@@ -34,6 +36,7 @@ var gameLayer = cc.Layer.extend({
         var bgLayer = cc.LayerColor.create();
         bgLayer.setColor(cc.color(TemplateUtils.getVariable("bgColor")));
         this.addChild(bgLayer);
+        bgLayer.bake();
         this.blockLayer = cc.Layer.create();
         this.blockLayer.bake();
         this.makeStartLines();
@@ -55,13 +58,18 @@ var gameLayer = cc.Layer.extend({
     },
     updateDown: function (dt) {
         if (this.gameStatus == gameStatus.start) {
-            var string = this.scoreLabel.getString();
-            var time = (parseFloat(string) - dt).toFixed(2);
-            if (time > 0) {
-                this.scoreLabel.setString(time + "");
-            } else {
-                this.finishGame();
+            this.timeDt+=dt;
+            if (!this.updateTime) {
+                var string = this.scoreLabel.getString();
+                var time = (parseFloat(string) - this.timeDt).toFixed(2);
+                if (time > 0) {
+                    this.scoreLabel.setString(time + "");
+                } else {
+                    this.finishGame();
+                }
+                this.timeDt = 0;
             }
+            this.updateTime = !this.updateTime;
         }
         if (this.downOffset > 0) {
             var dtDistance = this.downSpeed * dt;
@@ -243,20 +251,21 @@ var gameLayer = cc.Layer.extend({
         var shareSprite = cc.Sprite.create(res.shareText);
         shareSprite.setScale(0.25);
         layer.addChild(shareSprite);
-        shareSprite.setPosition(cc.pAdd(cc.visibleRect.topRight, cc.p(-shareSprite.width / 8, -shareSprite.height / 8)));
+        shareSprite.setPosition(cc.pAdd(cc.visibleRect.topRight, cc.p(-shareSprite.width / 7, -shareSprite.height / 8)));
         this.addChild(layer, 111);
         var self = this;
         var listener = cc.EventListener.create({
-                event: cc.EventListener.TOUCH_ONE_BY_ONE,
-                swallowTouches: true,
-                onTouchBegan:function(event,touch){
-                    if(layer.isVisible()){
-                        layer.visible = false;
-                    }
-                    cc.eventManager.removeListener(listener);
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: function (event, touch) {
+                if (layer.isVisible()) {
+                    layer.visible = false;
+                    layer.removeFromParent(true);
                 }
+                cc.eventManager.removeListener(listener);
+            }
         });
-        cc.eventManager.addListener(listener,layer);
+        cc.eventManager.addListener(listener, layer);
     },
     restartGame: function () {
         cc.director.runScene(new gameScene(true));
