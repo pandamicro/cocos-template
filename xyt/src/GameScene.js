@@ -141,8 +141,10 @@ var GameLayer = cc.Layer.extend({
 
         var moving_animation = new cc.Animation(moving_frames, 0.2);
         this.moving_action = cc.animate(moving_animation).repeatForever();
+        this.moving_action.retain();
         var trapped_animation = new cc.Animation(trapped_frames, 0.2);
         this.trapped_action = cc.animate(trapped_animation).repeatForever();
+        this.trapped_action.retain();
 
         this.player = new cc.Sprite(moving_frames[0]);
 //        this.head.x = 0.5 * PLAYER_W;
@@ -570,6 +572,9 @@ var GameScene = cc.Scene.extend({
         layers.winUI = new ResultUI(true);
         layers.loseUI = new ResultUI(false);
         layers.shareUI = new ShareUI();
+        layers.winUI.retain();
+        layers.loseUI.retain();
+        layers.shareUI.retain();
 
         var power = new cc.LabelTTF("Powered by Cocos2d-x", "Arial", 13);
         power.x = cc.winSize.width/2;
