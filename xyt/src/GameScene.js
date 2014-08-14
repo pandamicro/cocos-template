@@ -121,7 +121,8 @@ var GameLayer = cc.Layer.extend({
 //        this.batch.visit();
 //        this.blocks.end();
         this.blocks.addChild(this.batch);
-        this.blocks.bake();
+        if (!cc.sys.isNative)
+            this.blocks.bake();
 
         tex = cc.textureCache.addImage(res.player);
         var frame,

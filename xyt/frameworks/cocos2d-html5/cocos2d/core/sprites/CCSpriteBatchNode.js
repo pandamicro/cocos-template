@@ -538,6 +538,7 @@ cc.SpriteBatchNode = cc.Node.extend(/** @lends cc.SpriteBatchNode# */{
         // XXX: so, it should be AFTER the insertQuad
         sprite.dirty = true;
         sprite.updateTransform();
+        sprite._setCachedParent(this);
         this._children.splice(index, 0, sprite);
     },
 
@@ -1114,6 +1115,7 @@ cc.defineGetterSetter(_p, "descendants", _p.getDescendants);
  *    The capacity will be increased in 33% in runtime if it run out of space.<br/>
  *    The file will be loaded using the TextureMgr.<br/>
  * </p>
+ * @deprecated
  * @param {String|cc.Texture2D} fileImage
  * @param {Number} capacity
  * @return {cc.SpriteBatchNode}
@@ -1129,3 +1131,9 @@ cc.defineGetterSetter(_p, "descendants", _p.getDescendants);
 cc.SpriteBatchNode.create = function (fileImage, capacity) {
     return new cc.SpriteBatchNode(fileImage, capacity);
 };
+
+/**
+ * @deprecated
+ * @type {Function}
+ */
+cc.SpriteBatchNode.createWithTexture = cc.SpriteBatchNode.create;

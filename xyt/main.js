@@ -1,4 +1,6 @@
-
+if (cc.sys.isNative) {
+    require("template-utils.js");
+}
 
 cc.game.onStart = function(){
     cc.view.adjustViewPort(true);

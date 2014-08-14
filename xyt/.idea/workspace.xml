@@ -23,10 +23,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="53" selection-start="3258" selection-end="3275" vertical-scroll-proportion="-8.75" vertical-offset="1440" max-vertical-offset="2730">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="14" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="465">
+            <state line="1" column="33" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsb_boot.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="662" column="0" selection-start="24516" selection-end="24516" vertical-scroll-proportion="9.615385" vertical-offset="9880" max-vertical-offset="18960">
               <folding />
             </state>
           </provider>
@@ -44,10 +62,8 @@
       <file leaf-file-name="Base64Images.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/Base64Images.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="8" column="0" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="570">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,33 +75,6 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCDirector.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/CCDirector.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="878" column="98" selection-start="26035" selection-end="26035" vertical-scroll-proportion="0.0" vertical-offset="12847" max-vertical-offset="13770">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCNode.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/base-nodes/CCNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1934" column="56" selection-start="74209" selection-end="74213" vertical-scroll-proportion="0.0" vertical-offset="29010" max-vertical-offset="38160">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CCBoot.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/CCBoot.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="12" selection-start="3633" selection-end="3633" vertical-scroll-proportion="0.0" vertical-offset="1755" max-vertical-offset="25215">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -111,7 +100,16 @@
       <file leaf-file-name="GameScene.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GameScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="37" selection-start="4205" selection-end="4205" vertical-scroll-proportion="-1.4993954" vertical-offset="3220" max-vertical-offset="9330">
+            <state line="156" column="30" selection-start="4582" selection-end="4582" vertical-scroll-proportion="0.35066506" vertical-offset="1840" max-vertical-offset="9345">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsb_cocos2d.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_cocos2d.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2302" column="4" selection-start="61568" selection-end="61568" vertical-scroll-proportion="0.0" vertical-offset="33811" max-vertical-offset="39135">
               <folding />
             </state>
           </provider>
@@ -127,7 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/share.js" />
         <option value="$PROJECT_DIR$/src/AI.js" />
         <option value="$PROJECT_DIR$/publish/html5/index.html" />
         <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/CCDebugger.js" />
@@ -139,9 +136,10 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/template-utils.js" />
         <option value="$PROJECT_DIR$/src/Resources.js" />
-        <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/Base64Images.js" />
         <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/scenes/CCLoaderScene.js" />
+        <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js" />
         <option value="$PROJECT_DIR$/src/GameScene.js" />
       </list>
     </option>
@@ -340,25 +338,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="644" column="2" selection-start="24043" selection-end="24043" vertical-scroll-proportion="0.0" vertical-offset="9660" max-vertical-offset="18840" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="6" selection-start="3080" selection-end="3080" vertical-scroll-proportion="0.0" vertical-offset="1194" max-vertical-offset="2715">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/actions/CCActionInterval.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1130" column="9" selection-start="34014" selection-end="34014" vertical-scroll-proportion="0.0" vertical-offset="16720" max-vertical-offset="44940">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template-utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="349" column="5" selection-start="11476" selection-end="11476" vertical-scroll-proportion="0.0" vertical-offset="5235" max-vertical-offset="5325">
@@ -376,13 +355,6 @@
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/CCBoot.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="117" column="12" selection-start="3633" selection-end="3633" vertical-scroll-proportion="0.0" vertical-offset="1471" max-vertical-offset="25710">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="14" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
           <folding />
         </state>
       </provider>
@@ -419,10 +391,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/Base64Images.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="8" column="0" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="570">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -447,9 +417,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="53" selection-start="3258" selection-end="3275" vertical-scroll-proportion="-8.75" vertical-offset="1440" max-vertical-offset="2730">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="33" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="662" column="0" selection-start="24516" selection-end="24516" vertical-scroll-proportion="9.615385" vertical-offset="9880" max-vertical-offset="18960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_cocos2d.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2302" column="4" selection-start="61568" selection-end="61568" vertical-scroll-proportion="0.0" vertical-offset="33811" max-vertical-offset="39135">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="37" selection-start="4205" selection-end="4205" vertical-scroll-proportion="-1.4993954" vertical-offset="3220" max-vertical-offset="9330">
+        <state line="156" column="30" selection-start="4582" selection-end="4582" vertical-scroll-proportion="0.35066506" vertical-offset="1840" max-vertical-offset="9345">
           <folding />
         </state>
       </provider>

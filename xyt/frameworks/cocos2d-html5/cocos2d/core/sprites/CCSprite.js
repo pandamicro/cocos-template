@@ -306,6 +306,9 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
     _newTextureWhenChangeColor: null,         //hack property for LabelBMFont
     _className:"Sprite",
 
+    //Only for texture update judgment
+    _oldDisplayColor: cc.color.WHITE,
+
     textureLoaded:function(){
         return this._textureLoaded;
     },
@@ -397,7 +400,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
      * @return {cc.Point}
      */
     getOffsetPosition:function () {
-        return this._offsetPosition;
+        return cc.p(this._offsetPosition);
     },
 
 	_getOffsetX: function () {
@@ -556,6 +559,16 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
     },
 
     /**
+     * visible setter  (override cc.Node )
+     * @param {Boolean} visible
+     * @override
+     */
+    setVisible:function (visible) {
+        cc.Node.prototype.setVisible.call(this, visible);
+        this.setDirtyRecursively(true);
+    },
+
+    /**
      * Removes all children from the container  (override cc.Node )
      * @param cleanup whether or not cleanup all running actions
      * @override
@@ -703,7 +716,6 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
      * @param frameIndex
      */
     setDisplayFrameWithAnimationName:function (animationName, frameIndex) {
-
         cc.assert(animationName, cc._LogInfos.Sprite_setDisplayFrameWithAnimationName_3);
 
         var cache = cc.animationCache.getAnimation(animationName);
@@ -1125,7 +1137,7 @@ cc.Sprite = cc.Node.extend(/** @lends cc.Sprite# */{
 
 /**
  * Create a sprite with image path or frame name or texture or spriteFrame.
- * @constructs
+ * @deprecated
  * @param {String|cc.SpriteFrame|HTMLImageElement|cc.Texture2D} fileName  The string which indicates a path to image file, e.g., "scene1/monster.png".
  * @param {cc.Rect} rect  Only the contents inside rect of pszFileName's texture will be applied for this sprite.
  * @param {Boolean} [rotated] Whether or not the texture rectangle is rotated.
@@ -1154,7 +1166,23 @@ cc.Sprite.create = function (fileName, rect, rotated) {
     return new cc.Sprite(fileName, rect, rotated);
 };
 
+/**
+ * @deprecated
+ * @type {Function}
+ */
+cc.Sprite.createWithTexture = cc.Sprite.create;
 
+/**
+ * @deprecated
+ * @type {Function}
+ */
+cc.Sprite.createWithSpriteFrameName = cc.Sprite.create;
+
+/**
+ * @deprecated
+ * @type {Function}
+ */
+cc.Sprite.createWithSpriteFrame = cc.Sprite.create;
 /**
  * cc.Sprite invalid index on the cc.SpriteBatchNode
  * @constant
@@ -1346,6 +1374,11 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
         _t.texture = sender;
         _t.setTextureRect(locRect, _t._rectRotated);
 
+        //set the texture's color after the it loaded
+        var locColor = this._displayedColor;
+        if(locColor.r != 255 || locColor.g != 255 || locColor.b != 255)
+            _t._changeTextureColor();
+
         // by default use "Self Render".
         // if the sprite is added to a batchnode, then it will automatically switch to "batchnode Render"
         _t.batchNode = _t._batchNode;
@@ -1432,6 +1465,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     _p.setColor = function (color3) {
         var _t = this;
         var curColor = _t.color;
+        this._oldDisplayColor = curColor;
         if ((curColor.r === color3.r) && (curColor.g === color3.g) && (curColor.b === color3.b))
             return;
         cc.Node.prototype.setColor.call(_t, color3);
@@ -1440,6 +1474,10 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     _p.updateDisplayedColor = function (parentColor) {
         var _t = this;
         cc.Node.prototype.updateDisplayedColor.call(_t, parentColor);
+        var oColor = _t._oldDisplayColor;
+        var nColor = _t._displayedColor;
+        if (oColor.r === nColor.r && oColor.g === nColor.g && oColor.b === nColor.b)
+            return;
 
         _t._changeTextureColor();
         _t._setNodeDirtyForCache();

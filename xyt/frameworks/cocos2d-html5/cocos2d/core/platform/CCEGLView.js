@@ -185,15 +185,15 @@ cc.EGLView = cc.Class.extend(/** @lends cc.view# */{
                     content += (content == "" ? "" : ",") + key + "=" + viewportMetas[key];
                 }
             }
-
-//            if(width<=320){
-//                width = 321;
-//            }
-//            if(height)
-//                content ="height="+height+","+content;
-//            if(width)
-//                content ="width="+width+","+content;
-
+            /*
+            if(width<=320){
+                width = 321;
+            }
+            if(height)
+                content ="height="+height+","+content;
+            if(width)
+                content ="width="+width+","+content;
+            */
             vp.content = content;
         }
     },

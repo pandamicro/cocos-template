@@ -59,6 +59,7 @@ cc._LogInfos = {
     Node_addChild_2: "child already added. It can't be added again",
     Node_addChild_3: "child must be non-null",
     Node_removeFromParentAndCleanup: "removeFromParentAndCleanup is deprecated. Use removeFromParent instead",
+    Node_boundingBox: "boundingBox is deprecated. Use getBoundingBox instead",
     Node_removeChildByTag: "argument tag is an invalid tag",
     Node_removeChildByTag_2: "cocos2d: removeChildByTag(tag = %s): child not found!",
     Node_removeAllChildrenWithCleanup: "removeAllChildrenWithCleanup is deprecated. Use removeAllChildren instead",
@@ -265,134 +266,74 @@ cc._logToWebPage = function (msg) {
 };
 
 //to make sure the cc.log, cc.warn, cc.error and cc.assert would not throw error before init by debugger mode.
-cc._formatString = function(arg){
-    if(typeof arg === 'object'){
-        try{
+cc._formatString = function (arg) {
+    if (typeof arg === 'object') {
+        try {
             return JSON.stringify(arg);
-        }catch(err){
+        } catch (err) {
             return "";
         }
-    }else{
+    } else
         return arg;
-    }
 };
-if (console.log) {
-    cc.log = function(msg){
-        for (var i = 1; i < arguments.length; i++) {
-            msg = msg.replace(/(%s)|(%d)/, cc._formatString(arguments[i]));
-        }
-        console.log(msg);
-    };
-    cc.warn = console.warn ?
-        function(msg){
-            for (var i = 1; i < arguments.length; i++) {
-                msg = msg.replace(/(%s)|(%d)/, cc._formatString(arguments[i]));
-            }
-            console.warn(msg);
-        } :
-        cc.log;
-    cc.error = console.error ?
-        function(msg){
-            for (var i = 1; i < arguments.length; i++) {
-                msg = msg.replace(/(%s)|(%d)/, cc._formatString(arguments[i]));
-            }
-            console.error(msg);
-        } :
-        cc.log;
-    cc.assert = function (cond, msg) {
-        if (!cond && msg) {
-            for (var i = 2; i < arguments.length; i++) {
-                msg = msg.replace(/(%s)|(%d)/, cc._formatString(arguments[i]));
-            }
-            throw msg;
-        }
-    };
-}
-
 /**
  * Init Debug setting.
  * @function
+ * @param {Number} mode
  */
-var mode = cc.game.config[cc.game.CONFIG_KEY.debugMode];
-var ccGame = cc.game;
+cc._initDebugSetting = function (mode) {
+    var ccGame = cc.game;
+    if(mode == ccGame.DEBUG_MODE_NONE)
+        return;
 
-//log
-if (console.log && mode === ccGame.DEBUG_MODE_INFO) {
-}
-else if (mode == ccGame.DEBUG_MODE_INFO_FOR_WEB_PAGE)
-    cc.log = cc._logToWebPage.bind(cc);
-else
-//Clear
-    cc.log = function () {
-    };
-
-//warn
-if (!mode || mode == ccGame.DEBUG_MODE_NONE || mode == ccGame.DEBUG_MODE_ERROR || mode == ccGame.DEBUG_MODE_ERROR_FOR_WEB_PAGE)
-    cc.warn = function () {
-    };
-if (mode == ccGame.DEBUG_MODE_INFO_FOR_WEB_PAGE || mode == ccGame.DEBUG_MODE_WARN_FOR_WEB_PAGE || !console.warn)
-    cc.warn = cc._logToWebPage.bind(cc);
-
-
-//error and assert
-if (!mode || mode == ccGame.DEBUG_MODE_NONE) {
-    cc.error = function () {
-    };
-    cc.assert = function () {
-    };
-} else if (mode == ccGame.DEBUG_MODE_INFO_FOR_WEB_PAGE || mode == ccGame.DEBUG_MODE_WARN_FOR_WEB_PAGE || mode == ccGame.DEBUG_MODE_ERROR_FOR_WEB_PAGE || !console.error) {
-    cc.error = cc._logToWebPage.bind(cc);
-    cc.assert = function (cond, msg) {
-        if (!cond && msg) {
-            for (var i = 2; i < arguments.length; i++) {
-                msg = msg.replace("%s", arguments[i]);
+    var locLog;
+    if(mode > ccGame.DEBUG_MODE_ERROR){
+        //log to web page
+        locLog = cc._logToWebPage.bind(cc);
+        cc.error = function(){
+            locLog("ERROR :  " + cc.formatStr.apply(cc, arguments));
+        };
+        cc.assert = function(cond, msg) {
+            if (!cond && msg) {
+                for (var i = 2; i < arguments.length; i++)
+                    msg = msg.replace(/(%s)|(%d)/, cc._formatString(arguments[i]));
+                locLog("Assert: " + msg);
             }
-            cc._logToWebPage(msg);
+        };
+        if(mode != ccGame.DEBUG_MODE_ERROR_FOR_WEB_PAGE){
+            cc.warn = function(){
+                locLog("WARN :  " + cc.formatStr.apply(cc, arguments));
+            };
         }
-    }
-}
+        if(mode == ccGame.DEBUG_MODE_INFO_FOR_WEB_PAGE){
+            cc.log = function(){
+                locLog(cc.formatStr.apply(cc, arguments));
+            };
+        }
+    } else {
+        //log to console
+        if(!console)    //console is null when user doesn't open dev tool on IE9
+            return;
 
-/**
- * @returns {String}
- */
-cc.formatStr = function(){
-    var args = arguments;
-    var l = args.length;
-    if(l < 1){
-        return "";
-    }
-    var str = args[0];
-    var needToFormat = true;
-    if(typeof str == "object"){
-        str = JSON.stringify(str);
-        needToFormat = false;
-    }
-    for(var i = 1; i < l; ++i){
-        var arg = args[i];
-        arg = typeof arg == "object" ? JSON.stringify(arg) : arg;
-        if(needToFormat){
-            while(true){
-                var result = null;
-                if(typeof arg == "number"){
-                    result = str.match(/(%d)|(%s)/);
-                    if(result){
-                        str = str.replace(/(%d)|(%s)/, arg);
-                        break;
-                    }
-                }
-                result = str.match(/%s/);
-                if(result){
-                    str = str.replace(/%s/, arg);
-                }else{
-                    str += "    " + arg;
-                }
-                break;
+        cc.error = function(){
+            return console.error.apply(console, arguments);
+        };
+        cc.assert = function (cond, msg) {
+            if (!cond && msg) {
+                for (var i = 2; i < arguments.length; i++)
+                    msg = msg.replace(/(%s)|(%d)/, cc._formatString(arguments[i]));
+                throw msg;
             }
-        }else{
-            str += "    " + arg;
-        }
+        };
+        if(mode != ccGame.DEBUG_MODE_ERROR)
+            cc.warn = function(){
+                return console.warn.apply(console, arguments);
+            };
+        if(mode == ccGame.DEBUG_MODE_INFO)
+            cc.log = function(){
+                return console.log.apply(console, arguments);
+            };
     }
-    return str;
 };
-
+cc._initDebugSetting(cc.game.config[cc.game.CONFIG_KEY.debugMode]);
 //+++++++++++++++++++++++++something about log end+++++++++++++++++++++++++++++
