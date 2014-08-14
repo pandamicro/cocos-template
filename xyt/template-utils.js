@@ -91,7 +91,8 @@ TemplateUtils = (function() {
             // Init node
             if (tex && config && config.node instanceof cc.Sprite) {
                 config.node.setTexture(tex);
-                config.node.setTextureRect(cc.rect(0, 0, tex.width, tex.height));
+                var size = tex.getContentSize();
+                config.node.setTextureRect(cc.rect(0, 0, size.width, size.height));
             }
             return tex;
         },
@@ -181,6 +182,7 @@ TemplateUtils = (function() {
         switch(key) {
             case "color":
             case "fillStyle":
+                var c = cc.color(value);
                 result = cc.color(value);
                 break;
             case "textAlign":

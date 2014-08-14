@@ -160,6 +160,7 @@ var GameLayer = cc.Layer.extend({
             cc.place(PLAYER_W * 2 / 3, 0.7 * PLAYER_H),
             cc.delayTime(0.2)
         ).repeatForever();
+        this.moving_head.retain();
         this.trapped_head = cc.sequence(
 //            cc.spawn(
                 cc.place(PLAYER_W / 3, 0.76 * PLAYER_H),
@@ -194,6 +195,7 @@ var GameLayer = cc.Layer.extend({
 //            ),
             cc.delayTime(0.2)
         ).repeatForever();
+        this.trapped_head.retain();
         this.player.visible = false;
         this.addChild(this.player, 10);
         this.head = new cc.Sprite();
@@ -350,14 +352,16 @@ var GameLayer = cc.Layer.extend({
                     else if (step < 20) percent = Math.round(85 + 10 * (20-step)/10);
                     else percent = 95 - step/2;
 
-                    share(1, step, percent);
+                    if(!cc.sys.isNative)
+                        share(1, step, percent);
                     TemplateUtils.runScene("WinUI");
                 }
             }
         }
         // LOST
         else if (result[2] == 0) {
-            share(2);
+            if(!cc.sys.isNative)
+                share(2);
             TemplateUtils.runScene("LostUI");
         }
         else {
@@ -494,10 +498,11 @@ var ResultUI = cc.Layer.extend({
                     if (pos.x > cc.winSize.width/2) {
                         TemplateUtils.runScene("Game");
                     }
-                    else {
+                    else if(!cc.sys.isNative) {
                         // Share
                         TemplateUtils.pushScene("ShareUI");
-                        target.win ? share(1, step, percent) : share(2);
+                        if(!cc.sys.isNative)
+                            target.win ? share(1, step, percent) : share(2);
                     }
                     return true;
                 }
@@ -560,7 +565,8 @@ var GameScene = cc.Scene.extend({
         var bg = new cc.Sprite();
         var bgTex = TemplateUtils.getVariable("background", {node: bg});
         if (bgTex) {
-            var rx = cc.winSize.width / bgTex.width, ry = cc.winSize.height / bgTex.height;
+            var size = bgTex.getContentSize();
+            var rx = cc.winSize.width / size.width, ry = cc.winSize.height / size.height;
             bg.scale = rx > ry ? rx : ry;
             this.addChild(bg, BG_DEPTH);
         }
@@ -569,6 +575,7 @@ var GameScene = cc.Scene.extend({
         this.addChild(layers.game, GAME_DEPTH);
 
         layers.startUI = new StartUI();
+        layers.startUI.retain();
 
         layers.winUI = new ResultUI(true);
         layers.loseUI = new ResultUI(false);
