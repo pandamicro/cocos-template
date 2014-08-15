@@ -8,7 +8,7 @@
     "renderMode": 1,
     "engineDir": "frameworks/cocos2d-html5",
 
-    "modules": ["cocos2d"],
+    "modules": ["core", "actions", "labels","audio"],
 
     "jsList": [
         "src/resource.js",

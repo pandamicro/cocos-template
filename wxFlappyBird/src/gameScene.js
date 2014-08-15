@@ -58,6 +58,7 @@ var gameLayer = cc.Layer.extend({
         this.tableSprite.setVisible(false);
         this.schedule(this.update);
         this.bird.startGravity();
+        share(0);
     },
     lostGame:function(){
         //gameSprite
@@ -66,6 +67,8 @@ var gameLayer = cc.Layer.extend({
         this.lostSprite.setPosition(cc.p(this.size.width/2,this.size.height/2));
         this.addChild(this.lostSprite,CrazyBird.MENU);
         this.unschedule(this.update);
+        share(1,this.score);
+
     },
     reStartGame:function(){
         CrazyBird.GAMESTATUS.NOWSTATUS = CrazyBird.GAMESTATUS.PAUSE;

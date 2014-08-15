@@ -193,7 +193,8 @@ var gameLayer = cc.Layer.extend({
         labelTitle.setPosition(cc.pAdd(cc.visibleRect.top, cc.p(0, -50)));
         this.resultLayer.addChild(labelTitle);
 
-        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("startContent"), "Arial");
+        var gameTime = TemplateUtils.getVariable("gameTime");
+        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("startContent",{number:gameTime}), "Arial");
         labelContent.setColor(cc.color(255, 255, 255));
         labelContent.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, 50)));
         labelContent.setDimensions(cc.size(cc.winSize.width - 60, 150));
@@ -207,6 +208,7 @@ var gameLayer = cc.Layer.extend({
         menu.alignItemsVerticallyWithPadding(20);
         menu.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, -100)));
         this.resultLayer.addChild(menu);
+        share(0);
     },
     startGame: function () {
         this.resultLayer.removeFromParent(true);
@@ -244,6 +246,7 @@ var gameLayer = cc.Layer.extend({
         menu.alignItemsVerticallyWithPadding(20);
         menu.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, -100)));
         this.resultLayer.addChild(menu);
+        share(1,number);
     },
     shareGame: function () {
         var layer = cc.LayerColor.create();

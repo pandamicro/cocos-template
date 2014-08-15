@@ -8,21 +8,33 @@
             "value": "你是一夜几次郎？"
         },
         "startContent": {
-            "type": "DIRECTDATA",
+            "type": "STRING",
             "desc": "开始游戏前的内容",
-            "value": "从最下面的套套开始，20秒内看你能拆开多少个套套，你就是一夜几次郎！"
+            "variables": ["number"],
+            "value": "从最下面的妹纸开始，%d秒内看你能揭穿多少个恐龙，你就是一夜几次郎！"
         },
         "resultTitle": {
             "type": "STRING",
             "desc": "游戏结束页面的标题",
             "variables": ["score"],
-            "value": "太弱了,你只开打开了\n%d个套套，新手吧你~"
+            "value": "太弱了,你只揭穿了\n%d个恐龙，新手吧你~"
         },
         "resultContent": {
             "type": "STRING",
             "desc": "",
             "variables": ["number"],
-            "value": "郎君，表现不错，但还得加油哦，隔壁王老五比你多%d次哦！"
+            "value": "郎君，还得加油哦，隔壁王老五比你多%d次哦！"
+        },
+        "shareBefore":{
+            "type": "STRING",
+            "desc": "开始游戏前的分享内容",
+            "value": "这款游戏叼炸天啊，赶紧来试试"
+        },
+        "shareAfter":{
+            "type": "STRING",
+            "desc": "完成游戏后的分享内容",
+            "variables": ["number"],
+            "value": "太弱了,你只揭穿了\n%d个恐龙，新手吧你~"
         },
 		"bgColor": {
 			"type":	"DIRECTDATA",

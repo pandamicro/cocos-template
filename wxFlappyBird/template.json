@@ -42,6 +42,17 @@
             "scale":	0.5,
             "anchorX":	0.5,
             "anchorY":	0.5
+        },
+        "shareBefore":{
+            "type": "STRING",
+            "desc": "开始游戏前的分享内容",
+            "value": "这款游戏叼炸天啊，赶紧来试试"
+        },
+        "shareAfter":{
+            "type": "STRING",
+            "desc": "完成游戏后的分享内容",
+            "variables": ["number"],
+            "value": "太弱了,你只得了%d分，新手吧你~"
         }
 	},
 	"share": {

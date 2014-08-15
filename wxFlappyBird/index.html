@@ -24,6 +24,45 @@
 <canvas id="gameCanvas" width="800" height="450"></canvas>
 <script src="frameworks/cocos2d-html5/CCBoot.js"></script>
 <script src="template-utils.js"></script>
+<script src="src/WeixinApi.js"></script>
 <script src="main.js"></script>
+<script>
+    // 微信分享的数据
+    window.wxData = {
+        "appId": "", // 服务号可以填写appId
+        "imgUrl":'http://app9.download.anzhuoshangdian.com/xyt/res/icon.jpg',
+        "link":'http://app9.download.anzhuoshangdian.com/xyt/',
+        "desc":"像素小鸟，挑战你的反应极限～～",
+        "title":"像素小鸟"
+    };
+
+    function share(m, num){
+        if(m == 0){
+            document.title = window.wxData.desc = TemplateUtils.getVariable("shareBefore");
+        }
+        if(m == 1){
+            document.title = window.wxData.desc = TemplateUtils.getVariable("shareAfter", {number: num});
+        }
+    }
+    WeixinApi.ready(function(Api) {
+        // 分享的回调
+        var wxCallbacks = {
+            ready : function() {
+            },
+
+            cancel : function(resp) {
+            },
+            fail : function(resp) {
+            },
+            confirm : function(resp) {
+            },
+            all : function(resp) {
+            }
+        };
+        Api.shareToFriend(wxData, wxCallbacks);
+        Api.shareToTimeline(wxData, wxCallbacks);
+        Api.shareToWeibo(wxData, wxCallbacks);
+    });
+</script>
 </body>
 </html>
