@@ -107,10 +107,6 @@
 </head>
 <body>
 <canvas id="gameCanvas" width="800" height="450"></canvas>
-<script type="text/javascript" src="frameworks/cocos2d-html5/CCBoot.js"></script>
-<script type="text/javascript" src="template-utils.js"></script>
-<script src="main.js"></script>
-<script src="WeixinApi.js"></script>
 <img width="500" height="500" style="position:absolute;top:-10000px;" src="http://app9.download.anzhuoshangdian.com/xyt/res/icon.jpg">
 <header class="a-header">
     <div class="main">
@@ -129,47 +125,51 @@
     </div>
 </header>
 
+<script type="text/javascript" src="frameworks/cocos2d-html5/CCBoot.js"></script>
+<script type="text/javascript" src="template-utils.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="WeixinApi.js"></script>
 <script>
-// 微信分享的数据
-window.wxData = {
-    "appId": "", // 服务号可以填写appId
-    "imgUrl":'http://app9.download.anzhuoshangdian.com/xyt/res/icon.jpg',
-    "link":'http://app9.download.anzhuoshangdian.com/xyt/',
-    "desc":"跑啊，跑神马？你是我的小羊驼～～～",
-    "title":"你是我的小羊驼～～～"
-};
-
-function share(m, step, percent){
-    if(m == 0){
-        document.title = window.wxData.desc = TemplateUtils.getVariable("default_title");
-    }
-    if(m == 1){
-        document.title = window.wxData.desc = TemplateUtils.getVariable("win_title", {step: step, percent: percent});
-    }
-    if(m == 2){
-        document.title = window.wxData.desc = TemplateUtils.getVariable("lost_title");
-    }
-}
-
-WeixinApi.ready(function(Api) {
-    // 分享的回调
-    var wxCallbacks = {
-        ready : function() {
-        },
-
-        cancel : function(resp) {
-        },
-        fail : function(resp) {
-        },
-        confirm : function(resp) {
-        },
-        all : function(resp) {
-        }
+    // 微信分享的数据
+    window.wxData = {
+        "appId": "", // 服务号可以填写appId
+        "imgUrl":'http://app9.download.anzhuoshangdian.com/xyt/res/icon.jpg',
+        "link":'http://app9.download.anzhuoshangdian.com/xyt/',
+        "desc":"跑啊，跑神马？你是我的小羊驼～～～",
+        "title":"你是我的小羊驼～～～"
     };
-    Api.shareToFriend(wxData, wxCallbacks);
-    Api.shareToTimeline(wxData, wxCallbacks);
-    Api.shareToWeibo(wxData, wxCallbacks);
-});
+
+    function share(m, step, percent){
+        if(m == 0){
+            document.title = window.wxData.desc = TemplateUtils.getVariable("default_title");
+        }
+        if(m == 1){
+            document.title = window.wxData.desc = TemplateUtils.getVariable("win_title", {step: step, percent: percent});
+        }
+        if(m == 2){
+            document.title = window.wxData.desc = TemplateUtils.getVariable("lost_title");
+        }
+    }
+
+    WeixinApi.ready(function(Api) {
+        // 分享的回调
+        var wxCallbacks = {
+            ready : function() {
+            },
+
+            cancel : function(resp) {
+            },
+            fail : function(resp) {
+            },
+            confirm : function(resp) {
+            },
+            all : function(resp) {
+            }
+        };
+        Api.shareToFriend(wxData, wxCallbacks);
+        Api.shareToTimeline(wxData, wxCallbacks);
+        Api.shareToWeibo(wxData, wxCallbacks);
+    });
 </script>
 
 </body>

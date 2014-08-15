@@ -1608,7 +1608,7 @@ cc.ParticleSystem = cc.Node.extend(/** @lends cc.ParticleSystem# */{
                 } else {
                     var textureData = locValueForKey("textureImageData", dictionary);
 
-                    if (textureData && textureData.length == 0) {
+                    if (!textureData || textureData.length === 0) {
                         tex = cc.textureCache.addImage(imgPath);
                         if (!tex)
                             return false;
@@ -2117,7 +2117,7 @@ cc.ParticleSystem = cc.Node.extend(/** @lends cc.ParticleSystem# */{
                     }
 
                     // color
-                    if (!this._dontTint || cc._renderType === cc._RENDER_TYPE_CANVAS) {
+                    if (!this._dontTint || cc._renderType === cc._RENDER_TYPE_WEBGL) {
                         selParticle.color.r += 0|(selParticle.deltaColor.r * dt);
                         selParticle.color.g += 0|(selParticle.deltaColor.g * dt);
                         selParticle.color.b += 0|(selParticle.deltaColor.b * dt);
@@ -2685,12 +2685,19 @@ cc.defineGetterSetter(_p, "texture", _p.getTexture, _p.setTexture);
  *    This plist files can be create manually or with Particle Designer:<br/>
  *    http://particledesigner.71squared.com/<br/>
  * </p>
+ * @deprecated
  * @param {String|Number} plistFile
  * @return {cc.ParticleSystem}
  */
 cc.ParticleSystem.create = function (plistFile) {
     return new cc.ParticleSystem(plistFile);
 };
+
+/**
+ * @deprecated
+ * @type {Function}
+ */
+cc.ParticleSystem.createWithTotalParticles = cc.ParticleSystem.create;
 
 // Different modes
 /**

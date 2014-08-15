@@ -1,6 +1,10 @@
 xyt/frameworks/js-bindings/
 xyt/frameworks/runtime-src/
 xyt/tools/
+
+wxcat/.idea/
+xyt/.idea/
+
 .idea/.name
 .idea/encodings.xml
 .idea/misc.xml

@@ -70,7 +70,6 @@ cc.LABEL_AUTOMATIC_WIDTH = -1;
  * @property {Number}   boundingWidth   - Width of the bounding box of label, the real content width is limited by boundingWidth
  */
 cc.LabelBMFont = cc.SpriteBatchNode.extend(/** @lends cc.LabelBMFont# */{
-
     _opacityModifyRGB: false,
 
     _string: "",
@@ -984,6 +983,7 @@ cc.defineGetterSetter(_p, "textAlign", _p._getAlignment, _p.setAlignment);
 
 /**
  * creates a bitmap font atlas with an initial string and the FNT file
+ * @deprecated
  * @param {String} str
  * @param {String} fntFile
  * @param {Number} [width=-1]

@@ -283,7 +283,7 @@ cc.Director = cc.Class.extend(/** @lends cc.director# */{
      * @return {cc.Size}
      */
     getWinSize: function () {
-        return this._winSizeInPoints;
+        return cc.size(this._winSizeInPoints);
     },
 
     /**
@@ -857,8 +857,8 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     };
 
     _p._clear = function () {
-        //var viewport = this._openGLView.getViewPortRect();
-        //cc._renderContext.clearRect(-viewport.x, viewport.y, viewport.width, -viewport.height);
+        var viewport = this._openGLView.getViewPortRect();
+        cc._renderContext.clearRect(-viewport.x, viewport.y, viewport.width, -viewport.height);
     };
 
 
