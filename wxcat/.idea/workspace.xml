@@ -26,7 +26,7 @@
       <file leaf-file-name="cocos2d-html5.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3711" column="34" selection-start="176899" selection-end="176899" vertical-scroll-proportion="0.26998842" vertical-offset="59047" max-vertical-offset="141090">
+            <state line="3703" column="51" selection-start="176472" selection-end="176472" vertical-scroll-proportion="0.11355736" vertical-offset="59047" max-vertical-offset="141090">
               <folding />
             </state>
           </provider>
@@ -107,7 +107,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1906" />
+    <option name="x" value="226" />
     <option name="y" value="22" />
     <option name="width" value="1330" />
     <option name="height" value="1024" />
@@ -304,8 +304,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1906" y="22" width="1330" height="1024" extended-state="0" />
-    <editor active="true" />
+    <frame x="226" y="22" width="1330" height="1024" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -447,7 +447,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3711" column="34" selection-start="176899" selection-end="176899" vertical-scroll-proportion="0.26998842" vertical-offset="59047" max-vertical-offset="141090">
+        <state line="3703" column="51" selection-start="176472" selection-end="176472" vertical-scroll-proportion="0.11355736" vertical-offset="59047" max-vertical-offset="141090">
           <folding />
         </state>
       </provider>

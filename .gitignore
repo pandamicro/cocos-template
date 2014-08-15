@@ -1,4 +1,6 @@
 xyt/frameworks/js-bindings/
 xyt/frameworks/runtime-src/
 xyt/tools/
-xyt/runtime/
+
+wxcat/.idea/
+xyt/.idea/

@@ -32,15 +32,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="share.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/share.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,8 +44,78 @@
       <file leaf-file-name="jsb_boot.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="662" column="0" selection-start="24516" selection-end="24516" vertical-scroll-proportion="9.615385" vertical-offset="9880" max-vertical-offset="18960">
-              <folding />
+            <state line="726" column="0" selection-start="25959" selection-end="25959" vertical-scroll-proportion="-4.8076925" vertical-offset="10465" max-vertical-offset="21510">
+              <folding>
+                <marker date="1408011746000" expanded="true" signature="644:1133" placeholder="/** This function can build a reference of target in linkTo object, ...*/" />
+                <marker date="1408011746000" expanded="true" signature="10541:22880" placeholder="{&quot;_resPath&quot;: &quot;&quot;...}" />
+                <marker date="1408011746000" expanded="true" signature="13166:14498" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="13220:13230" placeholder="{&quot;isCrossOrigin&quot;: true...}" />
+                <marker date="1408011746000" expanded="true" signature="13245:13271" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="14286:14403" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="14521:14611" placeholder="/** Load binary data by url. ...*/" />
+                <marker date="1408011746000" expanded="true" signature="14655:14717" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="14769:14828" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="14918:15154" placeholder="/** Iterator function to load res ...*/" />
+                <marker date="1408011746000" expanded="true" signature="22423:22491" placeholder="/** Release the cache of resource by url. ...*/" />
+                <marker date="1408011746000" expanded="true" signature="22577:22581" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="22640:22740" placeholder="/** Resource cache of all resources. ...*/" />
+                <marker date="1408011746000" expanded="true" signature="22792:22831" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="23151:23185" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="23481:23606" placeholder="/** @type {cc.Size} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="23852:23903" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="24032:24157" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="25678:25779" placeholder="/** @type {cc.AudioEngine} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="25867:26025" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="26060:26216" placeholder="/** @type {Object} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="26246:26346" placeholder="/** @type {Object} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="26431:26547" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="26436:26495" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="27253:27560" placeholder="/** @type {Object} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="27689:27834" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="28017:28356" placeholder="/** @type {Object} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="28525:28582" placeholder="/** @type {Object} Base object for ccs.uiReader ...*/" />
+                <marker date="1408011746000" expanded="true" signature="28664:28750" placeholder="/** @type {Object} Format and manage armature configuration and armature animation ...*/" />
+                <marker date="1408011746000" expanded="true" signature="28793:28885" placeholder="/** @type {Object} Base singleton object for ccs.ActionManager ...*/" />
+                <marker date="1408011746000" expanded="true" signature="28980:29052" placeholder="/** @type {Object} Base singleton object for ccs.sceneReader ...*/" />
+                <marker date="1408011746000" expanded="true" signature="29170:29210" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="30188:30476" placeholder="/** @type {Object} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="30877:31039" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="31217:31318" placeholder="/** English language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="31353:31453" placeholder="/** Chinese language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="31488:31588" placeholder="/** French language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="31623:31723" placeholder="/** Italian language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="31758:31858" placeholder="/** German language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="31893:31994" placeholder="/** Spanish language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="32029:32129" placeholder="/** Russian language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="32164:32265" placeholder="/** Korean language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="32300:32404" placeholder="/** Japanese language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="32439:32545" placeholder="/** Hungarian language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="32580:32683" placeholder="/** Portuguese language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="32718:32820" placeholder="/** Arabic language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="32855:32957" placeholder="/** Norwegian language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="33000:33048" placeholder="/** Polish language code ...*/" />
+                <marker date="1408011746000" expanded="true" signature="33143:34562" placeholder="/** @constant ...*/" />
+                <marker date="1408011746000" expanded="true" signature="34597:34638" placeholder="/** @constant ...*/" />
+                <marker date="1408011746000" expanded="true" signature="34668:34724" placeholder="/** @constant ...*/" />
+                <marker date="1408011746000" expanded="true" signature="34746:34795" placeholder="/** @constant ...*/" />
+                <marker date="1408011746000" expanded="true" signature="34821:34887" placeholder="/** @constant ...*/" />
+                <marker date="1408011746000" expanded="true" signature="34925:34983" placeholder="/** @constant ...*/" />
+                <marker date="1408011746000" expanded="true" signature="35835:35930" placeholder="/** Is native ? This is set to be true in jsb auto. ...*/" />
+                <marker date="1408011746000" expanded="true" signature="36000:36027" placeholder="/**...*/" />
+                <marker date="1408011746000" expanded="true" signature="36152:36159" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="36251:36258" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="36405:36798" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="38464:39077" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="38655:39078" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="39246:39319" placeholder="/** @type {Object} ...*/" />
+                <marker date="1408011746000" expanded="true" signature="39338:44143" placeholder="{&quot;DEBUG_MODE_NONE&quot;: 0...}" />
+                <marker date="1408011746000" expanded="true" signature="39626:39705" placeholder="/** Key of config ...*/" />
+                <marker date="1408011746000" expanded="true" signature="42870:43690" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="43710:43766" placeholder="/** Prepare game. ...*/" />
+                <marker date="1408011746000" expanded="true" signature="43882:44124" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="44117:44125" placeholder="{...}" />
+                <marker date="1408011746000" expanded="true" signature="44511:44593" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,16 +123,42 @@
       <file leaf-file-name="jsb_pluginx.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/script/jsb_pluginx.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="30" selection-start="1623" selection-end="1623" vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="1095">
-              <folding />
+            <state line="55" column="30" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="1305">
+              <folding>
+                <marker date="1407232204000" expanded="true" signature="2969:3198" placeholder="{...}" />
+                <marker date="1407232204000" expanded="true" signature="3001:3147" placeholder="{...}" />
+                <marker date="1407232204000" expanded="true" signature="3057:3094" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameScene.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GameScene.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="24" selection-start="1807" selection-end="1807" vertical-scroll-proportion="1.3411765" vertical-offset="0" max-vertical-offset="9660">
+            <state line="28" column="18" selection-start="720" selection-end="720" vertical-scroll-proportion="-16.153847" vertical-offset="0" max-vertical-offset="9660">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CCAudio.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/audio/CCAudio.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="14" selection-start="3555" selection-end="3555" vertical-scroll-proportion="-14.615385" vertical-offset="1000" max-vertical-offset="16290">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UIWidget.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/ccui/base-classes/UIWidget.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1142" column="7" selection-start="39344" selection-end="39344" vertical-scroll-proportion="0.16928658" vertical-offset="17140" max-vertical-offset="24000">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -91,8 +178,24 @@
       <file leaf-file-name="jsb_cocos2d.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_cocos2d.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2302" column="4" selection-start="61568" selection-end="61568" vertical-scroll-proportion="0.0" vertical-offset="33811" max-vertical-offset="39135">
-              <folding />
+            <state line="2337" column="4" selection-start="63018" selection-end="63018" vertical-scroll-proportion="0.0" vertical-offset="34276" max-vertical-offset="39780">
+              <folding>
+                <marker date="1408011782000" expanded="true" signature="748:1165" placeholder="{&quot;WINDOWS&quot;: 0...}" />
+                <marker date="1408011782000" expanded="true" signature="40170:40667" placeholder="{&quot;_code&quot;: null...}" />
+                <marker date="1408011782000" expanded="true" signature="40372:40454" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="40500:40640" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="40707:40893" placeholder="/** overwrite window's setTimeout ...*/" />
+                <marker date="1408011782000" expanded="true" signature="40961:41245" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="59711:60627" placeholder="{&quot;easeIn&quot;: 0...}" />
+                <marker date="1408011782000" expanded="true" signature="60709:60758" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="60725:60760" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="60814:60870" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="70625:71990" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="71128:71944" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="72108:72720" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="72403:72650" placeholder="{...}" />
+                <marker date="1408011782000" expanded="true" signature="72429:72629" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,8 +230,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1709" />
-    <option name="y" value="52" />
+    <option name="x" value="1896" />
+    <option name="y" value="22" />
     <option name="width" value="1198" />
     <option name="height" value="1024" />
   </component>
@@ -284,7 +387,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1709" y="52" width="1198" height="1024" extended-state="0" />
+    <frame x="1896" y="22" width="1198" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -320,13 +423,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/cocos/base/CCDirector.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="19500">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/CCDirector.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="878" column="98" selection-start="26035" selection-end="26035" vertical-scroll-proportion="0.0" vertical-offset="12847" max-vertical-offset="13770">
@@ -366,35 +462,118 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/script/jsb_pluginx.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="30" selection-start="1623" selection-end="1623" vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="1095">
-          <folding />
+        <state line="55" column="30" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.0" vertical-offset="482" max-vertical-offset="1305">
+          <folding>
+            <marker date="1407232204000" expanded="true" signature="2969:3198" placeholder="{...}" />
+            <marker date="1407232204000" expanded="true" signature="3001:3147" placeholder="{...}" />
+            <marker date="1407232204000" expanded="true" signature="3057:3094" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="662" column="0" selection-start="24516" selection-end="24516" vertical-scroll-proportion="9.615385" vertical-offset="9880" max-vertical-offset="18960">
-          <folding />
+        <state line="726" column="0" selection-start="25959" selection-end="25959" vertical-scroll-proportion="-4.8076925" vertical-offset="10465" max-vertical-offset="21510">
+          <folding>
+            <marker date="1408011746000" expanded="true" signature="644:1133" placeholder="/** This function can build a reference of target in linkTo object, ...*/" />
+            <marker date="1408011746000" expanded="true" signature="10541:22880" placeholder="{&quot;_resPath&quot;: &quot;&quot;...}" />
+            <marker date="1408011746000" expanded="true" signature="13166:14498" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="13220:13230" placeholder="{&quot;isCrossOrigin&quot;: true...}" />
+            <marker date="1408011746000" expanded="true" signature="13245:13271" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="14286:14403" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="14521:14611" placeholder="/** Load binary data by url. ...*/" />
+            <marker date="1408011746000" expanded="true" signature="14655:14717" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="14769:14828" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="14918:15154" placeholder="/** Iterator function to load res ...*/" />
+            <marker date="1408011746000" expanded="true" signature="22423:22491" placeholder="/** Release the cache of resource by url. ...*/" />
+            <marker date="1408011746000" expanded="true" signature="22577:22581" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="22640:22740" placeholder="/** Resource cache of all resources. ...*/" />
+            <marker date="1408011746000" expanded="true" signature="22792:22831" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="23151:23185" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="23481:23606" placeholder="/** @type {cc.Size} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="23852:23903" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="24032:24157" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="25678:25779" placeholder="/** @type {cc.AudioEngine} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="25867:26025" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="26060:26216" placeholder="/** @type {Object} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="26246:26346" placeholder="/** @type {Object} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="26431:26547" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="26436:26495" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="27253:27560" placeholder="/** @type {Object} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="27689:27834" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="28017:28356" placeholder="/** @type {Object} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="28525:28582" placeholder="/** @type {Object} Base object for ccs.uiReader ...*/" />
+            <marker date="1408011746000" expanded="true" signature="28664:28750" placeholder="/** @type {Object} Format and manage armature configuration and armature animation ...*/" />
+            <marker date="1408011746000" expanded="true" signature="28793:28885" placeholder="/** @type {Object} Base singleton object for ccs.ActionManager ...*/" />
+            <marker date="1408011746000" expanded="true" signature="28980:29052" placeholder="/** @type {Object} Base singleton object for ccs.sceneReader ...*/" />
+            <marker date="1408011746000" expanded="true" signature="29170:29210" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="30188:30476" placeholder="/** @type {Object} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="30877:31039" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="31217:31318" placeholder="/** English language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="31353:31453" placeholder="/** Chinese language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="31488:31588" placeholder="/** French language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="31623:31723" placeholder="/** Italian language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="31758:31858" placeholder="/** German language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="31893:31994" placeholder="/** Spanish language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="32029:32129" placeholder="/** Russian language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="32164:32265" placeholder="/** Korean language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="32300:32404" placeholder="/** Japanese language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="32439:32545" placeholder="/** Hungarian language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="32580:32683" placeholder="/** Portuguese language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="32718:32820" placeholder="/** Arabic language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="32855:32957" placeholder="/** Norwegian language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="33000:33048" placeholder="/** Polish language code ...*/" />
+            <marker date="1408011746000" expanded="true" signature="33143:34562" placeholder="/** @constant ...*/" />
+            <marker date="1408011746000" expanded="true" signature="34597:34638" placeholder="/** @constant ...*/" />
+            <marker date="1408011746000" expanded="true" signature="34668:34724" placeholder="/** @constant ...*/" />
+            <marker date="1408011746000" expanded="true" signature="34746:34795" placeholder="/** @constant ...*/" />
+            <marker date="1408011746000" expanded="true" signature="34821:34887" placeholder="/** @constant ...*/" />
+            <marker date="1408011746000" expanded="true" signature="34925:34983" placeholder="/** @constant ...*/" />
+            <marker date="1408011746000" expanded="true" signature="35835:35930" placeholder="/** Is native ? This is set to be true in jsb auto. ...*/" />
+            <marker date="1408011746000" expanded="true" signature="36000:36027" placeholder="/**...*/" />
+            <marker date="1408011746000" expanded="true" signature="36152:36159" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="36251:36258" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="36405:36798" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="38464:39077" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="38655:39078" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="39246:39319" placeholder="/** @type {Object} ...*/" />
+            <marker date="1408011746000" expanded="true" signature="39338:44143" placeholder="{&quot;DEBUG_MODE_NONE&quot;: 0...}" />
+            <marker date="1408011746000" expanded="true" signature="39626:39705" placeholder="/** Key of config ...*/" />
+            <marker date="1408011746000" expanded="true" signature="42870:43690" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="43710:43766" placeholder="/** Prepare game. ...*/" />
+            <marker date="1408011746000" expanded="true" signature="43882:44124" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="44117:44125" placeholder="{...}" />
+            <marker date="1408011746000" expanded="true" signature="44511:44593" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_cocos2d.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2302" column="4" selection-start="61568" selection-end="61568" vertical-scroll-proportion="0.0" vertical-offset="33811" max-vertical-offset="39135">
-          <folding />
+        <state line="2337" column="4" selection-start="63018" selection-end="63018" vertical-scroll-proportion="0.0" vertical-offset="34276" max-vertical-offset="39780">
+          <folding>
+            <marker date="1408011782000" expanded="true" signature="748:1165" placeholder="{&quot;WINDOWS&quot;: 0...}" />
+            <marker date="1408011782000" expanded="true" signature="40170:40667" placeholder="{&quot;_code&quot;: null...}" />
+            <marker date="1408011782000" expanded="true" signature="40372:40454" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="40500:40640" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="40707:40893" placeholder="/** overwrite window's setTimeout ...*/" />
+            <marker date="1408011782000" expanded="true" signature="40961:41245" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="59711:60627" placeholder="{&quot;easeIn&quot;: 0...}" />
+            <marker date="1408011782000" expanded="true" signature="60709:60758" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="60725:60760" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="60814:60870" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="70625:71990" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="71128:71944" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="72108:72720" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="72403:72650" placeholder="{...}" />
+            <marker date="1408011782000" expanded="true" signature="72429:72629" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="33" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/share.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
           <folding />
         </state>
       </provider>
@@ -431,7 +610,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="24" selection-start="1807" selection-end="1807" vertical-scroll-proportion="1.3411765" vertical-offset="0" max-vertical-offset="9660">
+        <state line="28" column="18" selection-start="720" selection-end="720" vertical-scroll-proportion="-16.153847" vertical-offset="0" max-vertical-offset="9660">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/audio/CCAudio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="14" selection-start="3555" selection-end="3555" vertical-scroll-proportion="-14.615385" vertical-offset="1000" max-vertical-offset="16290">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/ccui/base-classes/UIWidget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1142" column="7" selection-start="39344" selection-end="39344" vertical-scroll-proportion="0.16928658" vertical-offset="17140" max-vertical-offset="24000">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
