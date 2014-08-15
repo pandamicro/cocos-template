@@ -1,0 +1,24 @@
+{
+    "project_type": "javascript",
+
+    "debugMode": 1,
+    "showFPS": true,
+    "frameRate": 60,
+    "id": "gameCanvas",
+    "renderMode": 1,
+    "engineDir": "frameworks/cocos2d-html5",
+
+    "modules": ["cocos2d"],
+
+    "jsList": [
+        "src/resource.js",
+        "src/Tools.js",
+        "src/audioMng.js",
+        "src/bird.js",
+        "src/pipeLine.js",
+        "src/pipeLineController.js",
+        "src/ground.js",
+        "src/groundController.js",
+        "src/gameScene.js"
+    ]
+}

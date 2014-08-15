@@ -1,0 +1,112 @@
+{
+	"templateId": 3,
+
+	"templateVars": {
+        "startTitle": {
+            "type": "DIRECTDATA",
+            "desc": "开始游戏之前的标题",
+            "value": "你是一夜几次郎？"
+        },
+        "startContent": {
+            "type": "DIRECTDATA",
+            "desc": "开始游戏前的内容",
+            "value": "从最下面的套套开始，20秒内看你能拆开多少个套套，你就是一夜几次郎！"
+        },
+        "resultTitle": {
+            "type": "STRING",
+            "desc": "游戏结束页面的标题",
+            "variables": ["score"],
+            "value": "太弱了,你只开打开了\n%d个套套，新手吧你~"
+        },
+        "resultContent": {
+            "type": "STRING",
+            "desc": "",
+            "variables": ["number"],
+            "value": "郎君，表现不错，但还得加油哦，隔壁王老五比你多%d次哦！"
+        },
+		"bgColor": {
+			"type":	"DIRECTDATA",
+            "desc": "游戏背景颜色",
+            "value": "#FFFFFF"
+		},
+        "blockColor": {
+            "type":	"DIRECTDATA",
+            "desc": "白块颜色",
+            "value": "#EC8B9C"
+        },
+        "downSpeed":{
+            "type":	"DIRECTDATA",
+            "desc": "白块下滑的速度",
+            "value": 300
+        },
+        "numPerLine":{
+            "type":	"DIRECTDATA",
+            "desc": "每行有多少个白块",
+            "value": 4
+        },
+        "linePerScreen":{
+            "type":	"DIRECTDATA",
+            "desc": "一个屏幕显示多少行白块",
+            "value": 5
+        },
+        "gameTime":{
+            "type":	"DIRECTDATA",
+            "desc": "游戏时间",
+            "value": 15
+        },
+        "block_normal":{
+            "type":		"IMAGE",
+            "texUrl":	"res/mm_normal.jpg",
+            "originW":  79,
+            "originH":  80,
+            "scale":	1,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+        },
+        "block_sel":{
+            "type":		"IMAGE",
+            "texUrl":	"res/mm_sel.jpg",
+            "originW":  79,
+            "originH":  80,
+            "scale":	1,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+        }
+	},
+
+	"scenes": {
+		"Game": {
+			"background": null,
+            "cat_attack": null,
+            "cat_idle": null,
+            "cat_dead": null,
+            "cat_walk": null,
+            "doge_attack": null,
+            "doge_charge": null,
+            "doge_dead": null,
+            "doge_hurt": null,
+            "doge_walk": null,
+            "husky_attack": null,
+            "husky_charge": null,
+            "husky_dead": null,
+            "husky_hurt": null,
+            "husky_walk": null
+		},
+		"EndUI": {
+			"win_label": {
+				"fillStyle":"#000",
+				"fontSize": 20
+			}
+		},
+		"ShareUI": {}
+	},
+
+	"share": {
+		"wechat": {
+			"appId": 	"",
+    		"imgUrl": 	"res/icon.jpg",
+    		"desc": 	"跑啊，跑神马？你是我的小羊驼～～～",
+    		"title": 	"你是我的小羊驼～～～"
+		}
+	}
+}
