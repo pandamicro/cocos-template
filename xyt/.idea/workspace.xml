@@ -178,7 +178,7 @@
       <file leaf-file-name="template.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/template.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="17" selection-start="834" selection-end="834" vertical-scroll-proportion="0.27141133" vertical-offset="240" max-vertical-offset="1725">
+            <state line="28" column="28" selection-start="784" selection-end="784" vertical-scroll-proportion="0.5066345" vertical-offset="0" max-vertical-offset="1725">
               <folding />
             </state>
           </provider>
@@ -397,7 +397,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1878" y="22" width="1198" height="1024" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -639,7 +639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/template.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="17" selection-start="834" selection-end="834" vertical-scroll-proportion="0.27141133" vertical-offset="240" max-vertical-offset="1725">
+        <state line="28" column="28" selection-start="784" selection-end="784" vertical-scroll-proportion="0.5066345" vertical-offset="0" max-vertical-offset="1725">
           <folding />
         </state>
       </provider>
