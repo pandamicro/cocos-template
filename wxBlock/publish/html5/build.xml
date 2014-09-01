@@ -10,7 +10,7 @@
                 debug="false" 
                 output="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxBlock/publish/html5/game.min.js"
                 languagein="ECMASCRIPT5"
-                sourceMapOutputFile="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxBlock/publish/html5/sourcemap" sourceMapFormat="V3"
+                
                 >
             <sources dir="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxBlock/frameworks/cocos2d-html5">
                 <file name="CCBoot.js"/>
