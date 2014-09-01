@@ -35,16 +35,25 @@
       <file leaf-file-name="CCLoaderScene.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/scenes/CCLoaderScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="2310">
+            <state line="46" column="0" selection-start="1844" selection-end="1844" vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="1965">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="25" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.63329315" vertical-offset="75" max-vertical-offset="2730">
+            <state line="35" column="23" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-10.625" vertical-offset="270" max-vertical-offset="2730">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameScene.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GameScene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="17" selection-start="1596" selection-end="1596" vertical-scroll-proportion="0.15114874" vertical-offset="670" max-vertical-offset="9450">
               <folding />
             </state>
           </provider>
@@ -86,19 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UIWidget.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/ccui/base-classes/UIWidget.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1212" column="6" selection-start="42821" selection-end="42821" vertical-scroll-proportion="0.0" vertical-offset="18180" max-vertical-offset="26265">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="template-utils.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template-utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="40" selection-start="6260" selection-end="6260" vertical-scroll-proportion="0.0" vertical-offset="2760" max-vertical-offset="5355">
+            <state line="98" column="0" selection-start="3020" selection-end="3020" vertical-scroll-proportion="-17.5" vertical-offset="1015" max-vertical-offset="5370">
               <folding />
             </state>
           </provider>
@@ -134,16 +134,16 @@
         <option value="$PROJECT_DIR$/share.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_property_apis.js" />
-        <option value="$PROJECT_DIR$/template-utils.js" />
         <option value="$PROJECT_DIR$/src/GameScene.js" />
         <option value="$PROJECT_DIR$/template.json" />
         <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/scenes/CCLoaderScene.js" />
         <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/Base64Images.js" />
+        <option value="$PROJECT_DIR$/template-utils.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1776" />
+    <option name="x" value="2007" />
     <option name="y" value="22" />
     <option name="width" value="1198" />
     <option name="height" value="1024" />
@@ -189,6 +189,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="xyt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xyt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xyt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -368,7 +382,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1776" y="22" width="1198" height="1024" extended-state="0" />
+    <frame x="2007" y="22" width="1198" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -424,11 +438,6 @@
         <state line="302" column="40" selection-start="17792" selection-end="17792" vertical-scroll-proportion="0.45949215" vertical-offset="3850" max-vertical-offset="10065" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="18" selection-start="720" selection-end="720" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="9645" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/audio/CCAudio.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="92" column="14" selection-start="3555" selection-end="3555" vertical-scroll-proportion="0.0" vertical-offset="1380" max-vertical-offset="16215" />
@@ -437,13 +446,6 @@
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/ccui/base-classes/UIWidget.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1212" column="6" selection-start="42821" selection-end="42821" vertical-scroll-proportion="0.0" vertical-offset="18180" max-vertical-offset="26265">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template-utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="40" selection-start="6260" selection-end="6260" vertical-scroll-proportion="0.0" vertical-offset="2760" max-vertical-offset="5355">
           <folding />
         </state>
       </provider>
@@ -499,7 +501,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="25" selection-start="1326" selection-end="1326" vertical-scroll-proportion="0.63329315" vertical-offset="75" max-vertical-offset="2730">
+        <state line="35" column="23" selection-start="1211" selection-end="1211" vertical-scroll-proportion="-10.625" vertical-offset="270" max-vertical-offset="2730">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template-utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="0" selection-start="3020" selection-end="3020" vertical-scroll-proportion="-17.5" vertical-offset="1015" max-vertical-offset="5370">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="17" selection-start="1596" selection-end="1596" vertical-scroll-proportion="0.15114874" vertical-offset="670" max-vertical-offset="9450">
           <folding />
         </state>
       </provider>
