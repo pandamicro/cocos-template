@@ -8,123 +8,132 @@ import shutil
 import errno
 import commands
 
-keep_in_assets = ["assets/script"]
+keep_in_assets = ["script"]
 skip_in_src = ["cocos2d-html5.js", "CMakeLists.txt", "frameworks", "index.html", "runtime", "tools", ".cocos-project.json", ".DS_Store", ".idea"]
-storepass = "android"
-keypass = "android"
-keystore = "androiddebugkey"
+default_storepass = "android"
+default_keypass = "android"
+default_keystore = "androiddebugkey"
 
-def removeFolder(src, dst):
-    try:
-        shutil.copytree(src, dst)
-    except OSError as exc: # python >2.5
-        if exc.errno == errno.ENOTDIR:
-            shutil.copy(src, dst)
-        else: raise
-
-def repackageApk(apkFile, assetsPath, keyStore):
-    """Modify a apk's resouce.
+def repackageApk(apkFile, assetsPath, outApkPath, packageName, appName, keystorePath = "debug.keystore", storepass = default_storepass, keypass = default_keypass, keystore = default_keystore):
+    """
+    Modify a apk's resouce.
 
     It deal with some things,as follows:
-        1.Remove old signer.
+        1.Decode apk.
         2.Remove old resource.
-        3.add new resouce.
-        4.add signer
+        3.Add new resouce.
+        4.Change package name and app name
+        5.Repackage apk.
+        6.Add signer.
 
     Returns:
         Sucessful is return True, otherwise return False
     """
-    aaptPath = os.path.abspath("./aapt")
+    apktoolPath = os.path.abspath("./apktool")
     jarsignerPath = os.path.abspath("./jarsigner")
-    keystorePath = os.path.abspath("debug.keystore")
+    if keystorePath == "":
+        keystorePath = os.path.abspath("debug.keystore")
+    else:
+        keystorePath = os.path.abspath(keystorePath)
 
-    outApk = os.path.dirname(apkFile) + "/out_" + os.path.basename(apkFile)
-    shutil.copyfile(apkFile, outApk)
-    apkAbsPath = os.path.abspath(outApk)
+    if storepass == "":
+        storepass = default_storepass
+    if keypass == "":
+        keypass = default_keypass
+    if keystore == "":
+        keystore = default_keystore
+
+    splited = os.path.splitext(os.path.basename(apkFile))
+    packagePath = os.path.abspath("./") + "/" + splited[0]
+    dstAssetsPath = packagePath + "/assets/"
+
+    outApk = os.path.abspath(outApkPath)
 
     bModify = True
-    #Remove signer
-    listcmd =  "%s list %s" % (aaptPath, apkAbsPath)
-    listcmd = listcmd.encode("gb2312")
-    output = os.popen(listcmd).read()
-    filelist = output.split('\n')
-    for filename in filelist:
-        if filename.find("META-INF") == 0:
-            rmcmd = "%s remove %s %s" % (aaptPath, apkAbsPath, filename)
-            rmcmd = rmcmd.replace('\\', '/')
-            rmcmd = re.sub(r'/+', '/', rmcmd)
-            bReturn = os.system(rmcmd)
 
-    # Delete apk old assets
-    for filename in filelist:
-        if filename.find("assets") != 0:
-            continue
-        skip = False
-        for subpath in keep_in_assets:
-            if filename.find(subpath) == 0:
-                skip = True
-                break
-        if skip:
-            continue
+    # Decode package
+    decodecmd = "%s d %s" % (apktoolPath, apkFile)
+    decodecmd = decodecmd.replace('\\', '/')
+    decodecmd = re.sub(r'/+', '/', decodecmd)
+    bReturn = os.system(decodecmd)
+    #print output
+    if bReturn != 0:
+        print u"Decode apk error:%s" % (apkFile)
+        bModify = False
 
-        print u"Remove %s" % (filename)
-        rmcmd = u"%s remove %s %s" % (aaptPath, apkAbsPath, filename)
-        rmcmd = rmcmd.replace('\\', '/')
-        rmcmd = re.sub(r'/+', '/', rmcmd)
-        rmcmd = rmcmd.encode("gb2312")
-        bReturn = os.system(rmcmd)
+    # Remove old resource
+    for root, dirs, files in os.walk(dstAssetsPath):
+        for dirname in dirs:
+            # skip
+            if dirname in keep_in_assets:
+                continue
+            if dirname.find(".") == 0:
+                continue
+            dirToRemove = os.path.join(root, dirname)
+            shutil.rmtree(dirToRemove)
+        for filename in files:
+            # skip
+            if filename in keep_in_assets or os.path.basename(root) in keep_in_assets:
+                continue
+            if filename.find(".") == 0:
+                continue
+            fileToRemove = os.path.join(root, filename)
+            os.remove(fileToRemove);
 
-    # Create destination assets folder
-    os.chdir(assetsPath)
-    dst = "runtime/android/assets"
-    if os.path.exists(dst):
-        shutil.rmtree(dst)
-    os.makedirs(dst)
-    # Copy new assets to assets folder
-    for ford in os.listdir("./"):
+    # Add new resources
+    for ford in os.listdir(assetsPath):
         # skip
         if ford in skip_in_src:
             continue
 
-        dstFile = os.path.join(dst, ford)
+        srcFord = os.path.join(assetsPath, ford)
+        dstFord = os.path.join(dstAssetsPath, ford)
         # Copy all files in a folder
-        if os.path.isdir(ford):
-            shutil.copytree(ford, dstFile)
+        if os.path.isdir(srcFord):
+            shutil.copytree(srcFord, dstFord)
         # Copy a file
         else:
-            shutil.copyfile(ford, dstFile)
+            shutil.copyfile(srcFord, dstFord)
 
-    # Add new assets to apk
-    os.chdir("runtime/android/")
-    for root, dirs, files in os.walk("assets/"):
-        for name in files:
-            if name.find(".") == 0:
-                continue
-            srcFileName = os.path.join(root, name)
-            addcmd = u"%s add %s %s" % (aaptPath, apkAbsPath, srcFileName)
-            addcmd = addcmd.replace('\\', '/')
-            addcmd = re.sub(r'/+', '/', addcmd)
-            addcmd = addcmd.encode("gb2312")
-            bReturn = os.system(addcmd)
-            print "add %s" % (srcFileName)
-            if bReturn != 0:
-                print u"add error-->%s" % (srcFileName)
-                bModify = False
-                break
+    # Modify package name and app name
+    manifest = packagePath + "/AndroidManifest.xml"
+    f = open(manifest, 'r+')
+    content = f.read()
+    f.seek(0)
+    f.truncate()
+    content = re.sub(r'package\=\"[\w\.\_\-\d]+\"', r'package="'+packageName+'"', content)
+    f.write(content)
+    f.close()
 
-    os.chdir("../../")
-    shutil.rmtree(dst)
+    strings = packagePath + "/res/values/strings.xml"
+    f = open(strings, 'r+')
+    content = f.read()
+    f.seek(0)
+    f.truncate()
+    content = re.sub(r'name\=\"app_name\"\>[\w\.\_\-\d]+\<', r'name="app_name">'+appName+'<', content)
+    f.write(content)
+    f.close()
 
-    #Add signer.
+    # Repackage apk
+    buildcmd = "%s b %s %s" % (apktoolPath, packagePath, outApk)
+    buildcmd = buildcmd.replace('\\', '/')
+    buildcmd = re.sub(r'/+', '/', buildcmd)
+    bReturn = os.system(buildcmd)
+    #print output
+    if bReturn != 0:
+        print u"Build apk error:%s" % (outApk)
+        bModify = False
+
+    # Add signer
     if bModify:
         #jarsigner命令格式：-verbose输出详细信息 -storepass 密钥密码
         #-keystore 密钥库位置 要签名的文件 文件别名
         #jarsigner -verbose -keystore punchbox.keystore -storepass w3297825w
         #-keypass w3297825w apk android123.keystore -sigalg MD5withRSA -digestalg SHA1
-        apkAbsPath = apkAbsPath.replace('\\', '/')
+        outApk = outApk.replace('\\', '/')
         jarsingnCmd = ("jarsigner -verbose -keystore %s -storepass %s \
             -keypass %s %s  %s -sigalg MD5withRSA -digestalg SHA1" %(keystorePath, 
-            storepass, keypass, apkAbsPath, keystore)
+            storepass, keypass, outApk, keystore)
         )
 
         bReturn = os.system(jarsingnCmd)
@@ -136,5 +145,5 @@ def repackageApk(apkFile, assetsPath, keyStore):
 
     return bModify
 
-repackageApk(sys.argv[1], sys.argv[2], "")
+repackageApk(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
 
