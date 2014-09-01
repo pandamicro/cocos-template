@@ -187,6 +187,7 @@ var gameLayer = cc.Layer.extend({
         this.resultLayer = cc.LayerColor.create();
         this.resultLayer.setColor(cc.color(0, 159, 227));
         this.addChild(this.resultLayer);
+        mmmm = this.resultLayer;
 
         var labelTitle = cc.LabelTTF.create(TemplateUtils.getVariable("startTitle"), "Arial", 25);
         labelTitle.setColor(cc.color(255, 255, 255));
@@ -194,7 +195,7 @@ var gameLayer = cc.Layer.extend({
         this.resultLayer.addChild(labelTitle);
 
         var gameTime = TemplateUtils.getVariable("gameTime");
-        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("startContent",{number:gameTime}), "Arial");
+        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("startContent",{"number":gameTime}), "Arial");
         labelContent.setColor(cc.color(255, 255, 255));
         labelContent.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, 50)));
         labelContent.setDimensions(cc.size(cc.winSize.width - 60, 150));
@@ -221,13 +222,13 @@ var gameLayer = cc.Layer.extend({
         this.resultLayer.setColor(cc.color(0, 159, 227));
         this.addChild(this.resultLayer);
 
-        var labelTitle = cc.LabelTTF.create(TemplateUtils.getVariable("resultTitle", {score: this.score}), "Arial", 22);
+        var labelTitle = cc.LabelTTF.create(TemplateUtils.getVariable("resultTitle", {"score": this.score}), "Arial", 22);
         labelTitle.setColor(cc.color(255, 255, 255));
         labelTitle.setPosition(cc.pAdd(cc.visibleRect.top, cc.p(0, -50)));
         this.resultLayer.addChild(labelTitle);
 
         var number = tools.random(1, 10);
-        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("resultContent", {number: number}), "Arial");
+        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("resultContent", {"number": number}), "Arial");
         labelContent.setColor(cc.color(255, 255, 255));
         labelContent.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, 50)));
         labelContent.setDimensions(cc.size(cc.winSize.width - 60, 150));
@@ -296,3 +297,12 @@ var gameStatus = {
     pause: 2,
     ready: 3
 };
+
+function share(m, num){
+    if(m == 0){
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("shareBefore");
+    }
+    if(m == 1){
+        document["title"]= window["wxData"]["desc"] = TemplateUtils.getVariable("shareAfter", {"number": num});
+    }
+}

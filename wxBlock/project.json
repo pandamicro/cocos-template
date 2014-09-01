@@ -12,8 +12,8 @@
 
     "jsList": [
         "src/resource.js",
+        "src/template-utils.js",
         "src/block.js",
-        "src/gameScene.js",
-        "src/WeixinApi.js"
+        "src/gameScene.js"
     ]
 }
