@@ -167,8 +167,7 @@ cc.AsyncPool = function(srcObj, limit, iterator, onEnd, target){
                 return
             }
 
-            var arr = Array.prototype.slice.call(arguments);
-            arr.splice(0, 1);
+            var arr = Array.prototype.slice.call(arguments, 1);
             self._results[this.index] = arr[0];
             if(self.finishedSize == self.size) {
                 if(self._onEnd)
@@ -234,8 +233,7 @@ cc.async = {
         var asyncPool = new cc.AsyncPool(tasks, 1,
             function (func, index, cb1) {
                 args.push(function (err) {
-                    args = Array.prototype.slice.apply(arguments);
-                    args.splice(0, 1);
+                    args = Array.prototype.slice.call(arguments, 1);
                     cb1.apply(null, arguments);
                 });
                 func.apply(target, args);
@@ -516,10 +514,12 @@ cc.loader = {
         s.src = jsPath;
         self._jsCache[jsPath] = true;
         cc._addEventListener(s, 'load', function () {
+            s.parentNode.removeChild(s);
             this.removeEventListener('load', arguments.callee, false);
             cb();
         }, false);
         cc._addEventListener(s, 'error', function () {
+            s.parentNode.removeChild(s);
             cb("Load " + jsPath + " failed!");
         }, false);
         d.body.appendChild(s);
@@ -572,12 +572,14 @@ cc.loader = {
                 // IE-specific logic here
                 xhr.setRequestHeader("Accept-Charset", "utf-8");
                 xhr.onreadystatechange = function () {
-                    xhr.readyState == 4 && xhr.status == 200 ? cb(null, xhr.responseText) : cb(errInfo);
+                    if(xhr.readyState == 4)
+                        xhr.status == 200 ? cb(null, xhr.responseText) : cb(errInfo);
                 };
             } else {
                 if (xhr.overrideMimeType) xhr.overrideMimeType("text\/plain; charset=utf-8");
                 xhr.onload = function () {
-                    xhr.readyState == 4 && xhr.status == 200 ? cb(null, xhr.responseText) : cb(errInfo);
+                    if(xhr.readyState == 4)
+                        xhr.status == 200 ? cb(null, xhr.responseText) : cb(errInfo);
                 };
             }
             xhr.send(null);
@@ -735,16 +737,10 @@ cc.loader = {
 
     /**
      * Load resources then call the callback.
-     * @param {string} res
-     * @param {function|Object} [option] option or cb
-     * @param {function} [cb]
-     * @return {cc.AsyncPool}
-     */
-    /**
-     * Load resources then call the callback.
      * @param {string} resources
      * @param {function|Object} [option] option or cb
      * @param {function} [cb]
+     * @return {cc.AsyncPool}
      */
     load : function(resources, option, cb){
         var self = this;
@@ -762,6 +758,8 @@ cc.loader = {
         }else if(len == 2){
             if(typeof option == "function")
                 option = {cb : option};
+        }else if(len == 1){
+            option = {};
         }
 
         if(!(resources instanceof Array))
@@ -770,11 +768,10 @@ cc.loader = {
             self._loadResIterator(value, index, function(err){
                 if(err)
                     return cb1(err);
-                var arr = Array.prototype.slice.call(arguments);
-                arr.splice(0, 1);
+                var arr = Array.prototype.slice.call(arguments, 1);
                 if(option.trigger)
-                    option.trigger.call(option.triggerTarget, arr, aPool.size, aPool.finishedSize); //call trigger
-                cb1();
+                    option.trigger.call(option.triggerTarget, arr[0], aPool.size, aPool.finishedSize); //call trigger
+                cb1(null, arr[0]);
             });
         }, option.cb, option.cbTarget);
         asyncPool.flow();
@@ -824,7 +821,7 @@ cc.loader = {
     loadAliases: function (url, cb) {
         var self = this, dict = self.getRes(url);
         if (!dict) {
-            self.load(url, function (results) {
+            self.load(url, function (err, results) {
                 self._handleAliases(results[0]["filenames"], cb);
             });
         } else
@@ -1418,7 +1415,7 @@ cc._initSys = function (config, CONFIG_KEY) {
         capabilities["opengl"] = true;
     if (docEle['ontouchstart'] !== undefined || nav.msPointerEnabled)
         capabilities["touches"] = true;
-    else if (docEle['onmouseup'] !== undefined)
+    if (docEle['onmouseup'] !== undefined)
         capabilities["mouse"] = true;
     if (docEle['onkeyup'] !== undefined)
         capabilities["keyboard"] = true;
@@ -1433,8 +1430,8 @@ cc._initSys = function (config, CONFIG_KEY) {
     else if (iOS) osName = sys.OS_IOS;
     else if (nav.appVersion.indexOf("Mac") != -1) osName = sys.OS_OSX;
     else if (nav.appVersion.indexOf("X11") != -1) osName = sys.OS_UNIX;
-    else if (nav.appVersion.indexOf("Linux") != -1) osName = sys.OS_LINUX;
     else if (isAndroid) osName = sys.OS_ANDROID;
+    else if (nav.appVersion.indexOf("Linux") != -1) osName = sys.OS_LINUX;
     sys.os = osName;
 
     // Forces the garbage collector
@@ -1553,33 +1550,45 @@ cc._setup = function (el, width, height) {
     var win = window;
     var lastTime = new Date();
     var frameTime = 1000 / cc.game.config[cc.game.CONFIG_KEY.frameRate];
-    win.requestAnimFrame = win.requestAnimationFrame ||
-        win.webkitRequestAnimationFrame ||
-        win.mozRequestAnimationFrame ||
-        win.oRequestAnimationFrame ||
-        win.msRequestAnimationFrame ||
-        function(callback){
-            var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, frameTime - (currTime - lastTime));
-            var id = window.setTimeout(function() { callback(); },
-                timeToCall);
-            lastTime = currTime + timeToCall;
-            return id;
-        };
 
-    win.cancelAnimationFrame = window.cancelAnimationFrame ||
-        window.cancelRequestAnimationFrame ||
-        window.msCancelRequestAnimationFrame ||
-        window.mozCancelRequestAnimationFrame ||
-        window.oCancelRequestAnimationFrame ||
-        window.webkitCancelRequestAnimationFrame ||
-        window.msCancelAnimationFrame ||
-        window.mozCancelAnimationFrame ||
-        window.webkitCancelAnimationFrame ||
-        window.oCancelAnimationFrame ||
-        function(id){
-            clearTimeout(id);
-        };
+    var stTime = function(callback){
+        var currTime = new Date().getTime();
+        var timeToCall = Math.max(0, frameTime - (currTime - lastTime));
+        var id = window.setTimeout(function() { callback(); },
+            timeToCall);
+        lastTime = currTime + timeToCall;
+        return id;
+    };
+
+    var ctTime = function(id){
+        clearTimeout(id);
+    };
+
+    if(cc.sys.os === cc.sys.OS_IOS && cc.sys.browserType === cc.sys.BROWSER_TYPE_WECHAT){
+        win.requestAnimFrame = stTime;
+        win.cancelAnimationFrame = ctTime;
+    }else if(cc.game.config[cc.game.CONFIG_KEY.frameRate] != 60){
+        win.requestAnimFrame = stTime;
+        win.cancelAnimationFrame = ctTime;
+    }else{
+        win.requestAnimFrame = win.requestAnimationFrame ||
+            win.webkitRequestAnimationFrame ||
+            win.mozRequestAnimationFrame ||
+            win.oRequestAnimationFrame ||
+            win.msRequestAnimationFrame ||
+            stTime;
+        win.cancelAnimationFrame = window.cancelAnimationFrame ||
+            window.cancelRequestAnimationFrame ||
+            window.msCancelRequestAnimationFrame ||
+            window.mozCancelRequestAnimationFrame ||
+            window.oCancelRequestAnimationFrame ||
+            window.webkitCancelRequestAnimationFrame ||
+            window.msCancelAnimationFrame ||
+            window.mozCancelAnimationFrame ||
+            window.webkitCancelAnimationFrame ||
+            window.oCancelAnimationFrame ||
+            ctTime;
+    }
 
     var element = cc.$(el) || cc.$('#' + el);
     var localCanvas, localContainer, localConStyle;
@@ -1809,7 +1818,12 @@ cc.game = {
             }
             if (!self._prepareCalled) {
                 self.prepare(function () {
-                    if (cc._supportRender) {
+                    self._prepared = true;
+                });
+            }
+            if (cc._supportRender) {
+                self._checkPrepare = setInterval(function () {
+                    if (self._prepared) {
                         cc._setup(self.config[self.CONFIG_KEY.id]);
                         self._runMainLoop();
                         self._eventHide = self._eventHide || new cc.EventCustom(self.EVENT_HIDE);
@@ -1817,23 +1831,9 @@ cc.game = {
                         self._eventShow = self._eventShow || new cc.EventCustom(self.EVENT_SHOW);
                         self._eventShow.setUserData(self);
                         self.onStart();
+                        clearInterval(self._checkPrepare);
                     }
-                });
-            } else {
-                if (cc._supportRender) {
-                    self._checkPrepare = setInterval(function () {
-                        if (self._prepared) {
-                            cc._setup(self.config[self.CONFIG_KEY.id]);
-                            self._runMainLoop();
-                            self._eventHide = self._eventHide || new cc.EventCustom(self.EVENT_HIDE);
-                            self._eventHide.setUserData(self);
-                            self._eventShow = self._eventShow || new cc.EventCustom(self.EVENT_SHOW);
-                            self._eventShow.setUserData(self);
-                            self.onStart();
-                            clearInterval(self._checkPrepare);
-                        }
-                    }, 10);
-                }
+                }, 10);
             }
         };
         document.body ?
@@ -1846,7 +1846,6 @@ cc.game = {
 
     /**
      * Init config.
-     * @param cb
      * @returns {*}
      * @private
      */

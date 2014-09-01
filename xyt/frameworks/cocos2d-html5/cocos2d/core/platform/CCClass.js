@@ -23,18 +23,18 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
-/* Managed JavaScript Inheritance
- * Based on John Resig's Simple JavaScript Inheritance http://ejohn.org/blog/simple-javascript-inheritance/
- * MIT Licensed.
- */
 
 /**
+ * The main namespace of Cocos2d-JS, all engine core classes, functions, properties and constants are defined in this namespace
  * @namespace
  * @name cc
  */
 var cc = cc || {};
 
-//
+/**
+ * @namespace
+ * @name ClassManager
+ */
 var ClassManager = {
     id : (0|(Math.random()*998)),
 
@@ -82,6 +82,10 @@ var ClassManager = {
 };
 ClassManager.compileSuper.ClassManager = ClassManager;
 
+/* Managed JavaScript Inheritance
+ * Based on John Resig's Simple JavaScript Inheritance http://ejohn.org/blog/simple-javascript-inheritance/
+ * MIT Licensed.
+ */
 (function () {
     var fnTest = /\b_super\b/;
     var config = cc.game.config;
@@ -99,6 +103,7 @@ ClassManager.compileSuper.ClassManager = ClassManager;
 
     /**
      * Create a new Class that inherits from this Class
+     * @static
      * @param {object} props
      * @return {function}
      */
@@ -283,10 +288,10 @@ cc.defineGetterSetter = function (proto, prop, getter, setter, getterName, sette
 };
 
 /**
- * copy an new object
+ * Create a new object and copy all properties in an exist object to the new object
  * @function
- * @param {object|Array} obj source object
- * @return {Array|object}
+ * @param {object|Array} obj The source object
+ * @return {Array|object} The created object
  */
 cc.clone = function (obj) {
     // Cloning is better if the new object is having the same prototype chain
