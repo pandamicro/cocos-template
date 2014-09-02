@@ -1,0 +1,21 @@
+{
+	"templateId": 5,
+
+	"templateVars": {
+        "sprite1": {
+            "type":		"IMAGE",
+            "texUrl":	"res/CloseNormal.png",
+            "originW":  40,
+            "originH":  40
+        },
+        "sprite2": {
+            "type":     "IMAGE",
+            "texUrl":   "res/CloseSelected.png",
+            "originW":  40,
+            "originH":  40
+        }
+	},
+
+	"scenes": {
+	}
+}
