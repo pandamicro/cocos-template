@@ -36,9 +36,12 @@ var UI = {
         var percent = (UI.score *34763 + rand) / (hiscore*34763+rand);
         var text = TemplateUtils.getVariable("endTxt", {number: UI.pg, percent: (0|(percent*100)), score: UI.score});
         var lb = cc.LabelTTF.create(text, "黑体", 20, cc.size(225,105), cc.TEXT_ALIGNMENT_LEFT);
+        if (!cc.sys.isNative) {
         document.title = window.wxData.desc = "喵星刷屏！喵获得"+UI.score+"分，在众喵中排名"+(0|(percent*100))+"%，尼能超过喵吗！";
         document.title = window.wxFriend.desc = "我拿了"+UI.score+"分，战胜了"+ UI.pg +"个汪，超越了"+(0|(percent*100))+"％的好友！你能超过我吗";
+        }
         lb.strokeStyle = cc.color(0,0,0);
+        lb.color = cc.color(0,0,0);
         lb.lineWidth = 2;
         sp.addChild(lb);
         lb.setPosition(sp.getContentSize().width/2+ 2, sp.getContentSize().height/2 -5);
@@ -96,13 +99,13 @@ var Manager = {
         var size = cc.director.getVisibleSize();
         if(!this.cat)
         {
-            this.cat = new Cat;
+            this.cat = new Cat();
+            scene.addChild(this.cat, 1);
         }
         this.cat.attr({
             x:size.width/2,
             y:size.height/2
         });
-        scene.addChild(this.cat, 1);
 
 /*        for(var i = 0; i < 5; i++)
         {
@@ -185,7 +188,9 @@ var Doge = cc.Sprite.extend({
         });
         this.scheduleUpdate();
         this.walkAction = cc.sequence(cc.rotateTo(0.12, -3), cc.rotateTo(0.12,3)).repeatForever();
+        this.walkAction.retain();
         this.chargeAction = cc.sequence(cc.scaleTo(0.15, 1, 0.92), cc.scaleTo(0.15,1,1)).repeatForever();
+        this.chargeAction.retain();
         //this.state = 1;
         this.walk();
     },
@@ -358,7 +363,9 @@ var Husky = cc.Sprite.extend({
         });
         this.scheduleUpdate();
         this.walkAction = cc.sequence(cc.rotateTo(0.12, -3), cc.rotateTo(0.12,3)).repeatForever();
+        this.walkAction.retain();
         this.chargeAction = cc.sequence(cc.scaleTo(0.15, 1, 0.92), cc.scaleTo(0.15,1,1)).repeatForever();
+        this.chargeAction.retain();
         this.walk();
     },
     reset:function(){
@@ -528,7 +535,9 @@ var Cat = cc.Sprite.extend({
         this.scheduleUpdate();
         this.screenHeight = cc.director.getVisibleSize().height-100;
         this.idleAction = cc.sequence(cc.scaleTo(0.25, 1, 0.92), cc.scaleTo(0.25,1,1)).repeatForever();
+        this.idleAction.retain();
         this.walkAction = cc.sequence(cc.rotateTo(0.12, -3), cc.rotateTo(0.12,3)).repeatForever();
+        this.walkAction.retain();
         this.idle();
     },
     idle:function(){
@@ -633,6 +642,8 @@ var MyScene = cc.Scene.extend({
 
         Manager.init(this);
 
+        this.addChild(new cc.LayerColor(cc.color(177, 219, 86)), -10000);
+
         this.scoreLabel =  UI.scoreLabel = new cc.LabelTTF("0", "黑体", 24, cc.size(150, 30), cc.TEXT_ALIGNMENT_LEFT);
         this.addChild(this.scoreLabel);
         this.scoreLabel.attr({
@@ -659,12 +670,14 @@ var MyScene = cc.Scene.extend({
             color: cc.color(255,150,100),
             anchorX:0.1
         });
+        this.hintLabel.retain();
         var self = this;
         setTimeout(function(){
             self.addChild(self.hintLabel);
+            self.hintLabel.release();
         }, 1500);
 
-        var powerby = cc.LabelTTF.create("Powered by Cocos2d-x", "", 13, cc.size(320,30), cc.TEXT_ALIGNMENT_CENTER);
+        var powerby = new cc.LabelTTF("Powered by Cocos2d-x", "", 13, cc.size(320,30), cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(powerby);
         powerby.attr({
             y:5,
@@ -746,36 +759,6 @@ var MyScene = cc.Scene.extend({
 
     }
 });
-
-window.onload = function(){
-    cc.game.onStart = function(){
-        if (cc.sys.isMobile)
-            cc.view.setDesignResolutionSize(320,500,cc.ResolutionPolicy.FIXED_WIDTH);
-        else cc.view.setDesignResolutionSize(320,480,cc.ResolutionPolicy.SHOW_ALL);
-        //cc.view.resizeWithBrowserSize(true);
-        cc._renderContext.webkitImageSmoothingEnabled = false;
-        cc._renderContext.mozImageSmoothingEnabled = false;
-        cc._renderContext.imageSmoothingEnabled = false; //future
-        cc._renderContext.fillStyle="#afdc4b";
-        cc.view._autoFullScreen = false;
-        //load resources
-
-        cc.loader.loadJson("template.json", function(err, jsonObj) {
-            var res = ["res/pg.png", "res/arrow.png", "res/end.png"];
-            if (!err) {
-                TemplateUtils.init(jsonObj);
-                res = res.concat(TemplateUtils.getResourcesList());
-            }
-            else {
-                cc.error("Template parse failed");
-            }
-            cc.LoaderScene.preload(res, function () {
-                cc.director.runScene(new MyScene());
-            }, this);
-        });
-    };
-    cc.game.run("gameCanvas");
-};
 
 var ShareUI = cc.LayerColor.extend({
     ctor: function () {

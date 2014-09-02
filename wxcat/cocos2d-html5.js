@@ -3617,7 +3617,7 @@ cc.textureCache = {_textures: {}, _textureColorsCache: {}, _textureKeySeq: 0 | 1
 }, description: function () {
     return"\x3cTextureCache | Number of textures \x3d " +
         this._textures.length + "\x3e"
-}, textureForKey: function (a) {
+}, getTextureForKey: function (a) {
     return this._textures[a] || this._textures[cc.loader._aliases[a]]
 }, getKeyByTexture: function (a) {
     for (var b in this._textures)if (this._textures[b] == a)return b;
@@ -4407,7 +4407,7 @@ cc.Sprite = cc.NodeRGBA.extend({RGBAProtocol: !0, dirty: !1, atlasIndex: 0, text
         return this._quad
     }, setBlendFunc: null, init: null, initWithFile: function (a, b) {
         cc.assert(a, cc._LogInfos.Sprite_initWithFile);
-        var c = cc.textureCache.textureForKey(a);
+        var c = cc.textureCache.getTextureForKey(a);
         if (c) {
             if (!b) {
                 var d = c.getContentSize();
