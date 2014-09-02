@@ -149,5 +149,10 @@ def repackageApk(apkFile, assetsPath, outApkPath, packageName, appName, keystore
 
     return bModify
 
-repackageApk(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
-
+argc = len(sys.argv)
+if argc == 6:
+    repackageApk(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+elif argc == 10:
+    repackageApk(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[8], sys.argv[9])
+else:
+    print u"Argument count is invalid, should be 5 or 9, you passed %s" % (argc)
