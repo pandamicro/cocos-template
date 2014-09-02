@@ -93,9 +93,9 @@ TemplateUtils = (function() {
                 tex = cc.textureCache.addImage(def["texUrl"]);
             }
             // Init node
-            if (tex && config && config.node instanceof cc.Sprite) {
-                config.node.setTexture(tex);
-                config.node.setTextureRect(cc.rect(0, 0, tex.width, tex.height));
+            if (tex && config && config["node"] instanceof cc.Sprite) {
+                config["node"].setTexture(tex);
+                config["node"].setTextureRect(cc.rect(0, 0, tex.width, tex.height));
             }
             return tex;
         },
@@ -137,8 +137,8 @@ TemplateUtils = (function() {
             else animationFrames = frames;
 
             // Init node
-            if (config && config.node instanceof cc.Sprite && animationFrames.length > 0) {
-                config.node.setSpriteFrame(animationFrames[0]);
+            if (config && config["node"] instanceof cc.Sprite && animationFrames.length > 0) {
+                config["node"].setSpriteFrame(animationFrames[0]);
             }
             result = new cc.Animation(animationFrames, interval);
             return result;
@@ -288,7 +288,7 @@ TemplateUtils = (function() {
             if (!_inited) return null;
             var def = _templateVars[name];
             var parser, result = null;
-            var node = config && config.node instanceof cc.Node ? config.node : null;
+            var node = config && config["node"] instanceof cc.Node ?  config["node"] : null;
             var attrs = {}, key, value, sceneDef;
 
             parser = _parser[def["type"]];

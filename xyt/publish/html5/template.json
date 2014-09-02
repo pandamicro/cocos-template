@@ -1,0 +1,110 @@
+{
+	"templateId": 1,
+
+	"templateVars": {
+        "default_title" : {
+            "type":     "DIRECTDATA",
+            "desc":     "默认标题",
+            "value":    "跑啊，跑神马？你是我的小羊驼～～～"
+        },
+        "lost_title" : {
+            "type":     "DIRECTDATA",
+            "desc":     "失败标题",
+            "value":    "我滴小羊驼呀它又跑掉了，T_T 快帮我抓回来！"
+        },
+        "win_title" : {
+            "type":     "STRING",
+            "desc":     "胜利标题",
+            "variables":["step", "percent"],
+            "value":    "刷屏！%d步推倒小羊驼，击败%d%朋友圈的人！敢来赢我吗？"
+        },
+		"background": {
+			"type":		"IMAGE",
+			"texUrl":	"res/backgroundx2.jpg",
+            "originW":  640,
+            "originH":  960,
+            "x":		160,
+            "y":		240,
+            "scale":	0.5,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+		},
+        "head": {
+            "type":     "IMAGE",
+            "texUrl":   "skin/shanzhi.jpg",
+            "originW":  80,
+            "originH":  80,
+            "scale":    0.42,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+        },
+		"moving_animation": {
+			"type":		"ANIMATION",
+			"texs": 	["res/moving/moving0.png", 
+						 "res/moving/moving1.png", 
+						 "res/moving/moving2.png", 
+						 "res/moving/moving3.png"],
+			"sequence": [0, 1, 2, 3]
+		},
+		"trapped_animation": {
+			"type": 	"ANIMATION",
+			"texUrl": 	"res/player.png",
+			"row": 		2,
+			"col": 		6,
+			"sequence": [0, 1, 2, 3, 4, 5]
+		},
+		"win_label": {
+			"type": 		"LABEL",
+			"variables":	["step", "percent"],
+			"string": 		"继续刷屏！\n%d步推倒小羊驼\n击败%d%朋友圈的人！\n敢来赢我吗？",
+			"fontName": 	"宋体",
+			"textAlign": 	"TEXT_ALIGNMENT_CENTER"
+		},
+		"lost_label": {
+			"type": 		"LABEL",
+			"string": 		"我滴小羊驼呀它又跑掉了\nT_T 快帮我抓回来！",
+			"fontName": 	"宋体",
+			"textAlign": 	"TEXT_ALIGNMENT_CENTER"
+		}
+	},
+
+	"scenes": {
+		"StartUI": {
+            "head": {
+                "scale":    1
+            }
+        },
+		"Game": {
+			"head": {},
+			"moving_animation": {
+				"scale": 	1
+			}, 
+			"trapped_animation": {
+				"scale": 	1
+			}, 
+			"music": {}
+		},
+		"WinUI": {
+			"win_label": {
+				"fillStyle":"#000",
+				"fontSize": 20
+			}
+		},
+		"LostUI": {
+			"lost_label": {
+				"fillStyle":"#000",
+				"fontSize": 20
+			}
+		},
+		"ShareUI": {}
+	},
+
+	"share": {
+		"wechat": {
+			"appId": 	"",
+    		"imgUrl": 	"res/icon.jpg",
+    		"desc": 	"跑啊，跑神马？你是我的小羊驼～～～",
+    		"title": 	"你是我的小羊驼～～～"
+		}
+	}
+}
