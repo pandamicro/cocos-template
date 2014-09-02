@@ -182,7 +182,6 @@ TemplateUtils = (function() {
         switch(key) {
             case "color":
             case "fillStyle":
-                var c = cc.color(value);
                 result = cc.color(value);
                 break;
             case "textAlign":

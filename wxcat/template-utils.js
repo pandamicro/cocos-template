@@ -84,14 +84,15 @@ TemplateUtils = (function() {
         },
 
         "IMAGE": function(def, config) {
-            var tex = cc.textureCache.textureForKey(def.texUrl);
+            var tex = cc.textureCache.getTextureForKey(def.texUrl);
             if (!tex) {
                 tex = cc.textureCache.addImage(def.texUrl);
             }
             // Init node
             if (tex && config && config.node instanceof cc.Sprite) {
                 config.node.setTexture(tex);
-                config.node.setTextureRect(cc.rect(0, 0, tex.width, tex.height));
+                var size = tex.getContentSize();
+                config.node.setTextureRect(cc.rect(0, 0, size.width, size.height));
             }
             return tex;
         },

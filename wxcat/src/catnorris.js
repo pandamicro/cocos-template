@@ -96,7 +96,7 @@ var Manager = {
         var size = cc.director.getVisibleSize();
         if(!this.cat)
         {
-            this.cat = new Cat;
+            this.cat = new Cat();
         }
         this.cat.attr({
             x:size.width/2,
@@ -633,6 +633,8 @@ var MyScene = cc.Scene.extend({
 
         Manager.init(this);
 
+        this.addChild(new cc.LayerColor(cc.color(177, 219, 86)), -10000);
+
         this.scoreLabel =  UI.scoreLabel = new cc.LabelTTF("0", "黑体", 24, cc.size(150, 30), cc.TEXT_ALIGNMENT_LEFT);
         this.addChild(this.scoreLabel);
         this.scoreLabel.attr({
@@ -664,7 +666,7 @@ var MyScene = cc.Scene.extend({
             self.addChild(self.hintLabel);
         }, 1500);
 
-        var powerby = cc.LabelTTF.create("Powered by Cocos2d-x", "", 13, cc.size(320,30), cc.TEXT_ALIGNMENT_CENTER);
+        var powerby = new cc.LabelTTF("Powered by Cocos2d-x", "", 13, cc.size(320,30), cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(powerby);
         powerby.attr({
             y:5,
@@ -746,36 +748,6 @@ var MyScene = cc.Scene.extend({
 
     }
 });
-
-window.onload = function(){
-    cc.game.onStart = function(){
-        if (cc.sys.isMobile)
-            cc.view.setDesignResolutionSize(320,500,cc.ResolutionPolicy.FIXED_WIDTH);
-        else cc.view.setDesignResolutionSize(320,480,cc.ResolutionPolicy.SHOW_ALL);
-        //cc.view.resizeWithBrowserSize(true);
-        cc._renderContext.webkitImageSmoothingEnabled = false;
-        cc._renderContext.mozImageSmoothingEnabled = false;
-        cc._renderContext.imageSmoothingEnabled = false; //future
-        cc._renderContext.fillStyle="#afdc4b";
-        cc.view._autoFullScreen = false;
-        //load resources
-
-        cc.loader.loadJson("template.json", function(err, jsonObj) {
-            var res = ["res/pg.png", "res/arrow.png", "res/end.png"];
-            if (!err) {
-                TemplateUtils.init(jsonObj);
-                res = res.concat(TemplateUtils.getResourcesList());
-            }
-            else {
-                cc.error("Template parse failed");
-            }
-            cc.LoaderScene.preload(res, function () {
-                cc.director.runScene(new MyScene());
-            }, this);
-        });
-    };
-    cc.game.run("gameCanvas");
-};
 
 var ShareUI = cc.LayerColor.extend({
     ctor: function () {
