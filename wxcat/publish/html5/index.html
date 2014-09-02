@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://androidzh.com/games/wxcat/?shouyoutu -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>我拿了0分，战胜了0个汪，超越了0％的好友！你能超过我吗</title>
+    <link rel="icon" type="image/GIF" href="http://androidzh.com/games/wxcat/res/favicon.ico">
+    <meta name="viewport" content="width=321, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <style>
+        canvas {
+            image-rendering: optimizeSpeed;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: -o-crisp-edges;
+            image-rendering: optimize-contrast;
+            -ms-interpolation-mode: nearest-neighbor;
+        }
+
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .a-header{
+            height: 50px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            animation: showAD 1s;
+            -webkit-animation: showAD 1s;
+        }
+        .a-header.hide{
+            top: -50px;
+            animation: hideAD 1s;
+            -webkit-animation: hideAD 1s;
+        }
+        .a-header .main{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .a-header .main div, .a-header .main span{
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .a-header .background{
+            background: #000;
+            opacity: 0.6;
+        }
+        .a-header .main .close{
+            display: block;
+            width: 22px;
+            height: 22px;
+            background: url("./res/close_ico.png");
+            background-size: 22px auto;
+            right: 15px;
+            top: 50%;
+            margin-top: -11px;
+            cursor: pointer;
+        }
+
+        @keyframes hideAD{
+            from {top: 0;}
+            to {top: -50px;}
+        }
+        @-webkit-keyframes hideAD{
+            from {top: 0;}
+            to {top: -50px;}
+        }
+        @keyframes showAD{
+            from {top: -50px;}
+            to {top: 0;}
+        }
+        @-webkit-keyframes showAD{
+            from {top: -50px;}
+            to {top: 0;}
+        }
+    </style>
+
+</head>
+<body>
+
+    <header class="a-header">
+        <div class="main">
+            <div class="background"></div>
+            <div class="img">
+                <!--google广告代码-->
+                <!--为防止误点以及误操作，注释了以下代码，在需要的时候清删除注释-->
+                <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+                <!--<!— WechatGames —>-->
+                <!--<ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-8553158830227934" data-ad-slot="5468081663"></ins>-->
+                <!--<script>-->
+                <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+                <!--</script>-->
+            </div>
+            <span class="close" onclick="this.parentNode.parentNode.className += ' hide'"></span>
+        </div>
+    </header>
+
+    <canvas id="gameCanvas" width="800" height="450"></canvas>
+    <script type="text/javascript" src="WeixinApi.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?46b0a8d26d37172ca6c1c800d87116c8";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
+        window.wxData = {
+            "appId": "", // 服务号可以填写appId
+            "imgUrl":'http://app9.download.anzhuoshangdian.com/cat/icon.png',
+            "link":'http://app9.download.anzhuoshangdian.com/cat/',
+            "desc":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧",
+            "title":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧"
+        };
+        window.wxFriend = {
+            "appId": "", // 服务号可以填写appId
+            "imgUrl":'http://app9.download.anzhuoshangdian.com/cat/icon.png',
+            "link":'http://app9.download.anzhuoshangdian.com/cat/',
+            "desc":'最近微信刷屏的游戏，喵的太贱了，快来感受下吧',
+            "title":"最近微信刷屏的游戏《来自喵星的你》，喵的太贱了，快来感受下吧"
+        };
+        WeixinApi.ready(function(Api) {
+            var wxCallbacks = {
+                ready : function() {
+                },
+                cancel : function(resp) {
+                },
+                fail : function(resp) {
+                },
+                confirm : function(resp) {
+                },
+                all : function(resp) {
+                  if(window.location) window.location.href = "http://www.shouyoutu.com/hot.html?lm_cat";
+                }
+            };
+            Api.shareToFriend(wxFriend, wxCallbacks);
+            Api.shareToTimeline(wxData, wxCallbacks);
+            Api.shareToWeibo(wxData, wxCallbacks);
+        });
+    </script>
+    <script type="text/javascript" src="game.min.js"></script>
+
+</body>
+</html>

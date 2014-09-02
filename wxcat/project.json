@@ -9,6 +9,7 @@
     "modules" : ["cocos2d"],
 
     "jsList" : [
+        "src/template-utils.js",
         "src/catnorris.js"
     ]
 }
