@@ -22,6 +22,6 @@ CrazyBird.GAMESTATUS.WAITFORLOST = 3;//游戏暂停
 CrazyBird.GAMESTATUS.NOWSTATUS = CrazyBird.GAMESTATUS.PAUSE;//游戏当前状态
 
 CrazyBird.AUIDIO = {};
-CrazyBird.AUIDIO.PLAYMUSIC = true;
+CrazyBird.AUIDIO.PLAYMUSIC = false;
 
 CrazyBird.scaleFactor = 1;

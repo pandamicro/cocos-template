@@ -1,0 +1,66 @@
+{
+	"templateId": 1,
+
+	"templateVars": {
+        "hitTxt": {
+            "type": "DIRECTDATA",
+            "desc": "攻击提示文字",
+            "value": "猛击僵尸"
+        },
+		"background": {
+			"type":		"IMAGE",
+			"texUrl":	"res/bg.png",
+            "originW":  720,
+            "originH":  1280,
+            "scale":	1,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+		},
+        "ground": {
+            "type":		"IMAGE",
+            "texUrl":	"res/ground.png",
+            "originW":  840,
+            "originH":  281,
+            "scale":	1,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+        },
+        "bridPhoto": {
+            "type":		"IMAGE",
+            "texUrl":	"res/birdphoto.png",
+            "originW":  640,
+            "originH":  960,
+            "scale":	0.5,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+        },
+        "pineLine": {
+            "type":		"IMAGE",
+            "texUrl":	"res/pineLine1.jpg",
+            "originW":  130,
+            "originH":  700,
+            "scale":	0.5,
+            "anchorX":	0.5,
+            "anchorY":	0.5
+        },
+        "shareBefore":{
+            "type": "STRING",
+            "desc": "开始游戏前的分享内容",
+            "value": "这款游戏叼炸天啊，赶紧来试试"
+        },
+        "shareAfter":{
+            "type": "STRING",
+            "desc": "完成游戏后的分享内容",
+            "variables": ["number"],
+            "value": "太弱了,你只得了%d分，新手吧你~"
+        }
+	},
+	"share": {
+		"wechat": {
+			"appId": 	"",
+    		"imgUrl": 	"res/icon.jpg",
+    		"desc": 	"跑啊，跑神马？你是我的小羊驼～～～",
+    		"title": 	"你是我的小羊驼～～～"
+		}
+	}
+}

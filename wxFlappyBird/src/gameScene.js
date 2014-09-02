@@ -1,7 +1,6 @@
 /**
  * Created by Administrator on 14-2-15.
  */
-//cc.SPRITE_DEBUG_DRAW=1;
 var gameLayer = cc.Layer.extend({
     score:0,
     init:function(){
@@ -29,9 +28,6 @@ var gameLayer = cc.Layer.extend({
         this.addChild(this.tableSprite,CrazyBird.MENU);
         this.tableSprite.setPosition(cc.p(this.size.width/2,this.size.height/2));
         this.addTouch();
-//        cc.registerTargetedDelegate(0,true,this);
-
-
     },
     addTouch:function(){
         var self = this;
@@ -119,3 +115,13 @@ var GameScene = cc.Scene.extend({
         layer.init();
     }
 });
+function share(m, num) {
+    if (!cc.sys.isNative) {
+        if (m == 0) {
+            document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("shareBefore");
+        }
+        if (m == 1) {
+            document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("shareAfter", {"number": num});
+        }
+    }
+}

@@ -858,7 +858,9 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
 
     _p._clear = function () {
         var viewport = this._openGLView.getViewPortRect();
-        cc._renderContext.clearRect(-viewport.x, viewport.y, viewport.width, -viewport.height);
+        cc._renderContext.fillStyle="#008793";
+        cc._renderContext.fillRect(-viewport.x, viewport.y,
+            viewport.width, -viewport.height);
     };
 
 

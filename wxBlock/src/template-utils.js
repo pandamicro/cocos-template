@@ -84,7 +84,11 @@ TemplateUtils = (function() {
         },
 
         "IMAGE": function(def, config) {
-            var tex = cc.textureCache.textureForKey(def["texUrl"]);
+            var tex;
+            if(cc.sys.isNative)
+                tex = cc.textureCache.getTextureForKey(def["texUrl"]);
+            else
+                tex = cc.textureCache.textureForKey(def["texUrl"]);
             if (!tex) {
                 tex = cc.textureCache.addImage(def["texUrl"]);
             }
