@@ -5,12 +5,12 @@
              classpath="/Users/wzm/Documents/software/tomcat/webapps/cocos2d-js-clean/tools/cocos2d-console/bin/../plugins/project_compile/build_web/bin/compiler-1.7.jar"/>
 
     <target name="compile">
-        <jscomp compilationLevel="advanced" 
+        <jscomp compilationLevel="simple" 
                 warning="quiet"
                 debug="false" 
                 output="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxBlock/publish/html5/game.min.js"
                 languagein="ECMASCRIPT5"
-                
+                sourceMapOutputFile="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxBlock/publish/html5/sourcemap" sourceMapFormat="V3"
                 >
             <sources dir="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxBlock/frameworks/cocos2d-html5">
                 <file name="CCBoot.js"/>

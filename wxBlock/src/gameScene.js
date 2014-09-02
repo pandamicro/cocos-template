@@ -254,7 +254,7 @@ var gameLayer = cc.Layer.extend({
         menu.alignItemsVerticallyWithPadding(20);
         menu.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, -100)));
         this.resultLayer.addChild(menu);
-        share(1, number);
+        share(1, this.score);
     },
     shareGame: function () {
         var layer = cc.LayerColor.create();
@@ -281,6 +281,7 @@ var gameLayer = cc.Layer.extend({
     },
     restartGame: function () {
         cc.director.runScene(new gameScene(true));
+        share(0);
     },
     onExit: function () {
         this._super();
