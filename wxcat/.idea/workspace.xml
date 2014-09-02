@@ -23,19 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cocos2d-html5.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3703" column="51" selection-start="176472" selection-end="176472" vertical-scroll-proportion="0.11355736" vertical-offset="59047" max-vertical-offset="141090">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="catnorris.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="catnorris.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/catnorris.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="772" column="11" selection-start="24666" selection-end="24666" vertical-scroll-proportion="0.0" vertical-offset="11354" max-vertical-offset="12255">
+            <state line="785" column="26" selection-start="25033" selection-end="25033" vertical-scroll-proportion="0.43493152" vertical-offset="11394" max-vertical-offset="12270">
               <folding />
             </state>
           </provider>
@@ -44,7 +35,7 @@
       <file leaf-file-name="WeixinApi.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WeixinApi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="17" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="3435">
+            <state line="10" column="17" selection-start="361" selection-end="361" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="3435">
               <folding />
             </state>
           </provider>
@@ -71,7 +62,7 @@
       <file leaf-file-name="template-utils.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template-utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="24" selection-start="2720" selection-end="2720" vertical-scroll-proportion="0.0" vertical-offset="915" max-vertical-offset="5325">
+            <state line="90" column="24" selection-start="2720" selection-end="2720" vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="5325">
               <folding />
             </state>
           </provider>
@@ -107,7 +98,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="226" />
+    <option name="x" value="1976" />
     <option name="y" value="22" />
     <option name="width" value="1330" />
     <option name="height" value="1024" />
@@ -304,8 +295,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="226" y="22" width="1330" height="1024" extended-state="0" />
-    <editor active="false" />
+    <frame x="1976" y="22" width="1330" height="1024" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -336,7 +327,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -438,16 +429,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/catnorris.js">
+    <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="772" column="11" selection-start="24666" selection-end="24666" vertical-scroll-proportion="0.0" vertical-offset="11354" max-vertical-offset="12255">
+        <state line="3638" column="23" selection-start="173840" selection-end="173840" vertical-scroll-proportion="30.003426" vertical-offset="31872" max-vertical-offset="141090">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cocos2d-html5.js">
+    <entry file="file://$PROJECT_DIR$/src/catnorris.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3703" column="51" selection-start="176472" selection-end="176472" vertical-scroll-proportion="0.11355736" vertical-offset="59047" max-vertical-offset="141090">
+        <state line="785" column="26" selection-start="25033" selection-end="25033" vertical-scroll-proportion="0.43493152" vertical-offset="11394" max-vertical-offset="12270">
           <folding />
         </state>
       </provider>

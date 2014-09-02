@@ -181,7 +181,7 @@ ccs.ArmatureAnimation = ccs.ProcessBase.extend(/** @lends ccs.ArmatureAnimation#
             var bone = dict[key];
             bone.getTween().setProcessScale(this._processScale);
             if (bone.getChildArmature())
-                bone.getChildArmature().getAnimation().setProcessScale(this._processScale);
+                bone.getChildArmature().getAnimation().setSpeedScale(this._processScale);
         }
     },
 
@@ -224,7 +224,8 @@ ccs.ArmatureAnimation = ccs.ProcessBase.extend(/** @lends ccs.ArmatureAnimation#
         var durationTween = this._movementData.durationTween == 0 ? this._rawDuration : this._movementData.durationTween;
 
         var tweenEasing = this._movementData.tweenEasing;
-        loop = (!loop || loop < 0) ? this._movementData.loop : loop;
+        //loop = (!loop || loop < 0) ? this._movementData.loop : loop;
+        loop = (loop < 0) ? this._movementData.loop : loop;
         this._onMovementList = false;
 
         ccs.ProcessBase.prototype.play.call(this, durationTo, durationTween, loop, tweenEasing);
@@ -252,7 +253,7 @@ ccs.ArmatureAnimation = ccs.ProcessBase.extend(/** @lends ccs.ArmatureAnimation#
                 tween.setProcessScale(this._processScale);
 
                 if (bone.getChildArmature())
-                    bone.getChildArmature().getAnimation().setProcessScale(this._processScale);
+                    bone.getChildArmature().getAnimation().setSpeedScale(this._processScale);
             } else {
                 if(!bone.isIgnoreMovementBoneData()){
                     //! this bone is not include in this movement, so hide it
