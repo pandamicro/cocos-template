@@ -9,6 +9,8 @@ var Bird = cc.Sprite.extend({
     nowTime: 0,
     maxWidth: 60,
     maxHeight: 60,
+    scaleX: 1,
+    scaleY: 1,
     ctor: function (gameLayer) {
         this._super();
         this.gameLayer = gameLayer;
@@ -18,6 +20,7 @@ var Bird = cc.Sprite.extend({
     init: function () {
         this.size = cc.winSize;
         var texture = TemplateUtils.getVariable("bridPhoto");
+        var texturePipeLine = TemplateUtils.getVariable("bridPhoto");
         this.initWithTexture(texture);
         if (this.width > this.maxWidth) {
             this.scaleX = this.maxWidth / this.width;
@@ -25,28 +28,18 @@ var Bird = cc.Sprite.extend({
         if (this.height > this.maxHeight) {
             this.scaleY = this.maxHeight / this.height;
         }
+        this.__height = this.height * this.scaleY;
         this.initAnim();
-//        this.startGravity();
     },
     initAnim: function () {
-//        var animFrames = [];
-//        var frameCache = cc.spriteFrameCache;
-//        for (var i = 1; i < 4; i++) {
-//            var frame = frameCache.getSpriteFrame("bird" + i + ".png");
-//            if (i == 1) this.initWithSpriteFrame(frame);
-//            animFrames.push(frame);
-//        }
-//        var anim = cc.RepeatForever.create(cc.Animate.create(cc.Animation.create(animFrames, 0.15)));
         var vanim1 = cc.MoveBy.create(0.25, cc.p(0, 15));
         var vanim2 = cc.MoveBy.create(0.25, cc.p(0, 0));
         var vanim3 = cc.MoveBy.create(0.25, cc.p(0, -15));
         var vanim4 = cc.MoveBy.create(0.25, cc.p(0, 0));
         var vanim = cc.Sequence.create(vanim1, vanim2, vanim3, vanim4);
         var action = cc.RepeatForever.create(vanim);
-//        anim.setTag(Bird_Fly_Tag);
         action.setTag(Bird_Move_Tag);
         this.runAction(action);
-//        this.runAction(anim);
     },
     fly: function () {
         var audio = audioMng.getInstance();
@@ -59,12 +52,21 @@ var Bird = cc.Sprite.extend({
     startGravity: function () {
         this.stopActionByTag(Bird_Move_Tag);
     },
+//    d:123,
     getCollideBox: function () {
-        return cc.rect(this.x - this.width * this.scaleX / 3, this.y - this.height * this.scaleY / 3, this.width / 3 * 2 * this.scaleX, this.height / 3 * 2 * this.scale);
+//        var layer = cc.director.getRunningScene().getChildByTag(this.d);
+//        if(!layer){
+//            var layer = new cc.LayerColor(cc.color(100,100,100,255));
+//            cc.director.getRunningScene().addChild(layer,1000000);
+//            layer.setTag(this.d);
+//        }
+//        layer.setPosition(cc.p(this.x - this.width * this.scaleX / 4, this.y - this.height * this.scaleY / 4));
+//        layer.setContentSize(cc.size(this.width / 4 * 3 * this.scaleX, this.height / 4 * 3 * this.scale));
+        return cc.rect(this.x - this.width * this.scaleX / 4, this.y - this.height * this.scaleY / 4, this.width / 4 * 3 * this.scaleX, this.height / 4 * 3 * this.scale);
     },
     update: function (dt) {
         var position = this.getPosition();
-        if (position.y >= 325) {
+        if (position.y >= GROUND_HEIGHT + this.__height / 2 + 8) {
             var distance = this.velocity * (this.nowTime + dt) + this.gravity * (this.nowTime + dt) * (this.nowTime + dt) / 2 - this.velocity * this.nowTime - this.gravity * this.nowTime * this.nowTime / 2;
             this.velocity = this.velocity + this.gravity * dt;
             this.nowTime += dt;

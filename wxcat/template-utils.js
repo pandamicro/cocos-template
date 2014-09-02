@@ -68,13 +68,13 @@ TemplateUtils = (function() {
 
     var _parser = {
         "DIRECTDATA": function(def) {
-            return def.value;
+            return def["value"];
         },
 
         "STRING": function(def, config) {
-            var args = [def.value], key, string;
-            for (var i = 0, l = def.variables ? def.variables.length : 0; i < l; ++i) {
-                key = def.variables[i];
+            var args = [def["value"]], key, string;
+            for (var i = 0, l = def["variables"] ?def["variables"].length : 0; i < l; ++i) {
+                key = def["variables"][i];
                 if (config && config[key] !== undefined)
                     args.push(config[key]);
                 else args.push(null);
@@ -84,33 +84,33 @@ TemplateUtils = (function() {
         },
 
         "IMAGE": function(def, config) {
-            var tex = cc.textureCache.getTextureForKey(def.texUrl);
+            var tex = cc.textureCache.getTextureForKey(def["texUrl"]);
             if (!tex) {
-                tex = cc.textureCache.addImage(def.texUrl);
+                tex = cc.textureCache.addImage(def["texUrl"]);
             }
             // Init node
-            if (tex && config && config.node instanceof cc.Sprite) {
-                config.node.setTexture(tex);
+            if (tex && config && config["node"] instanceof cc.Sprite) {
+                config["node"].setTexture(tex);
                 var size = tex.getContentSize();
-                config.node.setTextureRect(cc.rect(0, 0, size.width, size.height));
+                config["node"].setTextureRect(cc.rect(0, 0, size.width, size.height));
             }
             return tex;
         },
 
         "ANIMATION": function(def, config) {
-            var result = null, frames = [], animationFrames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def.interval || 0.2;
-            if (def.texs && def.texs.length > 0) {
-                for (var i = 0, l = def.texs.length; i < l; ++i) {
-                    tex = cc.textureCache.addImage(def.texs[i]);
+            var result = null, frames = [], animationFrames = [], frame, tex, rect = cc.rect(0, 0, 0, 0), interval = def["interval"] || 0.2;
+            if (def["texs"] && def["texs"].length > 0) {
+                for (var i = 0, l = def["texs"].length; i < l; ++i) {
+                    tex = cc.textureCache.addImage(def["texs"][i]);
                     rect.width = tex.width;
                     rect.height = tex.height;
                     frame = new cc.SpriteFrame(tex, rect);
                     frames.push(frame);
                 }
             }
-            else if (def.texUrl) {
-                var row = def.row, col = def.col, unitW, unitH;
-                tex = cc.textureCache.addImage(def.texUrl);
+            else if (def["texUrl"]) {
+                var row = def["row"], col = def["col"], unitW, unitH;
+                tex = cc.textureCache.addImage(def["texUrl"]);
                 rect.width = unitW = Math.floor(tex.width/col);
                 rect.height = unitH = Math.floor(tex.height/row);
                 for (var r = 0; r < row; ++r){
@@ -125,32 +125,32 @@ TemplateUtils = (function() {
             else
                 return result;
 
-            if (def.sequence) {
-                for (var i = 0, l = def.sequence.length; i < l; ++i) {
-                    var index = def.sequence[i];
+            if (def["sequence"]) {
+                for (var i = 0, l = def["sequence"].length; i < l; ++i) {
+                    var index = def["sequence"][i];
                     index < frames.length && index >= 0 && animationFrames.push(frames[index]);
                 }
             }
             else animationFrames = frames;
 
             // Init node
-            if (config && config.node instanceof cc.Sprite && animationFrames.length > 0) {
-                config.node.setSpriteFrame(animationFrames[0]);
+            if (config && config["node"] instanceof cc.Sprite && animationFrames.length > 0) {
+                config["node"].setSpriteFrame(animationFrames[0]);
             }
             result = new cc.Animation(animationFrames, interval);
             return result;
         },
 
         "LABEL": function(def, config) {
-            var args = [def.string], key, string;
-            for (var i = 0, l = def.variables ? def.variables.length : 0; i < l; ++i) {
-                key = def.variables[i];
+            var args = [def["string"]], key, string;
+            for (var i = 0, l = def["variables"] ?def["variables"].length : 0; i < l; ++i) {
+                key = def["variables"][i];
                 if (config && config[key] !== undefined)
                     args.push(config[key]);
                 else args.push(null);
             }
             string = _formatStr.apply(null, args);
-            return new cc.LabelTTF(string, def.fontName || "Arial", def.fontSize || "12");
+            return new cc.LabelTTF(string, def["fontName"] || "Arial", def["fontSize"] || "12");
         },
 
         "SOUND": function(def) {
@@ -197,9 +197,9 @@ TemplateUtils = (function() {
 
     return {
         init: function(jsonObj) {
-            _templateId = jsonObj.templateId;
-            _templateVars = jsonObj.templateVars;
-            _scenes = jsonObj.scenes;
+            _templateId = jsonObj["templateId"];
+            _templateVars = jsonObj["templateVars"];
+            _scenes = jsonObj["scenes"];
             _share = jsonObj.share;
             _demoLayer = new cc.LayerColor(cc.color(0, 0, 0));
             _inited = true;
@@ -217,11 +217,11 @@ TemplateUtils = (function() {
             var def, i, res = [];
             for (i in _templateVars) {
                 def = _templateVars[i];
-                if (def.texUrl) {
-                    res.push(def.texUrl);
+                if (def["texUrl"]) {
+                    res.push(def["texUrl"]);
                 }
-                else if (def.texs) {
-                    res = res.concat(def.texs);
+                else if (def["texs"]) {
+                    res = res.concat(def["texs"]);
                 }
             }
             return res;
@@ -285,10 +285,10 @@ TemplateUtils = (function() {
             if (!_inited) return null;
             var def = _templateVars[name];
             var parser, result = null;
-            var node = config && config.node instanceof cc.Node ? config.node : null;
+            var node = config && config["node"] instanceof cc.Node ?  config["node"] : null;
             var attrs = {}, key, value, sceneDef;
 
-            parser = _parser[def.type];
+            parser = _parser[def["type"]];
             if (parser) {
                 result = parser(def, config);
                 if (result && result instanceof cc.Node)
@@ -322,8 +322,8 @@ TemplateUtils = (function() {
             if (!_inited) return;
             var def = _templateVars[name], node;
             // Retrieve temporary node
-            if (def && _getDisplayNode[def.type])
-                node = _getDisplayNode[def.type](name, config);
+            if (def && _getDisplayNode[def["type"]])
+                node = _getDisplayNode[def["type"]](name, config);
             // Add node to current scene
             if (node instanceof cc.Node) {
                 var scene = cc.director.getRunningScene();

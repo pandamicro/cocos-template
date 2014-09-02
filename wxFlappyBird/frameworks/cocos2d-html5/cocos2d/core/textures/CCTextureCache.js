@@ -25,8 +25,8 @@
  ****************************************************************************/
 
 /**
- * cc.textureCache is the global cache for cc.Texture2D
- * @namespace
+ * cc.textureCache is a singleton object, it's the global cache for cc.Texture2D
+ * @class
  * @name cc.textureCache
  */
 cc.textureCache = /** @lends cc.textureCache# */{
@@ -90,11 +90,25 @@ cc.textureCache = /** @lends cc.textureCache# */{
      * Returns an already created texture. Returns null if the texture doesn't exist.
      * @param {String} textureKeyName
      * @return {cc.Texture2D|Null}
+     * @deprecated
      * @example
      * //example
      * var key = cc.textureCache.textureForKey("hello.png");
      */
     textureForKey: function (textureKeyName) {
+        cc.log(cc._LogInfos.textureCache_textureForKey);
+        return this.getTextureForKey(textureKeyName);
+    },
+
+    /**
+     * Returns an already created texture. Returns null if the texture doesn't exist.
+     * @param {String} textureKeyName
+     * @return {cc.Texture2D|Null}
+     * @example
+     * //example
+     * var key = cc.textureCache.getTextureForKey("hello.png");
+     */
+    getTextureForKey: function(textureKeyName){
         return this._textures[textureKeyName] || this._textures[cc.loader._aliases[textureKeyName]];
     },
 
@@ -345,7 +359,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
                     if (err)
                         return cb ? cb(err) : err;
                     cc.textureCache.handleLoadedTexture(url);
-                    cb && cb(null, img);
+                    cb && cb(target, img);
                 });
             }
         }
@@ -359,7 +373,7 @@ if (cc._renderType === cc._RENDER_TYPE_CANVAS) {
     _p = null;
 
 } else {
-    cc.assert(typeof cc._tmp.WebGLTextureCache === "function", cc._LogInfos.MissingFile, "TexturesWebGL.js");
+    cc.assert(cc.isFunction(cc._tmp.WebGLTextureCache), cc._LogInfos.MissingFile, "TexturesWebGL.js");
     cc._tmp.WebGLTextureCache();
     delete cc._tmp.WebGLTextureCache;
 }

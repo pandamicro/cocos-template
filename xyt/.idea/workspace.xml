@@ -26,7 +26,7 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="2" selection-start="832" selection-end="832" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+            <state line="22" column="2" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
               <folding />
             </state>
           </provider>
@@ -44,8 +44,10 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="45" selection-start="3037" selection-end="3037" vertical-scroll-proportion="0.09047045" vertical-offset="1470" max-vertical-offset="2730">
-              <folding />
+            <state line="103" column="45" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.09047045" vertical-offset="1470" max-vertical-offset="2580">
+              <folding>
+                <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,7 +55,7 @@
       <file leaf-file-name="GameScene.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="17" selection-start="3626" selection-end="3626" vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="9450">
+            <state line="133" column="17" selection-start="3626" selection-end="3626" vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="9600">
               <folding />
             </state>
           </provider>
@@ -95,19 +97,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="template-utils.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template-utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="45" selection-start="6124" selection-end="6124" vertical-scroll-proportion="0.0" vertical-offset="2400" max-vertical-offset="5355">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="project.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="1" selection-start="308" selection-end="308" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="315">
+            <state line="16" column="1" selection-start="341" selection-end="341" vertical-scroll-proportion="-9.375" vertical-offset="15" max-vertical-offset="330">
               <folding />
             </state>
           </provider>
@@ -131,7 +124,6 @@
         <option value="$PROJECT_DIR$/src/Resources.js" />
         <option value="$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_boot.js" />
         <option value="$PROJECT_DIR$/share.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/frameworks/js-bindings/bindings/script/jsb_property_apis.js" />
         <option value="$PROJECT_DIR$/src/GameScene.js" />
         <option value="$PROJECT_DIR$/template.json" />
@@ -139,6 +131,7 @@
         <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/Base64Images.js" />
         <option value="$PROJECT_DIR$/template-utils.js" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -396,31 +389,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template-utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="45" selection-start="6124" selection-end="6124" vertical-scroll-proportion="0.0" vertical-offset="2400" max-vertical-offset="5355">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="1" selection-start="308" selection-end="308" vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="315">
+        <state line="16" column="1" selection-start="341" selection-end="341" vertical-scroll-proportion="-9.375" vertical-offset="15" max-vertical-offset="330">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="2" selection-start="832" selection-end="832" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+        <state line="22" column="2" selection-start="773" selection-end="773" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="45" selection-start="3037" selection-end="3037" vertical-scroll-proportion="0.09047045" vertical-offset="1470" max-vertical-offset="2730">
-          <folding />
+        <state line="103" column="45" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.09047045" vertical-offset="1470" max-vertical-offset="2580">
+          <folding>
+            <element signature="n#style#0;n#img#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

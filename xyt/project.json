@@ -9,6 +9,7 @@
     "modules" : ["core", "actions", "labels"],
 
     "jsList" : [
+        "src/template-utils.js",
         "src/Resources.js",
         "src/GameScene.js",
         "src/AI.js"

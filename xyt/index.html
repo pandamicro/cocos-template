@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>跑啊，跑神马-你是我的小羊驼～～～</title>
     <!--<link rel="icon" type="image/GIF" href="res/favicon.ico"/>-->
-    <meta name="viewport" content="width=321, user-scalable=no"/>
+    <!--<meta name="viewport" content="width=480x, user-scalable=no"/>-->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="full-screen" content="yes"/>
     <meta name="screen-orientation" content="portrait"/>
@@ -125,8 +125,7 @@
     </div>
 </header>
 
-<script type="text/javascript" src="frameworks/cocos2d-html5/CCBoot.js"></script>
-<script type="text/javascript" src="template-utils.js"></script>
+<script src="frameworks/cocos2d-html5/CCBoot.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript" src="WeixinApi.js"></script>
 <script>
@@ -139,17 +138,7 @@
         "title":"你是我的小羊驼～～～"
     };
 
-    function share(m, step, percent){
-        if(m == 0){
-            document.title = window.wxData.desc = TemplateUtils.getVariable("default_title");
-        }
-        if(m == 1){
-            document.title = window.wxData.desc = TemplateUtils.getVariable("win_title", {step: step, percent: percent});
-        }
-        if(m == 2){
-            document.title = window.wxData.desc = TemplateUtils.getVariable("lost_title");
-        }
-    }
+
 
     WeixinApi.ready(function(Api) {
         // 分享的回调

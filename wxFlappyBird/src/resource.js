@@ -8,7 +8,8 @@ var res = {
     s_sfx_hit_ogg : "res/sounds/sfx_hit.ogg",
     s_sfx_point_ogg : "res/sounds/sfx_point.ogg",
     s_sfx_swooshin_ogg : "res/sounds/sfx_swooshing.ogg",
-    s_sfx_winge_ogg : "res/sounds/sfx_wing.ogg"
+    s_sfx_winge_ogg : "res/sounds/sfx_wing.ogg",
+    s_temp_json:"template.json"
 }
 var g_resources = [];
 for (var i in res) {

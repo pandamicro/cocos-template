@@ -18,7 +18,7 @@ var gameLayer = cc.Layer.extend({
     resultLayer: null,
     gameStatus: null,
     updateTime: false,
-    timeDt:0,
+    timeDt: 0,
     ctor: function (status) {
         this._super();
         this.init(status);
@@ -36,9 +36,10 @@ var gameLayer = cc.Layer.extend({
         var bgLayer = cc.LayerColor.create();
         bgLayer.setColor(cc.color(TemplateUtils.getVariable("bgColor")));
         this.addChild(bgLayer);
-        bgLayer.bake();
         this.blockLayer = cc.Layer.create();
-        this.blockLayer.bake();
+        if (!cc.sys.isNative) {
+            this.blockLayer.bake();
+        }
         this.makeStartLines();
         this.addChild(this.blockLayer);
         this.scoreLabel = cc.LabelTTF.create(TemplateUtils.getVariable("gameTime"), "Arial", 22);
@@ -58,7 +59,7 @@ var gameLayer = cc.Layer.extend({
     },
     updateDown: function (dt) {
         if (this.gameStatus == gameStatus.start) {
-            this.timeDt+=dt;
+            this.timeDt += dt;
             if (!this.updateTime) {
                 var string = this.scoreLabel.getString();
                 var time = (parseFloat(string) - this.timeDt).toFixed(2);
@@ -78,7 +79,10 @@ var gameLayer = cc.Layer.extend({
                 this.blockLayer.y -= this.downOffset;
                 this.countOffset += this.downOffset;
                 this.downOffset = 0;
-                this.blockLayer.bake();
+                if (!cc.sys.isNative) {
+                    this.blockLayer.bake();
+
+                }
             } else {
                 this.blockLayer.y -= dtDistance;
                 this.downOffset -= dtDistance;
@@ -102,7 +106,9 @@ var gameLayer = cc.Layer.extend({
                         } else if (self.gameStatus == gameStatus.pause) {
                             return;
                         }
-                        self.blockLayer.unbake();
+                        if (!cc.sys.isNative) {
+                            self.blockLayer.unbake();
+                        }
                         if (target.getColorStatus()) {
                             target.click();
                             self.downOffset += target.height + 1;
@@ -116,7 +122,6 @@ var gameLayer = cc.Layer.extend({
                             target.whiteClick(function () {
                                 self.finishGame();
                             });
-                            cc.log("lost");
                         }
                         return true;
                     }
@@ -133,6 +138,7 @@ var gameLayer = cc.Layer.extend({
                     cc.log("cancel");
                 }
             });
+            this.listener.retain();
         }
         return this.listener.clone();
     },
@@ -154,6 +160,7 @@ var gameLayer = cc.Layer.extend({
         var mark = tools.random(0, lineCount - 1);
         for (var i = 0; i < lineCount; i++) {
             var bl = Block.make();
+            bl.retain();
             bl.y = startY + 1;
             if (i != 0) {
                 bl.x = bl.width * i + i;
@@ -175,8 +182,9 @@ var gameLayer = cc.Layer.extend({
         for (var i = 0; i < this.blockList.length; i++) {
             var block = this.blockList[i];
             if (block.y - this.countOffset + block.height + 10 <= 0) {
+                block.release();
                 block.removeFromParent(true);
-                delete block;
+                this.blockList.splice(i,1);
             } else {
                 break;
             }
@@ -193,7 +201,8 @@ var gameLayer = cc.Layer.extend({
         labelTitle.setPosition(cc.pAdd(cc.visibleRect.top, cc.p(0, -50)));
         this.resultLayer.addChild(labelTitle);
 
-        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("startContent"), "Arial");
+        var gameTime = TemplateUtils.getVariable("gameTime");
+        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("startContent", {"number": gameTime}), "Arial");
         labelContent.setColor(cc.color(255, 255, 255));
         labelContent.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, 50)));
         labelContent.setDimensions(cc.size(cc.winSize.width - 60, 150));
@@ -207,6 +216,7 @@ var gameLayer = cc.Layer.extend({
         menu.alignItemsVerticallyWithPadding(20);
         menu.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, -100)));
         this.resultLayer.addChild(menu);
+        share(0);
     },
     startGame: function () {
         this.resultLayer.removeFromParent(true);
@@ -219,13 +229,13 @@ var gameLayer = cc.Layer.extend({
         this.resultLayer.setColor(cc.color(0, 159, 227));
         this.addChild(this.resultLayer);
 
-        var labelTitle = cc.LabelTTF.create(TemplateUtils.getVariable("resultTitle", {score: this.score}), "Arial", 22);
+        var labelTitle = cc.LabelTTF.create(TemplateUtils.getVariable("resultTitle", {"score": this.score}), "Arial", 22);
         labelTitle.setColor(cc.color(255, 255, 255));
         labelTitle.setPosition(cc.pAdd(cc.visibleRect.top, cc.p(0, -50)));
         this.resultLayer.addChild(labelTitle);
 
         var number = tools.random(1, 10);
-        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("resultContent", {number: number}), "Arial");
+        var labelContent = cc.LabelTTF.create(TemplateUtils.getVariable("resultContent", {"number": number}), "Arial");
         labelContent.setColor(cc.color(255, 255, 255));
         labelContent.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, 50)));
         labelContent.setDimensions(cc.size(cc.winSize.width - 60, 150));
@@ -244,6 +254,7 @@ var gameLayer = cc.Layer.extend({
         menu.alignItemsVerticallyWithPadding(20);
         menu.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, -100)));
         this.resultLayer.addChild(menu);
+        share(1, this.score);
     },
     shareGame: function () {
         var layer = cc.LayerColor.create();
@@ -263,12 +274,18 @@ var gameLayer = cc.Layer.extend({
                     layer.removeFromParent(true);
                 }
                 cc.eventManager.removeListener(listener);
+                return true;
             }
         });
         cc.eventManager.addListener(listener, layer);
     },
     restartGame: function () {
         cc.director.runScene(new gameScene(true));
+        share(0);
+    },
+    onExit: function () {
+        this._super();
+        this.listener.release();
     }
 });
 var gameScene = cc.Scene.extend({
@@ -293,3 +310,13 @@ var gameStatus = {
     pause: 2,
     ready: 3
 };
+function share(m, num) {
+    if (!cc.sys.isNative) {
+        if (m == 0) {
+            document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("shareBefore");
+        }
+        if (m == 1) {
+            document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("shareAfter", {"number": num});
+        }
+    }
+}

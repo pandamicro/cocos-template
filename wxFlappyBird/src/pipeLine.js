@@ -2,17 +2,20 @@
  * Created by Administrator on 14-2-16.
  */
 var PipeLine = cc.Sprite.extend({
-    score:false,
-    maxWidth:130,
-    maxHeight:700,
-    ctor:function(direction){
+    score: false,
+    maxWidth: 130,
+    maxHeight: 700,
+    __height: null,
+    scaleX: 1,
+    scaleY: 1,
+    ctor: function (direction) {
         this._super();
         this.init(direction);
     },
-    init:function(direction){
+    init: function (direction) {
         this.initWithTexture(TemplateUtils.getVariable("pineLine"));
-        if(direction == 2) this.setFlippedY(true);
-        this.setAnchorPoint(cc.p(0,0));
+        if (direction == 2) this.setFlippedY(true);
+        this.setAnchorPoint(cc.p(0, 0));
         if (this.width > this.maxWidth) {
             this.scaleX = this.maxWidth / this.width;
         }
@@ -24,19 +27,19 @@ var PipeLine = cc.Sprite.extend({
 //        var pipe = frame.getSpriteFrame(spriteName);
 //        this.initWithSpriteFrame(pipe);
     },
-    getContentSize:function(){
-      return cc.size(this.width*this.scaleX,this.height*this.scaleY);
+    getSize: function () {
+        return cc.size(this.width * this.scaleX, this.height * this.scaleY);
     },
-    getCollideBox:function(){
-        return  cc.rect(this.x,this.y,this.width*this.scaleX,this.height*this.scaleY);
+    getCollideBox: function () {
+        return  cc.rect(this.x, this.y, this.width * this.scaleX, this.height * this.scaleY);
     },
-    setScored:function(){
+    setScored: function () {
         this.score = true;
     },
-    isScore:function(){
+    isScore: function () {
         return this.score;
     }
 });
-PipeLine.create = function(direction){
+PipeLine.create = function (direction) {
     return new PipeLine(direction);
 }

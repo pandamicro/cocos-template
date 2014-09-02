@@ -1,20 +1,19 @@
 {
     "project_type": "javascript",
 
-    "debugMode" : 1,
-    "showFPS" : true,
-    "frameRate" : 60,
-    "id" : "gameCanvas",
-    "renderMode" : 1,
-    "engineDir":"frameworks/cocos2d-html5",
+    "debugMode": 1,
+    "showFPS": true,
+    "frameRate": 60,
+    "id": "gameCanvas",
+    "renderMode": 1,
+    "engineDir": "frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d"],
+    "modules": ["core", "actions", "labels", "menus"],
 
-    "jsList" : [
+    "jsList": [
         "src/resource.js",
+        "src/template-utils.js",
         "src/block.js",
-        "src/gameScene.js",
-        "src/WeixinApi.js"
-
+        "src/gameScene.js"
     ]
 }

@@ -256,7 +256,7 @@ var GameLayer = cc.Layer.extend({
         this.player.stopAllActions();
         this.player.runAction(this.moving_action);
         this.head.visible = false;
-        var headTex = TemplateUtils.getVariable("head", {node: this.head});
+        var headTex = TemplateUtils.getVariable("head", {"node": this.head});
         if (headTex) {
             this.head.stopAllActions();
             this.head.runAction(this.moving_head);
@@ -391,7 +391,7 @@ var StartUI = cc.Layer.extend({
     onEnter : function () {
         this._super();
         var head = new cc.Sprite();
-        var headTex = TemplateUtils.getVariable("head", {node: head});
+        var headTex = TemplateUtils.getVariable("head", {"node": head});
         if (headTex) {
             head.x = TITLE_HEADX;
             head.y = TITLE_HEADY;
@@ -472,7 +472,7 @@ var ResultUI = cc.Layer.extend({
             this.winPanel.removeAllChildren();
 
             var w = this.winPanel.width, h = this.winPanel.height;
-            var label = TemplateUtils.getVariable("win_label", {step: step, percent: percent});
+            var label = TemplateUtils.getVariable("win_label", {"step": step, "percent": percent});
             label.x = w/2;
             label.y = h/4;
             this.winPanel.addChild(label, 10);
@@ -563,7 +563,7 @@ var GameScene = cc.Scene.extend({
         this._super();
 
         var bg = new cc.Sprite();
-        var bgTex = TemplateUtils.getVariable("background", {node: bg});
+        var bgTex = TemplateUtils.getVariable("background", {"node": bg});
         if (bgTex) {
             var size = bgTex.getContentSize();
             var rx = cc.winSize.width / size.width, ry = cc.winSize.height / size.height;
@@ -636,3 +636,14 @@ TemplateUtils.registerScene("ShareUI", function() {
 }, function() {
     gameScene.removeChild(layers.shareUI);
 });
+function share(m, step, percent){
+    if(m == 0){
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("default_title");
+    }
+    if(m == 1){
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("win_title", {"step": step, "percent": percent});
+    }
+    if(m == 2){
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("lost_title");
+    }
+}

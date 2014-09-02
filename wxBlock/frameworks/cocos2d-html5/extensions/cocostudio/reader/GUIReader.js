@@ -58,8 +58,8 @@
 })();
 
 /**
- * Base object for ccs.uiReader
- * @namespace
+ * ccs.uiReader is a singleton object which is the reader for Cocos Studio ui.
+ * @class
  * @name ccs.uiReader
  */
 ccs.uiReader = /** @lends ccs.uiReader# */{
@@ -129,7 +129,7 @@ ccs.uiReader = /** @lends ccs.uiReader# */{
     },
 
     /**
-     *  create uiWidget from a josn file that exported by cocostudio UI editor
+     * create uiWidget from a josn file that exported by cocostudio UI editor
      * @param {String} fileName
      * @returns {ccui.Widget}
      */
