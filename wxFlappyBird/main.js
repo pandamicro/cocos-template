@@ -1,6 +1,8 @@
 cc.game.onStart = function () {
     cc.view.adjustViewPort(true);
-    cc.view.setDesignResolutionSize(720, 1280, cc.ResolutionPolicy.FIXED_WIDTH);
+    if (cc.sys.isMobile)
+        cc.view.setDesignResolutionSize(720,1280,cc.ResolutionPolicy.FIXED_WIDTH);
+    else cc.view.setDesignResolutionSize(720,1280,cc.ResolutionPolicy.SHOW_ALL);
     cc.view.resizeWithBrowserSize(true);
     //load resources
     cc.loader.loadJson("template.json", function (err, jsonObj) {

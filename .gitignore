@@ -3,6 +3,8 @@ xyt/frameworks/runtime-src/
 xyt/tools/
 
 Template_project/frameworks/
+wxFlappyBird/frameworks/js-bindings/
+wxFlappyBird/frameworks/runtime-src/
 
 wxcat/.idea/
 xyt/.idea/

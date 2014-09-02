@@ -138,8 +138,8 @@ ccs.DataInfo = function () {
 };
 
 /**
- * CocoStudio data reader helper
- * @namespace
+ * ccs.dataReaderHelper is a singleton object for reading CocoStudio data
+ * @class
  * @name ccs.dataReaderHelper
  */
 ccs.dataReaderHelper = /** @lends ccs.dataReaderHelper# */{
@@ -685,7 +685,7 @@ ccs.dataReaderHelper = /** @lends ccs.dataReaderHelper# */{
         frameData.soundEffect = frameData.strSoundEffect;
 
         var isTween = frameXML.getAttribute(ccs.CONST_A_TWEEN_FRAME);
-        frameData.isTween = isTween == undefined?true: Boolean(isTween);
+        frameData.isTween = !(isTween != undefined && isTween == "false");
 
         if (dataInfo.flashToolVersion >= ccs.CONST_VERSION_2_0) {
             x = frameXML.getAttribute(ccs.CONST_A_COCOS2DX_X);
@@ -770,15 +770,15 @@ ccs.dataReaderHelper = /** @lends ccs.dataReaderHelper# */{
             var alpha, red, green, blue;
             var alphaOffset, redOffset, greenOffset, blueOffset;
 
-            alpha = colorTransformXML.getAttribute(ccs.CONST_A_ALPHA) || 0;
-            red = colorTransformXML.getAttribute(ccs.CONST_A_RED) || 0;
-            green = colorTransformXML.getAttribute(ccs.CONST_A_GREEN) || 0;
-            blue = colorTransformXML.getAttribute(ccs.CONST_A_BLUE) || 0;
+            alpha = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_ALPHA)) || 0;
+            red = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_RED)) || 0;
+            green = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_GREEN)) || 0;
+            blue = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_BLUE)) || 0;
 
-            alphaOffset = colorTransformXML.getAttribute(ccs.CONST_A_ALPHA_OFFSET) || 0;
-            redOffset = colorTransformXML.getAttribute(ccs.CONST_A_RED_OFFSET) || 0;
-            greenOffset = colorTransformXML.getAttribute(ccs.CONST_A_GREEN_OFFSET) || 0;
-            blueOffset = colorTransformXML.getAttribute(ccs.CONST_A_BLUE_OFFSET) || 0;
+            alphaOffset = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_ALPHA_OFFSET)) || 0;
+            redOffset = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_RED_OFFSET)) || 0;
+            greenOffset = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_GREEN_OFFSET)) || 0;
+            blueOffset = parseFloat(colorTransformXML.getAttribute(ccs.CONST_A_BLUE_OFFSET)) || 0;
 
             frameData.a = 2.55 * alphaOffset + alpha;
             frameData.r = 2.55 * redOffset + red;
@@ -1030,7 +1030,7 @@ ccs.dataReaderHelper = /** @lends ccs.dataReaderHelper# */{
     },
 
     _asyncCallBack: function (selector, target, percent) {
-        if(selector && typeof selector === 'function')
+        if(selector && cc.isFunction(selector))
             selector.call(target, percent);
         if(target && selector && typeof selector === 'string')
             target[selector](percent);
