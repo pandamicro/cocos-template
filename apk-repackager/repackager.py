@@ -124,6 +124,9 @@ def repackageApk(apkFile, assetsPath, outApkPath, packageName, appName, keystore
         print u"Build apk error:%s" % (outApk)
         bModify = False
 
+    # Remove temporary package
+    shutil.rmtree(packagePath)
+
     # Add signer
     if bModify:
         #jarsigner命令格式：-verbose输出详细信息 -storepass 密钥密码
