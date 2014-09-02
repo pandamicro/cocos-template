@@ -1,10 +1,7 @@
-if (cc.sys.isNative) {
-    require("template-utils.js");
-}
 
 cc.game.onStart = function(){
-    var mode = cc.sys.isNative ? cc.ResolutionPolicy.FIXED_HEIGHT : cc.ResolutionPolicy.SHOW_ALL;
-    cc.view.setDesignResolutionSize(480, 750, mode);
+    var mode = cc.sys.isMobile ? cc.ResolutionPolicy.FIXED_WIDTH : cc.ResolutionPolicy.SHOW_ALL;
+    cc.view.setDesignResolutionSize(321, 480, mode);
     //cc.view.resizeWithBrowserSize(true);
     if (!cc.sys.isNative) {
         cc._renderContext.webkitImageSmoothingEnabled = false;

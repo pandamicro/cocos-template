@@ -692,7 +692,7 @@ var MyScene = cc.Scene.extend({
         this.addChild(UI.pgLabel);
         UI.pgLabel.attr({
             x:cc.visibleRect.width - 5,
-            y:cc.visibleRect.height - 50,
+            y:cc.visibleRect.height - 45,
             strokeStyle: cc.color(0,0,0),
             lineWidth: 2
         });
