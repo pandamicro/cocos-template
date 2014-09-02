@@ -110,21 +110,7 @@
             "texUrl":   "skin/zombie/walk.png",
             "originW":  70,
             "originH":  42
-        },
-
-		"win_label": {
-			"type": 		"LABEL",
-			"variables":	["step", "percent"],
-			"string": 		"继续刷屏！\n%d步推倒我的小羊驼\n打败%d%朋友圈的人！\n你能超过我吗？",
-			"fontName": 	"宋体",
-			"textAlign": 	"TEXT_ALIGNMENT_CENTER"
-		},
-		"lost_label": {
-			"type": 		"LABEL",
-			"string": 		"我滴小羊驼呀它又跑掉了\nT_T 快帮我抓回来！",
-			"fontName": 	"宋体",
-			"textAlign": 	"TEXT_ALIGNMENT_CENTER"
-		}
+        }
 	},
 
 	"scenes": {
@@ -155,11 +141,6 @@
 	},
 
 	"share": {
-		"wechat": {
-			"appId": 	"",
-    		"imgUrl": 	"res/icon.jpg",
-    		"desc": 	"跑啊，跑神马？你是我的小羊驼～～～",
-    		"title": 	"你是我的小羊驼～～～"
-		}
+
 	}
 }

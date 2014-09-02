@@ -114,11 +114,6 @@
 	},
 
 	"share": {
-		"wechat": {
-			"appId": 	"",
-    		"imgUrl": 	"res/icon.jpg",
-    		"desc": 	"跑啊，跑神马？你是我的小羊驼～～～",
-    		"title": 	"你是我的小羊驼～～～"
-		}
+
 	}
 }
