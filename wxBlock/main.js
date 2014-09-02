@@ -1,6 +1,3 @@
-if(cc.sys.isNative){
-    require("template-utils.js");
-}
 cc.game.onStart = function () {
     var mode = cc.sys.isNative ? cc.ResolutionPolicy.FIXED_HEIGHT : cc.ResolutionPolicy.SHOW_ALL;
     cc.view.setDesignResolutionSize(321, 500, mode);
