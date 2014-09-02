@@ -3,9 +3,8 @@ if (cc.sys.isNative) {
 }
 
 cc.game.onStart = function(){
-    if (cc.sys.isMobile)
-        cc.view.setDesignResolutionSize(320,500,cc.ResolutionPolicy.FIXED_WIDTH);
-    else cc.view.setDesignResolutionSize(320,480,cc.ResolutionPolicy.SHOW_ALL);
+    var mode = cc.sys.isNative ? cc.ResolutionPolicy.FIXED_HEIGHT : cc.ResolutionPolicy.SHOW_ALL;
+    cc.view.setDesignResolutionSize(480, 750, mode);
     //cc.view.resizeWithBrowserSize(true);
     if (!cc.sys.isNative) {
         cc._renderContext.webkitImageSmoothingEnabled = false;

@@ -28,7 +28,7 @@ var UI = {
     end:function(){
         var sp = new cc.Sprite("res/end.png");
         cc.director.getRunningScene().addChild(sp,5);
-        sp.setPosition(160, cc.director.getVisibleSize().height/2);
+        sp.setPosition(cc.visibleRect.width/2, cc.visibleRect.height/2);
         var hiscore = 141;
 
         var rand =  Math.random()*12454;
@@ -37,11 +37,12 @@ var UI = {
         var text = TemplateUtils.getVariable("endTxt", {number: UI.pg, percent: (0|(percent*100)), score: UI.score});
         var lb = cc.LabelTTF.create(text, "黑体", 20, cc.size(225,105), cc.TEXT_ALIGNMENT_LEFT);
         if (!cc.sys.isNative) {
-        document.title = window.wxData.desc = "喵星刷屏！喵获得"+UI.score+"分，在众喵中排名"+(0|(percent*100))+"%，尼能超过喵吗！";
-        document.title = window.wxFriend.desc = "我拿了"+UI.score+"分，战胜了"+ UI.pg +"个汪，超越了"+(0|(percent*100))+"％的好友！你能超过我吗";
+            document.title = window.wxData.desc = "喵星刷屏！喵获得"+UI.score+"分，在众喵中排名"+(0|(percent*100))+"%，尼能超过喵吗！";
+            document.title = window.wxFriend.desc = "我拿了"+UI.score+"分，战胜了"+ UI.pg +"个汪，超越了"+(0|(percent*100))+"％的好友！你能超过我吗";
         }
         lb.strokeStyle = cc.color(0,0,0);
-        lb.color = cc.color(0,0,0);
+        if (cc.sys.isNative)
+            lb.color = cc.color(0,0,0);
         lb.lineWidth = 2;
         sp.addChild(lb);
         lb.setPosition(sp.getContentSize().width/2+ 2, sp.getContentSize().height/2 -5);
@@ -54,14 +55,15 @@ var UI = {
             },
             onTouchEnded:function(t,e){
                 var pos = t.getLocation();
-                var sh = cc.director.getVisibleSize().height;
+                var sh = cc.visibleRect.height;
+                var sw = cc.visibleRect.width;
 
-                if(cc.rectContainsPoint(cc.rect(38,sh/2 - 128,116,41), pos))
+                if(cc.rectContainsPoint(cc.rect(sw/2 - 125,sh/2 - 128,116,41), pos))
                 {
                     var share = new ShareUI();
                     cc.director.getRunningScene().addChild(share,15);
                 }
-                else if(cc.rectContainsPoint(cc.rect(167,sh/2 - 128,116,41), pos))
+                else if(cc.rectContainsPoint(cc.rect(sw/2+4,sh/2 - 128,116,41), pos))
                 {
                     e.getCurrentTarget().removeFromParent();
                     Manager.clear();
@@ -647,8 +649,8 @@ var MyScene = cc.Scene.extend({
         this.scoreLabel =  UI.scoreLabel = new cc.LabelTTF("0", "黑体", 24, cc.size(150, 30), cc.TEXT_ALIGNMENT_LEFT);
         this.addChild(this.scoreLabel);
         this.scoreLabel.attr({
-            x:30,
-            y:cc.director.getVisibleSize().height - 25,
+            x:40,
+            y:cc.visibleRect.height - 45,
             strokeStyle: cc.color(0,0,0),
             lineWidth: 2,
             color: cc.color(255,150,100),
@@ -657,14 +659,14 @@ var MyScene = cc.Scene.extend({
         var pg = new cc.Sprite("res/pg.png");
         this.addChild(pg);
         pg.attr({
-            x:230,
-            y:cc.director.getVisibleSize().height - 25
+            x:cc.visibleRect.width - 100,
+            y:cc.director.getVisibleSize().height - 45
         });
 
         this.hintLabel = new cc.LabelTTF(TemplateUtils.getVariable("hitTxt"), "黑体", 14, cc.size(200, 30), cc.TEXT_ALIGNMENT_LEFT);
         this.hintLabel.attr({
-            x:70,
-            y:cc.director.getVisibleSize().height - 35,
+            x:80,
+            y:cc.visibleRect.height - 50,
             strokeStyle: cc.color(0,0,0),
             lineWidth: 2,
             color: cc.color(255,150,100),
@@ -680,8 +682,8 @@ var MyScene = cc.Scene.extend({
         var powerby = new cc.LabelTTF("Powered by Cocos2d-x", "", 13, cc.size(320,30), cc.TEXT_ALIGNMENT_CENTER);
         this.addChild(powerby);
         powerby.attr({
+            x:cc.visibleRect.width/2,
             y:5,
-            anchorX:0,
             strokeStyle: cc.color(0,0,0),
             lineWidth: 2
         });
@@ -689,11 +691,10 @@ var MyScene = cc.Scene.extend({
         UI.pgLabel = new cc.LabelTTF("0", "黑体", 20, cc.size(80, 30), cc.TEXT_ALIGNMENT_LEFT);
         this.addChild(UI.pgLabel);
         UI.pgLabel.attr({
-            x:290,
-            y:cc.director.getVisibleSize().height - 30,
+            x:cc.visibleRect.width - 5,
+            y:cc.visibleRect.height - 50,
             strokeStyle: cc.color(0,0,0),
-            lineWidth: 2,
-            anchorX:0.1
+            lineWidth: 2
         });
 
         cc.eventManager.addListener({

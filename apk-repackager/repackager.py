@@ -52,14 +52,15 @@ def repackageApk(apkFile, assetsPath, outApkPath, packageName, appName, keystore
     bModify = True
 
     # Decode package
-    decodecmd = "%s d %s" % (apktoolPath, apkFile)
-    decodecmd = decodecmd.replace('\\', '/')
-    decodecmd = re.sub(r'/+', '/', decodecmd)
-    bReturn = os.system(decodecmd)
-    #print output
-    if bReturn != 0:
-        print u"Decode apk error:%s" % (apkFile)
-        bModify = False
+    if not os.path.exists(packagePath):
+        decodecmd = "%s d %s" % (apktoolPath, apkFile)
+        decodecmd = decodecmd.replace('\\', '/')
+        decodecmd = re.sub(r'/+', '/', decodecmd)
+        bReturn = os.system(decodecmd)
+        #print output
+        if bReturn != 0:
+            print u"Decode apk error:%s" % (apkFile)
+            bModify = False
 
     # Remove old resource
     for root, dirs, files in os.walk(dstAssetsPath):
@@ -125,7 +126,7 @@ def repackageApk(apkFile, assetsPath, outApkPath, packageName, appName, keystore
         bModify = False
 
     # Remove temporary package
-    shutil.rmtree(packagePath)
+    #shutil.rmtree(packagePath)
 
     # Add signer
     if bModify:
