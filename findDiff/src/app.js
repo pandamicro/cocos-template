@@ -6,7 +6,7 @@ var REPEAT_EACH_LEVEL = 5,
     MARGIN = 40,
     GAP = 5,
     LAYER_TAG = 1,
-    TIMER = 60;
+    TIMER = 10;
 
 var Level = cc.LayerColor.extend({
     sprite1:null,
@@ -95,6 +95,79 @@ var Background = cc.LayerColor.extend({
     }
 });
 
+var ResultUI = cc.Layer.extend({
+    notifyRect: null,
+    replayRect: null,
+    ctor: function() {
+        this._super();
+        var replay = new cc.Sprite(res.replay);
+        var notify = new cc.Sprite(res.notify);
+        notify.x = cc.visibleRect.width/2 - 170 + 80;
+        replay.x = cc.visibleRect.width/2 + 15 + 80;
+        notify.y = replay.y = cc.visibleRect.height/2 - 130;
+        this.addChild(notify);
+        this.addChild(replay);
+
+        this.notifyRect = notify.getBoundingBox();
+        this.replayRect = replay.getBoundingBox();
+    },
+
+    onEnter: function() {
+        cc.eventManager.addListener({
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: function (touch, event) {
+                var pos = touch.getLocation();
+                var target = event.getCurrentTarget();
+
+                if (cc.rectContainsPoint(target.replayRect, pos)) {
+                    GameScene.instance.restart();
+                    return true;
+                }
+                else if (cc.rectContainsPoint(target.notifyRect, pos)) {
+                    GameScene.instance.share();
+                    return true;
+                }
+                return false;
+            }
+        }, this);
+    }
+});
+
+var ShareUI = cc.LayerColor.extend({
+    ctor: function () {
+        this._super(cc.color(0, 0, 0, 188), cc.winSize.width, cc.winSize.height);
+
+        var arrow = new cc.Sprite(res.arrow);
+        arrow.anchorX = 1;
+        arrow.anchorY = 1;
+        arrow.x = cc.winSize.width - 15;
+        arrow.y = cc.winSize.height - 5;
+        this.addChild(arrow);
+
+        var label = new cc.LabelTTF("请点击右上角的菜单按钮\n再点\"分享到朋友圈\"\n让好友们挑战你的分数！", "宋体", 20, cc.size(cc.winSize.width*0.7, 250), cc.TEXT_ALIGNMENT_CENTER);
+        label.x = cc.winSize.width/2;
+        label.y = cc.winSize.height - 100;
+        label.anchorY = 1;
+        this.addChild(label);
+    },
+    onEnter: function () {
+        this._super();
+        cc.eventManager.addListener({
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: function (touch, event) {
+                GameScene.instance.gameOver();
+                return true;
+            }
+        }, this);
+    },
+
+    onExit: function () {
+        cc.eventManager.removeListeners(this);
+    }
+});
+
 var GameScene = cc.Scene.extend({
     repeat : 0,
     current_level : 0,
@@ -102,6 +175,7 @@ var GameScene = cc.Scene.extend({
     start_time: 0,
     current_time: TIMER,
     timer_label: null,
+    gaming : false,
     ctor: function() {
         this._super();
         this.background = new Background();
@@ -119,14 +193,29 @@ var GameScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
 
-        this.nextLevel();
+        this.restart();
     },
     update: function() {
+        if (!this.gaming)
+            return;
+
         var duration = (Date.now() - this.start_time)/1000;
         if (TIMER - duration < this.current_time) {
             this.current_time = Math.floor(TIMER - duration);
+            if (this.current_time < 0) {
+                this.current_time = 0;
+                this.gameOver();
+            }
             this.timer_label.setString(this.current_time);
+
         }
+    },
+    restart: function() {
+        this.current_level = 0;
+        this.current_time = TIMER;
+        this.repeat = 0;
+        this.start_time = Date.now();
+        this.nextLevel();
     },
     nextLevel : function() {
         this.repeat++;
@@ -142,6 +231,17 @@ var GameScene = cc.Scene.extend({
         layer.y = cc.visibleRect.height/2 - SIZE/2;
         this.removeChildByTag(LAYER_TAG);
         this.addChild(layer, 1, LAYER_TAG);
+        this.gaming = true;
+    },
+    gameOver: function() {
+        this.removeChildByTag(LAYER_TAG);
+        this.addChild(new ResultUI(), 1, LAYER_TAG);
+        this.gaming = false;
+    },
+    share: function() {
+        this.removeChildByTag(LAYER_TAG);
+        this.addChild(new ShareUI(), 1, LAYER_TAG);
+        this.gaming = false;
     }
 });
 GameScene.instance = null;
