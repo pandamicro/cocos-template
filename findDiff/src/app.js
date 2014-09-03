@@ -6,7 +6,7 @@ var REPEAT_EACH_LEVEL = 5,
     MARGIN = 40,
     GAP = 5,
     LAYER_TAG = 1,
-    TIMER = 10;
+    TIMER = 60;
 
 var Level = cc.LayerColor.extend({
     sprite1:null,
@@ -53,7 +53,7 @@ var Level = cc.LayerColor.extend({
             }
         }
 
-        this.bake();
+        if(!cc.sys.isNative) this.bake();
 
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -87,7 +87,7 @@ var Background = cc.LayerColor.extend({
         label.color = cc.color(0, 0, 0);
         this.addChild(label);
 
-        this.bake();
+        if(!cc.sys.isNative) this.bake();
     }
 });
 
@@ -114,10 +114,11 @@ var ResultUI = cc.Layer.extend({
 
         this.notifyRect = notify.getBoundingBox();
         this.replayRect = replay.getBoundingBox();
-        this.bake();
+        if(!cc.sys.isNative) this.bake();
     },
 
     onEnter: function() {
+        this._super();
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: true,
@@ -170,6 +171,7 @@ var ShareUI = cc.LayerColor.extend({
 
     onExit: function () {
         cc.eventManager.removeListeners(this);
+        this._super();
     }
 });
 
