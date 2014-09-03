@@ -77,19 +77,15 @@ var Level = cc.LayerColor.extend({
 });
 
 var Background = cc.LayerColor.extend({
-    score: null,
     ctor: function() {
         this._super(cc.color("#F06060"));
 
         var label = new cc.LabelTTF("过关：", "宋体", 20);
-        this.score = new cc.LabelTTF("0", "宋体", 20);
         label.x = 20;
-        this.score.x = 80;
-        label.anchorX = this.score.anchorX = 0;
-        label.y = this.score.y = cc.visibleRect.height - 60;
-        label.color = this.score.color = cc.color(0, 0, 0);
+        label.anchorX = 0;
+        label.y = cc.visibleRect.height - 60;
+        label.color = cc.color(0, 0, 0);
         this.addChild(label);
-        this.addChild(this.score);
 
         this.bake();
     }
@@ -98,7 +94,7 @@ var Background = cc.LayerColor.extend({
 var ResultUI = cc.Layer.extend({
     notifyRect: null,
     replayRect: null,
-    ctor: function() {
+    ctor: function(passed) {
         this._super();
         var replay = new cc.Sprite(res.replay);
         var notify = new cc.Sprite(res.notify);
@@ -108,8 +104,17 @@ var ResultUI = cc.Layer.extend({
         this.addChild(notify);
         this.addChild(replay);
 
+        var level = Math.floor(passed/3);
+        var label = TemplateUtils.getVariable("result_label", {"level": level});
+        label.x = cc.visibleRect.width/2;
+        label.y = cc.visibleRect.height/2;
+        this.addChild(label);
+
+        share(1, level);
+
         this.notifyRect = notify.getBoundingBox();
         this.replayRect = replay.getBoundingBox();
+        this.bake();
     },
 
     onEnter: function() {
@@ -176,6 +181,8 @@ var GameScene = cc.Scene.extend({
     current_time: TIMER,
     timer_label: null,
     gaming : false,
+    score: null,
+    passed : -1,
     ctor: function() {
         this._super();
         this.background = new Background();
@@ -186,6 +193,13 @@ var GameScene = cc.Scene.extend({
         this.timer_label.y = cc.visibleRect.height - 60;
         this.timer_label.color = cc.color(0, 0, 0);
         this.addChild(this.timer_label);
+
+        this.score = new cc.LabelTTF("0", "宋体", 20);
+        this.score.x = 80;
+        this.score.anchorX = 0;
+        this.score.y = cc.visibleRect.height - 60;
+        this.score.color = cc.color(0, 0, 0);
+        this.addChild(this.score);
 
         this.start_time = Date.now();
         this.scheduleUpdate();
@@ -211,9 +225,11 @@ var GameScene = cc.Scene.extend({
         }
     },
     restart: function() {
+        share(0);
         this.current_level = 0;
         this.current_time = TIMER;
         this.repeat = 0;
+        this.passed = -1;
         this.start_time = Date.now();
         this.nextLevel();
     },
@@ -225,6 +241,8 @@ var GameScene = cc.Scene.extend({
                 this.current_level++;
             }
         }
+        this.passed++;
+        this.score.string = this.passed;
 
         var layer = new Level(this.current_level);
         layer.x = cc.visibleRect.width/2 - SIZE/2;
@@ -235,7 +253,7 @@ var GameScene = cc.Scene.extend({
     },
     gameOver: function() {
         this.removeChildByTag(LAYER_TAG);
-        this.addChild(new ResultUI(), 1, LAYER_TAG);
+        this.addChild(new ResultUI(this.passed), 1, LAYER_TAG);
         this.gaming = false;
     },
     share: function() {
@@ -245,3 +263,14 @@ var GameScene = cc.Scene.extend({
     }
 });
 GameScene.instance = null;
+
+function share(m, level){
+    if (cc.sys.isNative) return;
+
+    if(m == 0){
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("default_title");
+    }
+    if(m == 1){
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("result_title", {"level": level});
+    }
+}

@@ -13,6 +13,25 @@
             "texUrl":   "res/CloseSelected.png",
             "originW":  40,
             "originH":  40
+        },
+        "result_label": {
+            "type": 		"LABEL",
+            "variables":	["level"],
+            "string": 		"眼力等级 LV%d！",
+            "fontName": 	"宋体",
+            "fontSize":     40,
+            "textAlign": 	"TEXT_ALIGNMENT_CENTER"
+        },
+        "default_title" : {
+            "type":     "DIRECTDATA",
+            "desc":     "默认标题",
+            "value":    "眼力大挑战"
+        },
+        "result_title" : {
+            "type":     "STRING",
+            "desc":     "失败标题",
+            "variables":	["level"],
+            "value":    "真心瞎了！T_T 我的眼力等级是LV%d！"
         }
 	},
 
