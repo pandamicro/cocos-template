@@ -641,9 +641,9 @@ function share(m, step, percent){
         document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("default_title");
     }
     if(m == 1){
-        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("win_title", {"step": step, "percent": percent});
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("win_label", {"step": step, "percent": percent}).string;
     }
     if(m == 2){
-        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("lost_title");
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("lost_label").string;
     }
 }

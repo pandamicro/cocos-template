@@ -1,5 +1,5 @@
 {
-	"templateId": 2,
+	"templateId": 1,
 
 	"templateVars": {
         "hitTxt": {
@@ -13,17 +13,6 @@
             "variables": ["number", "percent", "score"],
             "value": "地球太危险我要回喵星！\n恭喜喵战胜了%d个汪，\n超越了%d％的好友！\n获得了%d分！"
         },
-		"background": {
-			"type":		"IMAGE",
-			"texUrl":	"",
-            "originW":  640,
-            "originH":  960,
-            "x":		160,
-            "y":		240,
-            "scale":	0.5,
-            "anchorX":	0.5,
-            "anchorY":	0.5
-		},
 
         "cat_attack": {
             "type":     "IMAGE",
@@ -141,6 +130,11 @@
 	},
 
 	"share": {
-
+        "wechat": {
+        "appId":    "",
+            "imgUrl":   "icon.png",
+            "desc":     "最近微信刷屏的游戏，喵的太贱了，快来感受下吧",
+            "title":    "来自喵星的你"
+        }
 	}
 }

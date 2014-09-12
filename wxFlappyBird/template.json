@@ -1,5 +1,5 @@
 {
-	"templateId": 4,
+	"templateId": 1,
 
 	"templateVars": {
         "hitTxt": {
@@ -57,10 +57,10 @@
 	},
 	"share": {
 		"wechat": {
-			"appId": 	"",
-    		"imgUrl": 	"res/icon.jpg",
-    		"desc": 	"跑啊，跑神马？你是我的小羊驼～～～",
-    		"title": 	"你是我的小羊驼～～～"
+		"appId": 	"",
+    		"imgUrl": 	"icon.png",
+    		"desc": 	"像素小鸟，挑战你的反应极限～～",
+    		"title": 	"像素小鸟"
 		}
 	}
 }
