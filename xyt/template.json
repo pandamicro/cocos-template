@@ -7,17 +7,6 @@
             "desc":     "默认标题",
             "value":    "跑啊，跑神马？你是我的小羊驼～～～"
         },
-        "lost_title" : {
-            "type":     "DIRECTDATA",
-            "desc":     "失败标题",
-            "value":    "我滴小羊驼呀它又跑掉了，T_T 快帮我抓回来！"
-        },
-        "win_title" : {
-            "type":     "STRING",
-            "desc":     "胜利标题",
-            "variables":["step", "percent"],
-            "value":    "刷屏！%d步推倒小羊驼，击败%d%朋友圈的人！敢来赢我吗？"
-        },
 		"background": {
 			"type":		"IMAGE",
 			"texUrl":	"res/backgroundx2.jpg",
