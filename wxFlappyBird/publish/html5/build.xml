@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<project name="Javascript compress project" basedir="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxFlappyBird" default="compile">
+<project name="Javascript compress project" basedir="/Users/panda/StudyWork/GameJam/cocos-template/wxFlappyBird" default="compile">
 
     <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"
-             classpath="/Users/wzm/Documents/software/tomcat/webapps/cocos2d-js-clean/tools/cocos2d-console/bin/../plugins/project_compile/build_web/bin/compiler-1.7.jar"/>
+             classpath="/Users/panda/StudyWork/Cocos/cocos2d-js/tools/cocos2d-console/bin/../plugins/project_compile/build_web/bin/compiler-1.7.jar"/>
 
     <target name="compile">
-        <jscomp compilationLevel="simple" 
+        <jscomp compilationLevel="advanced" 
                 warning="quiet"
                 debug="false" 
-                output="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxFlappyBird/publish/html5/game.min.js"
+                output="/Users/panda/StudyWork/GameJam/cocos-template/wxFlappyBird/publish/html5/game.min.js"
                 languagein="ECMASCRIPT5"
-                sourceMapOutputFile="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxFlappyBird/publish/html5/sourcemap" sourceMapFormat="V3"
+                
                 >
-            <sources dir="/Users/wzm/Documents/software/tomcat/webapps/wechatGame/wxFlappyBird/frameworks/cocos2d-html5">
+            <sources dir="/Users/panda/StudyWork/GameJam/cocos-template/wxFlappyBird/frameworks/cocos2d-html5">
                 <file name="CCBoot.js"/>
                 <file name="CCDebugger.js"/>
                 <file name="cocos2d/core/utils/BinaryLoader.js"/>
