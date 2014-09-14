@@ -6,7 +6,7 @@ var REPEAT_EACH_LEVEL = 5,
     MARGIN = 40,
     GAP = 5,
     LAYER_TAG = 1,
-    TIMER = 60;
+    TIMER = 45;
 
 var Level = cc.LayerColor.extend({
     sprite1:null,
