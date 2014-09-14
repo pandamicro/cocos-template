@@ -2,11 +2,6 @@
 	"templateId": 4,
 
 	"templateVars": {
-        "hitTxt": {
-            "type": "DIRECTDATA",
-            "desc": "攻击提示文字",
-            "value": "猛击僵尸"
-        },
 		"background": {
 			"type":		"IMAGE",
 			"texUrl":	"res/bg.png",
