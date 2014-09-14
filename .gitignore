@@ -20,3 +20,5 @@ xyt/.idea/
 .idea
 apk-repackager/Template_project-debug
 findDiff/frameworks
+
+.DS_Store
