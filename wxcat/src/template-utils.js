@@ -91,8 +91,7 @@ TemplateUtils = (function() {
             // Init node
             if (tex && config && config["node"] instanceof cc.Sprite) {
                 config["node"].setTexture(tex);
-                var size = tex.getContentSize();
-                config["node"].setTextureRect(cc.rect(0, 0, size.width, size.height));
+                config["node"].setTextureRect(cc.rect(0, 0, tex.width, tex.height));
             }
             return tex;
         },
