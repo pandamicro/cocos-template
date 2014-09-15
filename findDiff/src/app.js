@@ -6,7 +6,7 @@ var REPEAT_EACH_LEVEL = 5,
     MARGIN = 40,
     GAP = 5,
     LAYER_TAG = 1,
-    TIMER = 10;
+    TIMER = 45;
 
 var Level = cc.LayerColor.extend({
     sprite1:null,
@@ -53,7 +53,9 @@ var Level = cc.LayerColor.extend({
             }
         }
 
-        this.bake();
+        this.relocate();
+
+        if(!cc.sys.isNative) this.bake();
 
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -73,51 +75,76 @@ var Level = cc.LayerColor.extend({
                 return false;
             }
         }, this);
+    },
+
+    relocate: function() {
+        this.x = cc.visibleRect.width/2 - SIZE/2;
+        this.y = cc.visibleRect.height/2 - SIZE/2;
     }
 });
 
 var Background = cc.LayerColor.extend({
+    label: null,
     ctor: function() {
         this._super(cc.color("#F06060"));
 
-        var label = new cc.LabelTTF("过关：", "宋体", 20);
-        label.x = 20;
-        label.anchorX = 0;
-        label.y = cc.visibleRect.height - 60;
-        label.color = cc.color(0, 0, 0);
-        this.addChild(label);
+        this.label = new cc.LabelTTF("过关：", "宋体", 20);
+        this.label.color = cc.color(0, 0, 0);
+        this.addChild(this.label);
+        this.relocate();
 
-        this.bake();
+        //if(!cc.sys.isNative) this.bake();
+    },
+    relocate: function() {
+        this.label.x = 20;
+        this.label.anchorX = 0;
+        this.label.y = cc.director.getWinSize().height - 60;
     }
 });
 
 var ResultUI = cc.Layer.extend({
+    notify: null,
+    replay: null,
+    label: null,
     notifyRect: null,
     replayRect: null,
     ctor: function(passed) {
         this._super();
-        var replay = new cc.Sprite(res.replay);
-        var notify = new cc.Sprite(res.notify);
-        notify.x = cc.visibleRect.width/2 - 170 + 80;
-        replay.x = cc.visibleRect.width/2 + 15 + 80;
-        notify.y = replay.y = cc.visibleRect.height/2 - 130;
-        this.addChild(notify);
-        this.addChild(replay);
+        this.replay = new cc.Sprite(res.replay);
+        this.notify = new cc.Sprite(res.notify);
+        var size = cc.director.getWinSize();
+        this.notify.x = size.width/2 - 170 + 80;
+        this.replay.x = size.width/2 + 15 + 80;
+        this.notify.y = this.replay.y = size.height/2 - 130;
+        this.addChild(this.notify);
+        this.addChild(this.replay);
 
         var level = Math.floor(passed/3);
-        var label = TemplateUtils.getVariable("result_label", {"level": level});
-        label.x = cc.visibleRect.width/2;
-        label.y = cc.visibleRect.height/2;
-        this.addChild(label);
+        this.label = TemplateUtils.getVariable("result_label", {"level": level});
+        this.label.x = size.width/2;
+        this.label.y = size.height/2;
+        this.addChild(this.label);
+
+        this.relocate();
 
         share(1, level);
 
-        this.notifyRect = notify.getBoundingBox();
-        this.replayRect = replay.getBoundingBox();
-        this.bake();
+        this.notifyRect = this.notify.getBoundingBox();
+        this.replayRect = this.replay.getBoundingBox();
+        //if(!cc.sys.isNative) this.bake();
+    },
+    relocate: function() {
+        var size = cc.director.getWinSize();
+        this.notify.x = size.width/2 - 170 + 80;
+        this.replay.x = size.width/2 + 15 + 80;
+        this.notify.y = this.replay.y = size.height/2 - 130;
+        this.label.x = size.width/2;
+        this.label.y = size.height/2;
     },
 
     onEnter: function() {
+        this._super();
+
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: true,
@@ -170,6 +197,7 @@ var ShareUI = cc.LayerColor.extend({
 
     onExit: function () {
         cc.eventManager.removeListeners(this);
+        this._super();
     }
 });
 
@@ -189,20 +217,33 @@ var GameScene = cc.Scene.extend({
         this.addChild(this.background);
 
         this.timer_label = new cc.LabelTTF(this.current_time, "宋体", 20);
-        this.timer_label.x = cc.visibleRect.width/2;
-        this.timer_label.y = cc.visibleRect.height - 60;
-        this.timer_label.color = cc.color(0, 0, 0);
         this.addChild(this.timer_label);
 
         this.score = new cc.LabelTTF("0", "宋体", 20);
-        this.score.x = 80;
-        this.score.anchorX = 0;
-        this.score.y = cc.visibleRect.height - 60;
         this.score.color = cc.color(0, 0, 0);
         this.addChild(this.score);
 
+        this.relocate();
+
         this.start_time = Date.now();
         this.scheduleUpdate();
+    },
+
+    relocate: function() {
+        var size = cc.director.getWinSize();
+        this.background.width = size.width;
+        this.background.height = size.height;
+
+        this.timer_label.x = size.width/2;
+        this.timer_label.y = size.height - 60;
+        this.timer_label.color = cc.color(0, 0, 0);
+
+        this.score.x = 80;
+        this.score.anchorX = 0;
+        this.score.y = size.height - 60;
+
+        var layer = this.getChildByTag(LAYER_TAG);
+        layer && layer.relocate && layer.relocate();
     },
     onEnter:function () {
         this._super();
@@ -245,8 +286,6 @@ var GameScene = cc.Scene.extend({
         this.score.string = this.passed;
 
         var layer = new Level(this.current_level);
-        layer.x = cc.visibleRect.width/2 - SIZE/2;
-        layer.y = cc.visibleRect.height/2 - SIZE/2;
         this.removeChildByTag(LAYER_TAG);
         this.addChild(layer, 1, LAYER_TAG);
         this.gaming = true;

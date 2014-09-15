@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>跑啊，跑神马-你是我的小羊驼～～～</title>
     <!--<link rel="icon" type="image/GIF" href="res/favicon.ico"/>-->
-    <!--<meta name="viewport" content="width=480x, user-scalable=no"/>-->
+    <meta name="viewport" content="width=321x, user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="full-screen" content="yes"/>
     <meta name="screen-orientation" content="portrait"/>
@@ -107,7 +107,7 @@
     </script>
 </head>
 <body>
-<canvas id="gameCanvas" width="480" height="852"></canvas>
+<canvas id="gameCanvas" width="800" height="450"></canvas>
 <img width="500" height="500" style="position:absolute;top:-10000px;" src="http://app9.download.anzhuoshangdian.com/xyt/res/icon.jpg">
 <header class="a-header">
     <div class="main">
@@ -126,7 +126,7 @@
     </div>
 </header>
 
-<script src="../cocos2d-html5.js"></script>
+<script src="cocos2d-js.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript" src="WeixinApi.js"></script>
 <script>
@@ -138,6 +138,8 @@
         "desc":"跑啊，跑神马？你是我的小羊驼～～～",
         "title":"你是我的小羊驼～～～"
     };
+
+
 
     WeixinApi.ready(function(Api) {
         // 分享的回调
@@ -159,6 +161,14 @@
         Api.shareToWeibo(wxData, wxCallbacks);
     });
 </script>
-
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cf6e56197d15d6d01685b29c92d56831";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>

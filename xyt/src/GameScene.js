@@ -96,9 +96,8 @@ var GameLayer = cc.Layer.extend({
         this.blocks.y = OFFSET_Y;
         this.addChild(this.blocks);
 
-        this.batch = new cc.SpriteBatchNode(res.block, 81);
-        this.block_tex = this.batch.texture;
-        var ox = x = y = 0, odd = false, block, tex = this.batch.texture;
+        this.block_tex = cc.textureCache.addImage(res.block);
+        var ox = x = y = 0, odd = false, block, tex = this.block_tex;
         for (var r = 0; r < ROW; r++) {
             y = BLOCK_YREGION * r;
             ox = odd * OFFSET_ODD;
@@ -113,14 +112,13 @@ var GameLayer = cc.Layer.extend({
                     width : BLOCK_W,
                     height : BLOCK_H
                 });
-                this.batch.addChild(block);
+                this.blocks.addChild(block);
             }
             odd = !odd;
         }
 //        this.blocks.begin();
 //        this.batch.visit();
 //        this.blocks.end();
-        this.blocks.addChild(this.batch);
         if (!cc.sys.isNative)
             this.blocks.bake();
 
@@ -641,9 +639,9 @@ function share(m, step, percent){
         document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("default_title");
     }
     if(m == 1){
-        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("win_title", {"step": step, "percent": percent});
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("win_label", {"step": step, "percent": percent}).string;
     }
     if(m == 2){
-        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("lost_title");
+        document["title"] = window["wxData"]["desc"] = TemplateUtils.getVariable("lost_label").string;
     }
 }

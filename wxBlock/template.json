@@ -114,6 +114,11 @@
 	},
 
 	"share": {
-
+        "wechat": {
+        "appId":    "",
+            "imgUrl":   "icon.png",
+            "desc":     "揭穿美女的真实外表～～",
+            "title":    "美女变恐龙"
+        }
 	}
 }
