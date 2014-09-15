@@ -208,6 +208,10 @@ TemplateUtils = (function() {
             return _templateVars;
         },
 
+        getShare: function() {
+            return _share;
+        },
+
         getSceneVars: function(scene) {
             return _scenes[scene];
         },

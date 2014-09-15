@@ -126,9 +126,13 @@
             s.parentNode.insertBefore(hm, s);
         })();
 
+        var href = window.location.href, base = href;
+        var last = href.lastIndexOf("/");
+        if (last != -1)
+            base = base.substr(0, last);
         window.wxData = {
             "appId": "", // 服务号可以填写appId
-            "imgUrl":'http://h5.cocoachina.com/static/app/wxcat/icon.png',
+            "imgUrl":base+'/icon.png',
             "link":window.location.href,
             "desc":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧",
             "title":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧"

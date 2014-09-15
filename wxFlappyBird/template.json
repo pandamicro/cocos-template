@@ -52,8 +52,8 @@
 	},
 	"share": {
 		"wechat": {
-		"appId": 	"",
-    		"imgUrl": 	"icon.png",
+		    "appId": 	"",
+    		"imgUrl": 	"flappyicon.png",
     		"desc": 	"像素小鸟，挑战你的反应极限～～",
     		"title": 	"像素小鸟"
 		}

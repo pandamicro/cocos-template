@@ -130,10 +130,14 @@
 <script type="text/javascript" src="WeixinApi.js"></script>
 
 <script>
+    var href = window.location.href, base = href;
+    var last = href.lastIndexOf("/");
+    if (last != -1)
+        base = base.substr(0, last);
     // 微信分享的数据
     window.wxData = {
         "appId": "", // 服务号可以填写appId
-        "imgUrl":'http://h5.cocoachina.com/static/app/findDiff/icon.png',
+        "imgUrl":base+'/icon.png',
         "link":window.location.href,
         "desc":"瞎了也要玩！",
         "title":"眼力大挑战"
