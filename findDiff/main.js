@@ -13,6 +13,7 @@ cc.game.onStart = function(){
         else {
             cc.error("Template parse failed");
         }
+        share(0);
         //load resources
         cc.LoaderScene.preload(g_resources, function () {
             GameScene.instance = new GameScene();
