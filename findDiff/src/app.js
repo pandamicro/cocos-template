@@ -83,42 +83,53 @@ var Background = cc.LayerColor.extend({
         var label = new cc.LabelTTF("过关：", "宋体", 20);
         label.x = 20;
         label.anchorX = 0;
-        label.y = cc.visibleRect.height - 60;
+        label.y = cc.director.getWinSize().height - 60;
         label.color = cc.color(0, 0, 0);
         this.addChild(label);
 
-        if(!cc.sys.isNative) this.bake();
+        //if(!cc.sys.isNative) this.bake();
     }
 });
 
 var ResultUI = cc.Layer.extend({
+    notify: null,
+    replay: null,
+    label: null,
     notifyRect: null,
     replayRect: null,
     ctor: function(passed) {
         this._super();
-        var replay = new cc.Sprite(res.replay);
-        var notify = new cc.Sprite(res.notify);
-        notify.x = cc.visibleRect.width/2 - 170 + 80;
-        replay.x = cc.visibleRect.width/2 + 15 + 80;
-        notify.y = replay.y = cc.visibleRect.height/2 - 130;
-        this.addChild(notify);
-        this.addChild(replay);
+        this.replay = new cc.Sprite(res.replay);
+        this.notify = new cc.Sprite(res.notify);
+        var size = cc.director.getWinSize();
+        this.notify.x = size.width/2 - 170 + 80;
+        this.replay.x = size.width/2 + 15 + 80;
+        this.notify.y = this.replay.y = size.height/2 - 130;
+        this.addChild(this.notify);
+        this.addChild(this.replay);
 
         var level = Math.floor(passed/3);
-        var label = TemplateUtils.getVariable("result_label", {"level": level});
-        label.x = cc.visibleRect.width/2;
-        label.y = cc.visibleRect.height/2;
-        this.addChild(label);
+        this.label = TemplateUtils.getVariable("result_label", {"level": level});
+        this.label.x = size.width/2;
+        this.label.y = size.height/2;
+        this.addChild(this.label);
 
         share(1, level);
 
-        this.notifyRect = notify.getBoundingBox();
-        this.replayRect = replay.getBoundingBox();
-        if(!cc.sys.isNative) this.bake();
+        this.notifyRect = this.notify.getBoundingBox();
+        this.replayRect = this.replay.getBoundingBox();
+        //if(!cc.sys.isNative) this.bake();
     },
 
     onEnter: function() {
         this._super();
+        var size = cc.director.getWinSize();
+        this.notify.x = size.width/2 - 170 + 80;
+        this.replay.x = size.width/2 + 15 + 80;
+        this.notify.y = this.replay.y = size.height/2 - 130;
+        this.label.x = size.width/2;
+        this.label.y = size.height/2;
+
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: true,
@@ -190,16 +201,17 @@ var GameScene = cc.Scene.extend({
         this.background = new Background();
         this.addChild(this.background);
 
+        var size = cc.director.getWinSize();
         this.timer_label = new cc.LabelTTF(this.current_time, "宋体", 20);
-        this.timer_label.x = cc.visibleRect.width/2;
-        this.timer_label.y = cc.visibleRect.height - 60;
+        this.timer_label.x = size.width/2;
+        this.timer_label.y = size.height - 60;
         this.timer_label.color = cc.color(0, 0, 0);
         this.addChild(this.timer_label);
 
         this.score = new cc.LabelTTF("0", "宋体", 20);
         this.score.x = 80;
         this.score.anchorX = 0;
-        this.score.y = cc.visibleRect.height - 60;
+        this.score.y = size.height - 60;
         this.score.color = cc.color(0, 0, 0);
         this.addChild(this.score);
 
