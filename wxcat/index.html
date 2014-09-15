@@ -129,14 +129,14 @@
         window.wxData = {
             "appId": "", // 服务号可以填写appId
             "imgUrl":'http://h5.cocoachina.com/static/app/wxcat/icon.png',
-            "link":'http://h5.cocoachina.com/static/app/wxcat/',
+            "link":window.location.href,
             "desc":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧",
             "title":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧"
         };
         window.wxFriend = {
             "appId": "", // 服务号可以填写appId
             "imgUrl":'http://h5.cocoachina.com/static/app/wxcat/icon.png',
-            "link":'http://h5.cocoachina.com/static/app/wxcat/',
+            "link":window.location.href,
             "desc":'最近微信刷屏的游戏，喵的太贱了，快来感受下吧',
             "title":"最近微信刷屏的游戏《来自喵星的你》，喵的太贱了，快来感受下吧"
         };
@@ -151,7 +151,6 @@
                 confirm : function(resp) {
                 },
                 all : function(resp) {
-                  if(window.location) window.location.href = "http://www.shouyoutu.com/hot.html?lm_cat";
                 }
             };
             Api.shareToFriend(wxFriend, wxCallbacks);
