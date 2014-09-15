@@ -17,6 +17,7 @@ cc.game.onStart = function(){
         //load resources
         cc.LoaderScene.preload(g_resources, function () {
             GameScene.instance = new GameScene();
+            cc.view.setResizeCallback(GameScene.instance.relocate.bind(GameScene.instance));
             cc.director.runScene(GameScene.instance);
         });
     }, this);
