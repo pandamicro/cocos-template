@@ -9,7 +9,7 @@ import errno
 import commands
 
 keep_in_assets = ["script"]
-skip_in_src = ["cocos2d-html5.js", "CMakeLists.txt", "frameworks", "index.html", "runtime", "tools", ".cocos-project.json", ".DS_Store", ".idea"]
+skip_in_src = ["cocos2d-js.js", "cocos2d-html5.js", "CMakeLists.txt", "frameworks", "index.html", "runtime", "tools", ".cocos-project.json", ".DS_Store", ".idea"]
 default_storepass = "android"
 default_keypass = "android"
 default_keystore = "androiddebugkey"
