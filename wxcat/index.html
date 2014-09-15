@@ -126,9 +126,10 @@
             s.parentNode.insertBefore(hm, s);
         })();
 
-        var href = window.location.href, base = href;
-        var last = href.lastIndexOf("/");
-        if (last != -1)
+        var href = window.location.href, base = href,
+            lastpt = href.lastIndexOf("."),
+            last = href.lastIndexOf("/");
+        if (last != -1 && lastpt > last)
             base = base.substr(0, last);
         window.wxData = {
             "appId": "", // 服务号可以填写appId

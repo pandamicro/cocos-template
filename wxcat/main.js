@@ -18,9 +18,10 @@ cc.game.onStart = function(){
             res = res.concat(TemplateUtils.getResourcesList());
             var shareInfo = TemplateUtils.getShare();
             if (shareInfo && shareInfo["wechat"] && shareInfo["wechat"]["imgUrl"]) {
-                var href = window.location.href, base = href;
-                var last = href.lastIndexOf("/");
-                if (last != -1)
+                var href = window.location.href, base = href,
+                    lastpt = href.lastIndexOf("."),
+                    last = href.lastIndexOf("/");
+                if (last != -1 && lastpt > last)
                     base = base.substr(0, last);
                 var path = shareInfo["wechat"]["imgUrl"];
                 if (path[0] != "/")

@@ -130,9 +130,10 @@
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript" src="WeixinApi.js"></script>
 <script>
-    var href = window.location.href, base = href;
-    var last = href.lastIndexOf("/");
-    if (last != -1)
+    var href = window.location.href, base = href,
+        lastpt = href.lastIndexOf("."),
+        last = href.lastIndexOf("/");
+    if (last != -1 && lastpt > last)
         base = base.substr(0, last);
     // 微信分享的数据
     window.wxData = {
