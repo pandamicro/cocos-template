@@ -1,7 +1,7 @@
 cc.game.onStart = function () {
     var mode = cc.sys.isMobile && window.navigator.userAgent.indexOf("MicroMessenger") != -1 ? cc.ResolutionPolicy.FIXED_WIDTH : cc.ResolutionPolicy.SHOW_ALL;
     cc.view.setDesignResolutionSize(321, 480, mode);
-    //cc.view.resizeWithBrowserSize(true);
+    cc.view.resizeWithBrowserSize(true);
     if (!cc.sys.isNative) {
         cc._renderContext.webkitImageSmoothingEnabled = false;
         cc._renderContext.mozImageSmoothingEnabled = false;
