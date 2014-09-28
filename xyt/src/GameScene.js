@@ -565,10 +565,14 @@ var GameScene = cc.Scene.extend({
         if (bgTex) {
             var size = bgTex.getContentSize();
             var rx = cc.winSize.width / size.width, ry = cc.winSize.height / size.height;
-            bg.scale = rx > ry ? rx : ry;
+            bg.setScaleX(rx);
+            bg.setScaleY(ry);
+            bg.anchorX = 0;
+            bg.anchorY = 0;
+            bg.x = 0;
+            bg.y = 0;
             this.addChild(bg, BG_DEPTH);
         }
-
         layers.game = new GameLayer();
         this.addChild(layers.game, GAME_DEPTH);
 
