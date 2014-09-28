@@ -1,7 +1,7 @@
 
 cc.game.onStart = function(){
     cc.view.adjustViewPort(true);
-    var mode = cc.sys.isMobile ? cc.ResolutionPolicy.FIXED_WIDTH : cc.ResolutionPolicy.SHOW_ALL;
+    var mode = cc.sys.isMobile && window.navigator.userAgent.indexOf("MicroMessenger")!=-1 ? cc.ResolutionPolicy.FIXED_WIDTH : cc.ResolutionPolicy.SHOW_ALL;
     cc.view.setDesignResolutionSize(321, 500, mode);
     cc.view.resizeWithBrowserSize(true);
 
