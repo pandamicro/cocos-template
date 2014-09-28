@@ -38,12 +38,12 @@
 	"scenes": {
 	},
 
-        "share": {
-            "wechat": {
+    "share": {
+        "wechat": {
             "appId":    "",
-                "imgUrl":   "icon.png",
-                "desc":     "瞎了也要玩！",
-                "title":    "眼力大挑战"
-            }
+            "imgUrl":   "icon.png",
+            "desc":     "瞎了也要玩！",
+            "title":    "眼力大挑战"
         }
+    }
 }

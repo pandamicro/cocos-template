@@ -131,7 +131,7 @@
 
 	"share": {
         "wechat": {
-        "appId":    "",
+            "appId":    "",
             "imgUrl":   "icon.png",
             "desc":     "最近微信刷屏的游戏，喵的太贱了，快来感受下吧",
             "title":    "来自喵星的你"

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>我拿了0分，战胜了0个汪，超越了0％的好友！你能超过我吗</title>
     <link rel="icon" type="image/GIF" href="http://androidzh.com/games/wxcat/res/favicon.ico">
-    <meta name="viewport" content="width=321, user-scalable=no">
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="full-screen" content="yes">
     <meta name="screen-orientation" content="portrait">
@@ -95,6 +95,15 @@
         }
     </style>
 
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?cf6e56197d15d6d01685b29c92d56831";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
 
@@ -126,17 +135,22 @@
             s.parentNode.insertBefore(hm, s);
         })();
 
+        var href = window.location.href, base = href,
+            lastpt = href.lastIndexOf("."),
+            last = href.lastIndexOf("/");
+        if (last != -1 && lastpt > last)
+            base = base.substr(0, last);
         window.wxData = {
             "appId": "", // 服务号可以填写appId
-            "imgUrl":'http://h5.cocoachina.com/static/app/wxcat/icon.png',
-            "link":'http://h5.cocoachina.com/static/app/wxcat/',
+            "imgUrl":base+'/icon.png',
+            "link":window.location.href,
             "desc":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧",
             "title":"最近微信刷屏的游戏，喵的太贱了，快来感受下吧"
         };
         window.wxFriend = {
             "appId": "", // 服务号可以填写appId
-            "imgUrl":'http://h5.cocoachina.com/static/app/wxcat/icon.png',
-            "link":'http://h5.cocoachina.com/static/app/wxcat/',
+            "imgUrl":base+'/icon.png',
+            "link":window.location.href,
             "desc":'最近微信刷屏的游戏，喵的太贱了，快来感受下吧',
             "title":"最近微信刷屏的游戏《来自喵星的你》，喵的太贱了，快来感受下吧"
         };
@@ -151,7 +165,6 @@
                 confirm : function(resp) {
                 },
                 all : function(resp) {
-                  if(window.location) window.location.href = "http://www.shouyoutu.com/hot.html?lm_cat";
                 }
             };
             Api.shareToFriend(wxFriend, wxCallbacks);
@@ -161,14 +174,5 @@
     </script>
     <script type="text/javascript" src="cocos2d-js.js"></script>
     <script type="text/javascript" src="main.js"></script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?cf6e56197d15d6d01685b29c92d56831";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 </body>
 </html>
